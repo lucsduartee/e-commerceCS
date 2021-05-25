@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" component={LoginPage} exact></Route>
-        <Route path="/main" component={MainPage}></Route>
+        <Route path="/home" component={MainPage}></Route>
         <Route path="" component={NotFoundPage}></Route>
       </Switch>
       </Router>
