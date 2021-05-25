@@ -1,4 +1,5 @@
 import LoginPage from './LoginPage';
+import MainPage from './MainPage';
 import Carousel from './Carousel';
 import NotFoundPage from './NotFoundPage';
 import './App.css';
@@ -10,10 +11,10 @@ function App() {
       <Switch>
         <Route path="/" component={LoginPage} exact></Route>
         <Route path="/carousel" component={Carousel}></Route>
+        <Route path="/home" component={MainPage}></Route>
         <Route path="" component={NotFoundPage}></Route>
       </Switch>
       </Router>
   );
 }
-
 export default App;
