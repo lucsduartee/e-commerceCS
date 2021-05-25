@@ -73,47 +73,13 @@ function Header() {
                     <li><a href=""><img className="icon__perfil" src={perfil}/></a></li>
                 </ul>
             </div>
-{/* 
-            <div className="dropdown">
-                <ul className="dropdown__sections">
-                    <li><a className="dropdown__sections--link" href="#">Feminino</a>
-                        <ul className="dropdown__list">
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                        </ul>
-                    </li>
-                    <li><a className="dropdown__sections--link" href="#">Masculino</a> 
-                        <ul className="dropdown__list">
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                        </ul>
-                    </li>    
-                    <li><a className="dropdown__sections--link" href="#">Acessórios</a>
-                        <ul className="dropdown__list">
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                            <li className="dropdown__products"><a href="#" className="dropdown__products">asdfsdf</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>        */}
         </HeaderStyle>
     );
 }
 
 const HeaderStyle = styled.div`
-
     width: 100vw;
    
-    
     & .cabecalho {
         display: flex;
         background-color: #000000;
@@ -155,7 +121,6 @@ const HeaderStyle = styled.div`
     
     & .dropbtn:hover {
         text-decoration: underline;
-
     }
 
     & .dropdown__list {
@@ -176,14 +141,11 @@ const HeaderStyle = styled.div`
         margin: 0 auto;
         width: 100vw;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        transform: rotateX(-90deg);
-        transform-origin: top center;
-        transition: all 3s;
     }
 
     & .menu__item--drop:hover .dropdown__sections {
         display: flex;
-        transform: rotateX(0);
+
     }
 
     & .dropdown__sections--link {
@@ -199,12 +161,6 @@ const HeaderStyle = styled.div`
         color: #000000;
         font-size: 12px;
     }
-
-
-
-    
-  
-
 `;
 
 export default Header;
