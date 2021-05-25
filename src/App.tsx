@@ -1,5 +1,5 @@
 import LoginPage from './LoginPage';
-import MainPage from './MainPage';
+import Carousel from './Carousel';
 import NotFoundPage from './NotFoundPage';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" component={LoginPage} exact></Route>
-        <Route path="/main" component={MainPage}></Route>
+        <Route path="/carousel" component={Carousel}></Route>
         <Route path="" component={NotFoundPage}></Route>
       </Switch>
       </Router>
