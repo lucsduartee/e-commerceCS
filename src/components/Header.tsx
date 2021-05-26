@@ -71,8 +71,8 @@ function Header() {
                     </li>
 
                     <li className="search-avatar-icon-container">
-                        <Link to="/"><img className="icon icon__search" src={lupa}/></Link>
-                        <Link to="/"><img className="icon icon__perfil" src={perfil}/></Link>
+                        <Link to="/"><img className="icon icon__search" src={lupa} alt="pesquisa"/></Link>
+                        <Link to="/"><img className="icon icon__perfil" src={perfil} alt="avatar"/></Link>
                     </li>
                 </ul>
             </div>
@@ -85,6 +85,8 @@ const HeaderStyle = styled.div`
    
     & .cabecalho {
         display: flex;
+        width: 100vw;
+        overflow: hidden;
         background-color: #000000;
     }
     & .menu__logo {
