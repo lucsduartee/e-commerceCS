@@ -4,6 +4,7 @@ import lupa from '../img/lupa.svg';
 import perfil from '../img/perfil.svg';
 import { Link } from 'react-router-dom';
 
+
 function Header() {
     return (
         <HeaderStyle>   
