@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import logomenu from '../img/logomenu.svg';
 import lupa from '../img/lupa.svg';
 import perfil from '../img/perfil.svg';
+import {Link} from 'react-router-dom'
+import MalePage from '../MalePage'
 
 
 function Header() {
