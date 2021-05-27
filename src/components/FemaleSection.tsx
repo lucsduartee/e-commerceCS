@@ -1,13 +1,13 @@
 import CardBig from './CardBig';
 import CardMedium from './CardMedium'
 import styled from 'styled-components'
-import imagetype1 from '../img/imagetype1.png'
-import imagetype2 from '../img/imagetype2.png'
-import imagetype3 from '../img/imagetype3.png'
-import imagetype4 from '../img/imagetype4.png'
-import imagetype5 from '../img/imagetype5.png'
+import image1 from '../img/image1.png'
+import image2 from '../img/image2.png'
+import image3 from '../img/image3.png'
+import image4 from '../img/image4.png'
+import image7 from '../img/image7.png'
 
-function MaleSection() {
+function FemaleSection() {
     return(
         <>
             <PopularesStyle>
@@ -15,9 +15,9 @@ function MaleSection() {
                     <p className="section__name"><span>Populares</span></p>
                 </div>
                 <div className="section__products">
-                    <CardMedium image={imagetype1} />
-                    <CardMedium image={imagetype2} />
-                    <CardMedium image={imagetype3} />
+                    <CardMedium image={image1} />
+                    <CardMedium image={image2} />
+                    <CardMedium image={image3} />
         
                 </div>
             </PopularesStyle>
@@ -26,8 +26,8 @@ function MaleSection() {
                     <p className="section__name"><span>Novidades</span></p>
                 </div>
                 <div className="section__products">
-                    <CardBig image={imagetype4} />
-                    <CardBig image={imagetype5} />
+                    <CardBig image={image4} />
+                    <CardBig image={image7} />
                 </div>
             </NovidadesStyle>   
         </>    
@@ -35,7 +35,7 @@ function MaleSection() {
 }
 
 
-export default MaleSection;
+export default FemaleSection;
 
 
 const PopularesStyle = styled.div`

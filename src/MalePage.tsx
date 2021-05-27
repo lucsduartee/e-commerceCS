@@ -1,13 +1,15 @@
+
 import Header from './components/Header';
-import MaleSection from './components/MaleSection';
+import MaleSection from './components/MaleSection'
+import Carousel from './components/Carousel'
 
 function MalePage() {
     return(
-    <>
-        <Header /> 
-        <MaleSection />
-          
-    </>
+        <>
+            <Header /> 
+            <Carousel />
+            <MaleSection />
+        </>
     );
 };
 

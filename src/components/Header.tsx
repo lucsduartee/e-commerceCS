@@ -17,7 +17,7 @@ function Header() {
                         <Link to="/" className="menu__link">Home</Link>
                     </li>
                     <li className="menu__item menu__item--drop">
-                    <Link to="/" className="droplink">Estilo</Link>
+                    <Link to="#" className="droplink">Estilo</Link>
                         <ul className="dropdown__sections">
                             <li><Link to="/pages/female" className="dropdown__sections--link">Feminino</Link>
                                 <ul className="dropdown__list">
@@ -133,7 +133,7 @@ const HeaderStyle = styled.div`
         font-size: min(calc(10px + 3vw), 40px);
         position: absolute;
         z-index: 1;
-        top: calc(40px + 3vw);
+        top: calc(40px + 2.65vw);
         left: 0;
         padding: 10px 0;
         margin: 0 auto;

@@ -15,7 +15,6 @@ function App() {
 
         <Route path="/pages/female" component={FemalePage}></Route>
         <Route path="/pages/male" component={MalePage}></Route>
-        <Route path="/MalePage" component={MalePage}></Route>
         <Route path="/carousel" component={Carousel}></Route>
         <Route path="/home" component={MainPage}></Route>
         <Route path="" component={NotFoundPage}></Route>
