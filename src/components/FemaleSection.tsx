@@ -15,9 +15,9 @@ function FemaleSection() {
                     <p className="section__name"><span>Populares</span></p>
                 </div>
                 <div className="section__products">
-                    <CardMedium image={image1} />
-                    <CardMedium image={image2} />
-                    <CardMedium image={image3} />
+                    <CardMedium image1={image1} />
+                    <CardMedium image1={image2} />
+                    <CardMedium image1={image3} />
         
                 </div>
             </PopularesStyle>

@@ -1,14 +1,36 @@
+import { useState } from 'react';
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 
-function CardMedium(props: {image: string}) {
+function CardMedium(props: {image1: string, image2?: string}) {
     
+    const [mouseOnImage, setMouseOnImage] = useState(false);
+    const [mouseOnDescription, setMouseOnDescription] = useState(false);
+
     return (
         <CardMediumStyle>
             <div className="section__card">
-                <Link className="section__link" to="/"><img className="section__image" src={props.image} alt="" /></Link>
-                <p className="section__description">Descrição</p>
+                <Link className="img__link" to="/"
+                    onMouseEnter={()=> setMouseOnImage(true)}
+                    onMouseLeave={()=> setMouseOnImage(false)}
+                >
+                {
+                    mouseOnImage
+                    ? <img src={props.image1} alt="roupa"/>
+                    : <img src={props.image2} alt="roupa"/>
+                }
+                </Link>
+                <Link className="description__link" to="/"
+                    onMouseEnter={()=> setMouseOnDescription(true)}
+                    onMouseLeave={()=> setMouseOnDescription(false)}
+                >
+                {
+                    mouseOnDescription
+                    ? <div className="section__description">Descrição</div>
+                    : <div className="section__description-large">Descrição grande</div>
+                }
+                </Link>
             </div>
         </CardMediumStyle>
     )
@@ -17,31 +39,20 @@ function CardMedium(props: {image: string}) {
 export default CardMedium;
 
 const CardMediumStyle = styled.div`
-    & .section__card {
-        width: 100%;
-        display: grid;
-        grid-template-areas: 
-            "card-image" 
-            "card-description";
-        grid-template-rows: 5fr 1fr;
-    }
+    display: flex;
 
-    & .section__link {
+    .section__card{
         display: flex;
+        flex-direction: column;
     }
-
-    & .section__image {
-        grid-area: card-image;
-        width: 100%;
-    
-    }
-
-    & .section__description {
-        grid-area: card-description;
+    a {
+        display: flex;
+        background-color: #111;
         color: white;
-        height: 100%;
-        margin: 0;
-        background: black;
-        font-size: calc(10px + ((6vw * 360) / 1000));
+        width: 100%;
+    }
+    img {
+        display: flex;
+        width: 100%;
     }
 `

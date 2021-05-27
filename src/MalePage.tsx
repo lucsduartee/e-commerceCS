@@ -1,4 +1,3 @@
-
 import Header from './components/Header';
 import MaleSection from './components/MaleSection'
 import Carousel from './components/Carousel'
