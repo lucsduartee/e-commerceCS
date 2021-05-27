@@ -19,7 +19,7 @@ function Header() {
                     <li className="menu__item menu__item--drop">
                     <Link to="/" className="droplink">Estilo</Link>
                         <ul className="dropdown__sections">
-                            <li><Link to="/" className="dropdown__sections--link">Feminino</Link>
+                            <li><Link to="/pages/female" className="dropdown__sections--link">Feminino</Link>
                                 <ul className="dropdown__list">
                                     <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Bermudas e Shorts</Link></li>
                                     <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Blusas e Camisetas</Link></li>
@@ -34,7 +34,7 @@ function Header() {
                                     <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Curve {'&'} Plus Size</Link></li>
                                 </ul>
                             </li>
-                            <li><Link to="/" className="dropdown__sections--link">Masculino</Link> 
+                            <li><Link to="/pages/male" className="dropdown__sections--link">Masculino</Link> 
                                 <ul className="dropdown__list">
                                     <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Bermudas e Shorts</Link></li>
                                     <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Blusas e Suéters</Link></li>

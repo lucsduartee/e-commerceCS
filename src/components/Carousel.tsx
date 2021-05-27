@@ -50,7 +50,8 @@ const Slider = styled.div`
         width: calc(100% / 4);
     }
     figure div img {
-        width: 100%;
+        display: flex;
+        width: 100vw;
     }
     figure div h2,
     figure div h1 {
@@ -65,9 +66,8 @@ const Slider = styled.div`
         font-size: min(max(calc(8vw - 25px), 16px), 50px);
     }
     figure div h1 {
-        max-width: 8ch;
         grid-row: 6/9;
-        font-size: min(calc(30vw - 50px), 130px);
+        font-size: min(calc(26vw - 50px), 130px);
     }
 
     @keyframes slider {
@@ -78,19 +78,19 @@ const Slider = styled.div`
             left: 0;
         }
         33% {
-            left: -100%;
+            left: -100vw;
         }
         65% {
-            left: -100%;
+            left: -100vw;
         }
         67% {
-            left: -200%;
+            left: -200vw;
         }
         98% {
-            left: -200%;
+            left: -200vw;
         }
         100%{
-            left: -300%;
+            left: -300vw;
         } 
     }
 `;
