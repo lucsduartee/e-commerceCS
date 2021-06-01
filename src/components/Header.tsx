@@ -124,15 +124,18 @@ const HeaderStyle = styled.div`
     & .dropdown__list {
         display: flex;
         flex-direction: column;
+        list-style: none;
+        padding: 0;
     }
     & .dropdown__sections {
         display: none;
+        list-style: none;
         background-color: #CCC;
         justify-content: space-around;   
         text-align: left;
         font-size: min(calc(10px + 3vw), 40px);
         position: absolute;
-        z-index: 1;
+        z-index: 3;
         top: calc(40px + 2.65vw);
         left: 0;
         padding: 10px 0;
