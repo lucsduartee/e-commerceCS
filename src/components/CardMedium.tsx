@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 
-function CardMedium(props: {image1: string, image2?: string}) {
+function CardMedium(props: {image1: string, image2: string}) {
     
     const [mouseOnImage, setMouseOnImage] = useState(false);
     const [mouseOnDescription, setMouseOnDescription] = useState(false);
@@ -53,6 +53,6 @@ const CardMediumStyle = styled.div`
     }
     img {
         display: flex;
-        width: 100%;
+        width: 35vw;
     }
 `

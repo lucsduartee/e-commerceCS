@@ -2,7 +2,7 @@ import Header from './components/Header';
 import HomeButton from './HomeButton';
 import maleImage from './img/imagetype2.png';
 import femaleImage from './img/image2.png';
-import accImage from './img/image3.png';
+import accImage from './img/mochila-masculina.jpg';
 import styled from 'styled-components';
 
 function MainPage() {
@@ -10,15 +10,17 @@ function MainPage() {
         <WrapperHomePage>
             <Header /> 
             <HomeButtonsWrapper>
-                <HomeButton title={"Homens"} image={maleImage} />
-                <HomeButton title={"Mulheres"} image={femaleImage} />
-                <HomeButton title={"Acessórios"} image={accImage} />
+                <HomeButton path="/pages/male" title={"Homens"} image={maleImage} />
+                <HomeButton path="/pages/female" title={"Mulheres"} image={femaleImage} />
+                <HomeButton path="/pages/acc" title={"Acessórios"} image={accImage} />
             </HomeButtonsWrapper>
         </WrapperHomePage>
     );
 };
 
-const WrapperHomePage = styled.div``;
+const WrapperHomePage = styled.div`
+    background-color: #111;
+`;
 
 const HomeButtonsWrapper = styled.div`
     display: flex;

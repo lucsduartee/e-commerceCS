@@ -15,9 +15,9 @@ function MaleSection() {
                     <p className="section__name"><span>Populares</span></p>
                 </div>
                 <div className="section__products">
-                    <CardMedium image1={imagetype1} />
-                    <CardMedium image1={imagetype2} />
-                    <CardMedium image1={imagetype3} />
+                    <CardMedium image1={imagetype1} image2={imagetype1} />
+                    <CardMedium image1={imagetype2} image2={imagetype2} />
+                    <CardMedium image1={imagetype3} image2={imagetype3} />
         
                 </div>
             </PopularesStyle>
