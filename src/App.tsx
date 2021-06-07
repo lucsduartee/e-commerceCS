@@ -1,11 +1,12 @@
 import LoginPage from './pages/LoginPage';
-import MainPage from './pages/MainPage';
+import HomePage from './pages/HomePage';
 import FemalePage from './pages/FemalePage';
 import AllProductsPage from './pages/AllProductsPage';
 import MalePage from './pages/MalePage';
 import AccPage from './pages/AccPage';
 import CartPage from './pages/CartPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ProductsList from './ProductsList';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -19,7 +20,8 @@ function App() {
         <Route path="/pages/male" component={MalePage} />
         <Route path="/pages/acc" component={AccPage} />
         <Route path="/cart" component={CartPage} />
-        <Route path="/home" component={MainPage} />
+        <Route path="/home" component={HomePage} />
+        <Route path="/products-list" component={ProductsList} />
         <Route path="" component={NotFoundPage} />
       </Switch>
     </Router>

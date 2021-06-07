@@ -1,12 +1,12 @@
 import Header from '../components/Header';
 import HomeButton from '../HomeButton';
-import maleImage from './img/imagetype2.png';
-import femaleImage from './img/image2.png';
-import accImage from './img/mochila-masculina.jpg';
+import maleImage from '../img/imagetype2.png';
+import femaleImage from '../img/image2.png';
+import accImage from '../img/mochila-masculina.jpg';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
 
-function MainPage() {
+function HomePage() {
     return(
         <WrapperHomePage>
             <Header /> 
@@ -37,4 +37,4 @@ const HomeButtonsWrapper = styled.div`
     }
 `;
 
-export default MainPage;
+export default HomePage;
