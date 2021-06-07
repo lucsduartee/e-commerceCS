@@ -1,10 +1,10 @@
-import Header from './components/Header';
-import HomeButton from './HomeButton';
+import Header from '../components/Header';
+import HomeButton from '../HomeButton';
 import maleImage from './img/imagetype2.png';
 import femaleImage from './img/image2.png';
 import accImage from './img/mochila-masculina.jpg';
 import styled from 'styled-components';
-import Footer from './components/Footer';
+import Footer from '../components/Footer';
 
 function MainPage() {
     return(

@@ -1,5 +1,5 @@
-import Header from './components/Header';
-import AllProducts from './components/AllProducts';
+import Header from '../components/Header';
+import AllProducts from '../components/AllProducts';
 
 function AllProductsPage() {
     return(

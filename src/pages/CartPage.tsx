@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Header from './components/Header';
-import CartProduct from './components/CartProduct';
+import Header from '../components/Header';
+import CartProduct from '../components/CartProduct';
 
 function CartPage(){
     return(

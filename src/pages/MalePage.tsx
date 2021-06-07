@@ -1,7 +1,7 @@
-import Header from './components/Header';
-import MaleSection from './components/MaleSection'
-import Carousel from './components/Carousel'
-import Footer from './components/Footer'
+import Header from '../components/Header';
+import MaleSection from '../components/MaleSection'
+import Carousel from '../components/Carousel'
+import Footer from '../components/Footer'
 
 
 function MalePage() {

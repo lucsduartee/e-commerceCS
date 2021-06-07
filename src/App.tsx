@@ -1,11 +1,11 @@
-import LoginPage from './LoginPage';
-import MainPage from './MainPage';
-import FemalePage from './FemalePage';
-import AllProductsPage from './AllProductsPage';
-import MalePage from './MalePage';
-import AccPage from './AccPage';
-import CartPage from './CartPage';
-import NotFoundPage from './NotFoundPage';
+import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
+import FemalePage from './pages/FemalePage';
+import AllProductsPage from './pages/AllProductsPage';
+import MalePage from './pages/MalePage';
+import AccPage from './pages/AccPage';
+import CartPage from './pages/CartPage';
+import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
