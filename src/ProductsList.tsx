@@ -5,6 +5,7 @@ import NewProductForm from './NewProductForm';
 import { displayAlert, loadProducts, removeProductRequest } from './redux-store/thunks';
 
 const ProductsList = ({ products=[], onRemovePressed, isLoading, startLoadingProducts } : any) => {
+
     useEffect(() => {
         startLoadingProducts();
     }, []);
@@ -14,6 +15,7 @@ const ProductsList = ({ products=[], onRemovePressed, isLoading, startLoadingPro
         <div>
             <NewProductForm />
             {
+                console.log(products)}{
                 products.map((product : any) => 
                     <ProductsListItem
                         product={product}
@@ -33,7 +35,7 @@ const mapStateToProps = (state : any) => ({
 
 const mapDispatchToProps = (dispatch : any) => ({
     startLoadingProducts: () => dispatch(loadProducts()),
-    onRemovePressed: (id : string) => dispatch(removeProductRequest(id)),
+    onRemovePressed: (_id : string) => dispatch(removeProductRequest(_id)),
     onDisplayAlertFired: (text : string) => dispatch(displayAlert(text))
 })
 
