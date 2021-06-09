@@ -17,7 +17,7 @@ export const loadProducts = () => async (dispatch : any, getState : any) => {
         console.log(products);
         console.log('from thunks');
         dispatch(loadProductsSuccess(products));
-    } catch(e){
+    } catch(e : any){
         dispatch(loadProductsFailure());
         dispatch(displayAlert(e));
     }
@@ -39,7 +39,7 @@ export const addProductRequest = (title : string, description : string, price : 
         })
         const product = await response.json();
         dispatch(createProduct(product));
-    } catch(e){
+    } catch(e : any){
         dispatch(displayAlert(e));
     }
 }
@@ -51,7 +51,7 @@ export const removeProductRequest = (_id : any) => async (dispatch : any) => {
         });
         const removedProduct = await response.json();
         dispatch(removeProduct(removedProduct));
-    } catch(e){
+    } catch(e : any){
         dispatch(displayAlert(e));
     }
 }
@@ -63,7 +63,7 @@ export const updateProductRequest = (_id : any) => async (dispatch : any) => {
         });
         const updatedProduct = await response.json();
         dispatch(updateProduct(updatedProduct));
-    } catch(e){
+    } catch(e : any){
         dispatch(displayAlert(e));
     }
 }
