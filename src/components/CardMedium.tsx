@@ -1,35 +1,22 @@
-import { useState } from 'react';
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 
-function CardMedium(props: {image1: string, image2: string}) {
+function CardMedium(props: {image1: string, image2: string, description1: string, description2: string, preco: string}) {
     
-    const [mouseOnImage, setMouseOnImage] = useState(false);
-    const [mouseOnDescription, setMouseOnDescription] = useState(false);
 
     return (
         <CardMediumStyle>
             <div className="section__card">
-                <Link className="img__link" to="/"
-                    onMouseEnter={()=> setMouseOnImage(true)}
-                    onMouseLeave={()=> setMouseOnImage(false)}
-                >
-                {
-                    mouseOnImage
-                    ? <img src={props.image1} alt="roupa"/>
-                    : <img src={props.image2} alt="roupa"/>
-                }
+                <Link className="section__link" to="/">
+                    <img className="section__image" src={props.image1} alt="" />
+                    <img className="section__image2" src={props.image2} alt="" />
+                    <p className="section__description--card">{props.description2}
+                    </p>
                 </Link>
-                <Link className="description__link" to="/"
-                    onMouseEnter={()=> setMouseOnDescription(true)}
-                    onMouseLeave={()=> setMouseOnDescription(false)}
-                >
-                {
-                    mouseOnDescription
-                    ? <div className="section__description">Descrição</div>
-                    : <div className="section__description-large">Descrição grande</div>
-                }
+                <Link className="section__description" to="/">
+                    <p className="section__description--item">{props.description1}</p>
+                    <p className="section__description--valor">{props.preco}</p>
                 </Link>
             </div>
         </CardMediumStyle>
@@ -39,20 +26,91 @@ function CardMedium(props: {image1: string, image2: string}) {
 export default CardMedium;
 
 const CardMediumStyle = styled.div`
-    display: flex;
-
     .section__card{
         display: flex;
         flex-direction: column;
     }
+
+    .section__image {
+        display: flex;
+        width: 28.5vw;
+        position: relative;
+        z-index: 5;
+        transition: z-index 1.5s , opacity 1.5s;
+        transition-timing-function: ease-in-out;
+    }
+
+    .section__image2 {
+        position: absolute;
+        display: flex;
+        width: 28.5vw;
+        z-index: 3;
+        overflow: scroll;
+        transition: z-index 1.5s;
+        transition-timing-function: ease-in-out;
+        
+    }
+
+    .section__image:hover {
+        z-index: 0;
+        opacity: 0;
+        transition-timing-function: ease-in-out;
+    }
+
+    .section__description {
+        display: flex;
+        height: 5vw;
+        align-items: center;
+        justify-content: space-between;
+        background: #000;
+        color: #FFF;
+        margin: 0;
+        width: 28.5vw;
+        text-decoration: none;
+        font-size: calc( ((6vw * 360) / 1000));
+        
+    }
+
+    .section__description--card {
+        position: absolute;
+        display: block;
+        z-index: 0;
+        color: #f00;
+    }
+
+    .section__description:hover .section__description--card {
+        z-index: 4;
+    }
+
+ 
     a {
         display: flex;
-        background-color: #111;
         color: white;
         width: 100%;
     }
-    img {
-        display: flex;
-        width: 35vw;
-    }
 `
+
+{/* <CardMediumStyle>
+<div className="section__card">
+    <Link className="img__link" to="/"
+        onMouseEnter={()=> setMouseOnImage(true)}
+        onMouseLeave={()=> setMouseOnImage(false)}
+    >
+    {
+        mouseOnImage
+        ? <img src={props.image1} alt="roupa"/>
+        : <img src={props.image2} alt="roupa"/>
+    }
+    </Link>
+    <Link className="description__link" to="/"
+        onMouseEnter={()=> setMouseOnDescription(true)}
+        onMouseLeave={()=> setMouseOnDescription(false)}
+    >
+    {
+        mouseOnDescription
+        ? <div className="section__description">Descrição</div>
+        : <div className="section__description-large">Descrição grande</div>
+    }
+    </Link>
+</div>
+</CardMediumStyle> */}

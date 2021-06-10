@@ -1,11 +1,16 @@
 import CardBig from './CardBig';
 import CardMedium from './CardMedium'
 import styled from 'styled-components'
-import imagetype1 from '../img/imagetype1.png'
-import imagetype2 from '../img/imagetype2.png'
-import imagetype3 from '../img/imagetype3.png'
-import imagetype4 from '../img/imagetype4.png'
-import imagetype5 from '../img/imagetype5.png'
+import cbranca from '../img/cbranca.png'
+import cbranca2 from '../img/cbranca2.png'
+import magneto from '../img/magneto.png'
+import magneto2 from '../img/magneto2.png'
+import moletom from '../img/moletom.png'
+import moletom2 from '../img/moletom2.png'
+import blusaflorida from '../img/blusaflorida.png'
+import blusaflorida2 from '../img/blusaflorida2.png'
+import oculos from '../img/oculos.png'
+import oculos2 from '../img/oculos2.png'
 
 function MaleSection() {
     return(
@@ -15,9 +20,9 @@ function MaleSection() {
                     <p className="section__name"><span>Populares</span></p>
                 </div>
                 <div className="section__products">
-                    <CardMedium image1={imagetype1} image2={imagetype1} />
-                    <CardMedium image1={imagetype2} image2={imagetype2} />
-                    <CardMedium image1={imagetype3} image2={imagetype3} />
+                    <CardMedium image1={cbranca} image2={cbranca2} description1="Camisa Branca Basic" description2="camisar" preco="$69.90"/>
+                    <CardMedium image1={magneto} image2={magneto2} description1="Camisa Magneto" description2="camisar" preco="$69.90"/>
+                    <CardMedium image1={moletom} image2={moletom2} description1="Blusa Street Run" description2="camisar" preco="$109.90"/>
         
                 </div>
             </PopularesStyle>
@@ -26,8 +31,8 @@ function MaleSection() {
                     <p className="section__name"><span>Novidades</span></p>
                 </div>
                 <div className="section__products">
-                    <CardBig image={imagetype4} />
-                    <CardBig image={imagetype5} />
+                    <CardBig image1={blusaflorida} image2={blusaflorida2} description1="Camisa Pós-Impressionismo" description2="camisar" preco="$89.90" />
+                    <CardBig image1={oculos} image2={oculos2} description1="Óculos New Summer" description2="camisar" preco="$59.90" />
                 </div>
             </NovidadesStyle>   
         </>    

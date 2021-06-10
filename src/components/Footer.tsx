@@ -37,6 +37,7 @@ const FooterStyle = styled.div`
     width: 12vw;
     box-shadow: 5px 5px 20px rgba(230, 240, 240, 0.2);
     border-radius: 50%;
+    z-index: 10;
    
   }
 
