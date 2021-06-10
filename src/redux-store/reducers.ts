@@ -37,17 +37,21 @@ export const products = (state = [], action : any) => {
         case REMOVE_PRODUCT: {
             const { product: productToRemove } = payload;
             return state.filter((product : any) => {
-                return product.id !== productToRemove.id;
+                return product._id !== productToRemove._id;
             })
         }
         case UPDATE_PRODUCT: {
             const { product: updatedProduct } = payload;
             return state.map((product: any) => {
-                if(product.id === updatedProduct.id) {
+                if(product._id === updatedProduct._id) {
                     return updatedProduct;
                 }
                 return product;
             })
+        }
+        case LOAD_PRODUCTS_SUCCESS: {
+            const { products } = payload;
+            return products;
         }
         default: {
             return state;

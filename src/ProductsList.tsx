@@ -8,7 +8,7 @@ const ProductsList = ({ products=[], onRemovePressed, isLoading, startLoadingPro
 
     useEffect(() => {
         startLoadingProducts();
-    }, []);
+    }, [startLoadingProducts]);
 
     const loadingMessage = <div>carregando produtos</div>;
     const content = (
@@ -19,6 +19,7 @@ const ProductsList = ({ products=[], onRemovePressed, isLoading, startLoadingPro
                 products.map((product : any) => 
                     <ProductsListItem
                         product={product}
+                        key={product._id}
                         onRemovePressed={onRemovePressed}
                     />
                 )
@@ -35,7 +36,7 @@ const mapStateToProps = (state : any) => ({
 
 const mapDispatchToProps = (dispatch : any) => ({
     startLoadingProducts: () => dispatch(loadProducts()),
-    onRemovePressed: (_id : string) => dispatch(removeProductRequest(_id)),
+    onRemovePressed: (id : string) => dispatch(removeProductRequest(id)),
     onDisplayAlertFired: (text : string) => dispatch(displayAlert(text))
 })
 
