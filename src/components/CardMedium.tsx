@@ -2,10 +2,8 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 
-function CardMedium(props: {image1: string, image2: string, description1: string, description2: string, preco: string}) {
-    
-
-    return (
+function CardMedium(props: { image1 : string, image2 : string, description1 ?: string, description2 ?: string, price ?: string, product ?: any }){
+    const contentIfNotUsingProductsAPI = (
         <CardMediumStyle>
             <div className="section__card">
                 <Link className="section__link" to="/">
@@ -16,11 +14,32 @@ function CardMedium(props: {image1: string, image2: string, description1: string
                 </Link>
                 <Link className="section__description" to="/">
                     <p className="section__description--item">{props.description1}</p>
-                    <p className="section__description--valor">{props.preco}</p>
+                    <p className="section__description--valor">{props.price}</p>
                 </Link>
             </div>
         </CardMediumStyle>
-    )
+    );
+
+    const contentIfUsingProductAPI = (
+        props.product !== undefined
+        ? <CardMediumStyle>
+            <div className="section__card">
+                <Link className="section__link" to="/">
+                    <img className="section__image" src={props.image1} alt="" />
+                    <img className="section__image2" src={props.image2} alt="" />
+                    <p className="section__description--card">{props.product.description}
+                    </p>
+                </Link>
+                <Link className="section__description" to="/">
+                    <p className="section__description--item">{props.product.title}</p>
+                    <p className="section__description--valor">{props.product.price}</p>
+                </Link>
+            </div>
+        </CardMediumStyle>
+        : null
+    );
+
+    return props.product ? contentIfUsingProductAPI : contentIfNotUsingProductsAPI;
 }
 
 export default CardMedium;
@@ -89,28 +108,3 @@ const CardMediumStyle = styled.div`
         width: 100%;
     }
 `
-
-{/* <CardMediumStyle>
-<div className="section__card">
-    <Link className="img__link" to="/"
-        onMouseEnter={()=> setMouseOnImage(true)}
-        onMouseLeave={()=> setMouseOnImage(false)}
-    >
-    {
-        mouseOnImage
-        ? <img src={props.image1} alt="roupa"/>
-        : <img src={props.image2} alt="roupa"/>
-    }
-    </Link>
-    <Link className="description__link" to="/"
-        onMouseEnter={()=> setMouseOnDescription(true)}
-        onMouseLeave={()=> setMouseOnDescription(false)}
-    >
-    {
-        mouseOnDescription
-        ? <div className="section__description">Descrição</div>
-        : <div className="section__description-large">Descrição grande</div>
-    }
-    </Link>
-</div>
-</CardMediumStyle> */}

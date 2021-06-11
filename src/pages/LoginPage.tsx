@@ -12,7 +12,8 @@ function LoginPage() {
             <input className="input-senha" placeholder="senha"></input>
             <Link to="novasenha"><h4 className="esqueci-senha">Esqueci minha senha</h4></Link>
             <div className="button-entrar-container"><Link to="home"><button className="button-entrar">Entrar</button></Link></div>
-            <Link className="registre-se" to="registrese"><h4>Registre-se</h4></Link>
+            <Link className="registre-se" to="/registrese"><h4>Registre-se</h4></Link>
+            <Link className="adm-page-link" to="/products-list">adm page</Link>
         </LoginPageWrapper>
     );
 }
@@ -86,6 +87,11 @@ const LoginPageWrapper = styled.div`
     }
     & .registre-se > h4 {
         margin-top: 1vh;
+    }
+    & .adm-page-link {
+        position: fixed;
+        top: 40vwx;
+        left: 5vw;
     }
     @media screen and (min-width: 600px){
         & .background-container {

@@ -20,9 +20,9 @@ function MaleSection() {
                     <p className="section__name"><span>Populares</span></p>
                 </div>
                 <div className="section__products">
-                    <CardMedium image1={cbranca} image2={cbranca2} description1="Camisa Branca Basic" description2="camisar" preco="$69.90"/>
-                    <CardMedium image1={magneto} image2={magneto2} description1="Camisa Magneto" description2="camisar" preco="$69.90"/>
-                    <CardMedium image1={moletom} image2={moletom2} description1="Blusa Street Run" description2="camisar" preco="$109.90"/>
+                    <CardMedium image1={cbranca} image2={cbranca2} description1="Camisa Branca Basic" description2="camisar" price="$69.90"/>
+                    <CardMedium image1={magneto} image2={magneto2} description1="Camisa Magneto" description2="camisar" price="$69.90"/>
+                    <CardMedium image1={moletom} image2={moletom2} description1="Blusa Street Run" description2="camisar" price="$109.90"/>
         
                 </div>
             </PopularesStyle>

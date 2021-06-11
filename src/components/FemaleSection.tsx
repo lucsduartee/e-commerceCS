@@ -21,9 +21,9 @@ function FemaleSection() {
                     <p className="section__name"><span>Populares</span></p>
                 </div>
                 <div className="section__products">
-                    <CardMedium image1={esportivo} image2={esportivo2} description1="Conjunto Esportivo" description2="camisar" preco="$99.90" />
-                    <CardMedium image1={top} image2={top2} description1="Cropped Jeans" description2="camisar" preco="$79.90" />
-                    <CardMedium image1={vestido} image2={vestido2} description1="Vestido Florido" description2="camisar" preco="$89.90" />
+                    <CardMedium image1={esportivo} image2={esportivo2} description1="Conjunto Esportivo" description2="camisar" price="$99.90" />
+                    <CardMedium image1={top} image2={top2} description1="Cropped Jeans" description2="camisar" price="$79.90" />
+                    <CardMedium image1={vestido} image2={vestido2} description1="Vestido Florido" description2="camisar" price="$89.90" />
         
                 </div>
             </PopularesStyle>

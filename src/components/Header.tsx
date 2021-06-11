@@ -68,7 +68,7 @@ function Header() {
                     </li>
                 
                     <li className="menu__item">
-                        <Link to="/" className="menu__link">Ofertas</Link>
+                        <Link to="/products" className="menu__link">Ofertas</Link>
                     </li>
 
                     <li className="search-avatar-icon-container">
