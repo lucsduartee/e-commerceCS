@@ -20,7 +20,7 @@ function CardMedium(props: { image1 : string, image2 : string, description1 ?: s
         </CardMediumStyle>
     );
 
-    const contentIfUsingProductAPI = (
+    const contentIfUsingProductsAPI = (
         props.product !== undefined
         ? <CardMediumStyle>
             <div className="section__card">
@@ -39,7 +39,7 @@ function CardMedium(props: { image1 : string, image2 : string, description1 ?: s
         : null
     );
 
-    return props.product ? contentIfUsingProductAPI : contentIfNotUsingProductsAPI;
+    return props.product ? contentIfUsingProductsAPI : contentIfNotUsingProductsAPI;
 }
 
 export default CardMedium;
