@@ -33,8 +33,8 @@ const FooterStyle = styled.div`
   & .shopping-cart__icon {
     position: fixed;
     right: 10%;
-    bottom: 5vh;
-    width: 12vw;
+    bottom: 10vh;
+    width: 9vw;
     box-shadow: 5px 5px 20px rgba(230, 240, 240, 0.2);
     border-radius: 50%;
     z-index: 10;
@@ -65,13 +65,15 @@ const FooterStyle = styled.div`
 
   & .icons__facebook, 
     .icons__instagram {
-      width: 10vw;
+      width: 7vw;
       margin: 0 5px;
     }
 
   & .footer__text {
     color: #FFFFFF;
     width: 100vw;
+    height: 10vh;
+    align-items: center;
     background: #000000;
     display:flex;
     flex-wrap: wrap;
@@ -82,8 +84,4 @@ const FooterStyle = styled.div`
   & .footer__text--item {
     margin: 5px;
   }
-
-
-
-
 `;
