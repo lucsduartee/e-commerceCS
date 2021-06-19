@@ -1,29 +1,29 @@
 import streetStyle from '../img/street-style.svg';
 import styled from 'styled-components';
 
-function Carousel(){
+function Carousel(props: { image1 : string, image2 : string, image3: string, image4 : string}){
     return(
         <Slider>
             <figure>
                 <div>
                     <h1>Street Style</h1>
                     <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo et eveniet quae possimus fugit iusto.</h2>
-                    <img src={streetStyle} alt="stree-style" />
+                    <img src={props.image1} alt="stree-style" />
                 </div>
                 <div>
                     <h1>Street Style</h1>
                     <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo et eveniet quae possimus fugit iusto.</h2>
-                    <img src={streetStyle} alt="stree-style" />
+                    <img src={props.image2} alt="stree-style" />
                 </div>
                 <div>
                     <h1>Street Style</h1>
                     <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo et eveniet quae possimus fugit iusto.</h2>
-                    <img src={streetStyle} alt="stree-style" />
+                    <img src={props.image3} alt="stree-style" />
                 </div>
                 <div>
                     <h1>Street Style</h1>
                     <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo et eveniet quae possimus fugit iusto.</h2>
-                    <img src={streetStyle} alt="stree-style" />
+                    <img src={props.image4} alt="stree-style" />
                 </div>
             </figure>
         </Slider>
@@ -32,6 +32,10 @@ function Carousel(){
 
 const Slider = styled.div`
     overflow: hidden;
+
+    img {
+        filter: brightness(50%);
+    }
 
     figure {
         display: flex;
