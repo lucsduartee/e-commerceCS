@@ -49,7 +49,7 @@ app.post('/api/products', async (req, res) => {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        if (title && description && price && stockAmount && category1 && category2 && image1 && image2) {
+        if (title && description && price && stockAmount && category1 && image1) {
             const insertedProduct = {
                 title: title,
                 description: description,
@@ -62,6 +62,7 @@ app.post('/api/products', async (req, res) => {
             }
         
         await db.collection('products').insertOne(insertedProduct);
+        console.log(insertedProduct);
         res.status(200).json(insertedProduct);
         } else {
             res.status(400).json({ message: 'Request body should have a text property' });

@@ -10,12 +10,13 @@ function ProductsByCategory({ products=[], isLoading, startLoadingProducts, cate
     }, [startLoadingProducts]);
 
     const loadingMessage = <div>carregando produtos</div>;
+    console.log(category2);
 
     const content = (
         <AllProductsStyle>
             {
                 products.map((product : any) =>
-                    product.category2 === null
+                    category2 === undefined
                     ?
                     (product.category1 === category1
                         ?

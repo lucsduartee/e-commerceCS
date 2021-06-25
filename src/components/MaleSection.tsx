@@ -22,7 +22,7 @@ function MaleSection() {
                     <p className="section__name"><span>Populares</span></p>
                 </div>
                 <div className="section__products">
-                    <ProductsByCategory category1="female"/>
+                    <ProductsByCategory category1="male"/>
                 </div>
             </PopularesStyle>
             <NovidadesStyle>
