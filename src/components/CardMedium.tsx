@@ -18,7 +18,7 @@ function CardMedium(props: { product ?: any }){
         (
             <Link className="section__description" to="/" onMouseOver={() => setHoverDescription(true)}>
                 <p className="section__description--item">{props.product.title}</p>
-                <p className="section__description--valor">{props.product.price}</p>
+                <p className="section__description--valor">R${props.product.price}</p>
             </Link>
         );
 
@@ -140,7 +140,7 @@ const CardMediumStyleHover = styled.div`
         background-color: green;
         color: white;
         padding: 4px;
-        font-size: calc(8px + 2vw);
+        font-size: 10px;
         height: 29px;
         border: none;
     }
@@ -149,7 +149,7 @@ const CardMediumStyleHover = styled.div`
         color: white;
         width: 100%;
         text-decoration: none;
-        font-size: calc(8px + 2vw);
+        font-size: calc(8px + 1.5vw);
         height: calc(44% - 29px);
     }
     & p {
