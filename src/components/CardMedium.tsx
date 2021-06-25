@@ -1,26 +1,51 @@
+import { useState } from 'react';
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 
 function CardMedium(props: { product ?: any }){
 
+    const [hoverDescription, setHoverDescription] = useState(false);
+
+    const image = 
+        (
+            <Link className="section__link" to="/">
+                <img className="section__image" src={props.product.image1} alt="1" />
+                <img className="section__image2" src={props.product.image2} alt="2" />
+            </Link>
+        );
+    const smallInfoSection = 
+        (
+            <Link className="section__description" to="/" onMouseOver={() => setHoverDescription(true)}>
+                <p className="section__description--item">{props.product.title}</p>
+                <p className="section__description--valor">{props.product.price}</p>
+            </Link>
+        );
+
+    const contentWithoutHover =
+        <CardMediumStyle>
+            <div className="section__card">
+                    {image}
+                    {smallInfoSection}
+            </div>
+        </CardMediumStyle>;
+
+    const contentWithHover = 
+        <CardMediumStyleHover onMouseLeave={() => setHoverDescription(false)}>
+            <h2>{props.product.description}</h2>
+            <button className="add-to-cart-button">Adicionar ao carrinho</button>
+            {smallInfoSection}
+        </CardMediumStyleHover>;
+
     return (
         props.product !== undefined
-        ? <CardMediumStyle>
-            <div className="section__card">
-                <Link className="section__link" to="/">
-                    <img className="section__image" src={props.product.image1} alt="1" />
-                    <img className="section__image2" src={props.product.image2} alt="2" />
-                    <p className="section__description--card">{props.product.description}
-                    </p>
-                </Link>
-                <Link className="section__description" to="/">
-                    <p className="section__description--item">{props.product.title}</p>
-                    <p className="section__description--valor">{props.product.price}</p>
-                </Link>
-            </div>
-        </CardMediumStyle>
-        : null
+        ? (
+            hoverDescription
+                ? contentWithHover
+                : contentWithoutHover
+        )
+        :
+            null
     );
 
 }
@@ -46,6 +71,7 @@ const CardMediumStyle = styled.div`
         position: absolute;
         display: flex;
         width: 28.5vw;
+        height: 33vw;
         z-index: 3;
         overflow: scroll;
         transition: z-index 1.5s;
@@ -68,6 +94,7 @@ const CardMediumStyle = styled.div`
         color: #FFF;
         margin: 0;
         width: 28.5vw;
+        height: 5vw;
         text-decoration: none;
         font-size: calc( ((6vw * 360) / 1000));
         
@@ -84,10 +111,48 @@ const CardMediumStyle = styled.div`
         z-index: 4;
     }
 
- 
     a {
         display: flex;
         color: white;
         width: 100%;
+    }
+`
+const CardMediumStyleHover = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 38vw;
+    background-color: #111;
+    color: white;
+
+    & h2 {
+        margin: 0;
+        font-size: calc(8px + 2vw);
+        height: 56%;
+    }
+    & .section__description {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+    & button {
+        background-color: green;
+        color: white;
+        padding: 4px;
+        font-size: calc(8px + 2vw);
+        height: 29px;
+        border: none;
+    }
+    & a {
+        display: flex;
+        color: white;
+        width: 100%;
+        text-decoration: none;
+        font-size: calc(8px + 2vw);
+        height: calc(44% - 29px);
+    }
+    & p {
+        margin: 0;
     }
 `
