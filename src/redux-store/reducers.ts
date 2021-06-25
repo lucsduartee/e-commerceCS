@@ -26,7 +26,7 @@ export const isLoading = (state = false, action : any) => {
     }
 }
 
-export const products = (state = [], action : any) => {
+export const products = (state : any = [], action : any) => {
     const { type, payload } = action;
 
     switch(type){

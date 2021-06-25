@@ -11,6 +11,8 @@ import blusaflorida from '../img/blusaflorida.png'
 import blusaflorida2 from '../img/blusaflorida2.png'
 import oculos from '../img/oculos.png'
 import oculos2 from '../img/oculos2.png'
+import ProductsByCategory from './ProductsByCategory';
+
 
 function MaleSection() {
     return(
@@ -20,10 +22,7 @@ function MaleSection() {
                     <p className="section__name"><span>Populares</span></p>
                 </div>
                 <div className="section__products">
-                    <CardMedium image1={cbranca} image2={cbranca2} description1="Camisa Branca Basic" description2="camisar" price="$69.90"/>
-                    <CardMedium image1={magneto} image2={magneto2} description1="Camisa Magneto" description2="camisar" price="$69.90"/>
-                    <CardMedium image1={moletom} image2={moletom2} description1="Blusa Street Run" description2="camisar" price="$109.90"/>
-        
+                    <ProductsByCategory category1="female"/>
                 </div>
             </PopularesStyle>
             <NovidadesStyle>

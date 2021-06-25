@@ -44,17 +44,21 @@ app.get('/api/products', async (req, res) => {
 
 app.post('/api/products', async (req, res) => {
     try{
-        const { title, description, price, stockAmount } = req.body;
+        const { title, description, price, stockAmount, category1, category2, image1, image2 } = req.body;
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        if (title && description && price && stockAmount) {
+        if (title && description && price && stockAmount && category1 && category2 && image1 && image2) {
             const insertedProduct = {
                 title: title,
                 description: description,
                 price: price,
-                stockAmount: stockAmount
+                stockAmount: stockAmount,
+                category1: category1,
+                category2: category2,
+                image2: image2,
+                image1: image1,
             }
         
         await db.collection('products').insertOne(insertedProduct);
@@ -71,12 +75,12 @@ app.post('/api/products', async (req, res) => {
 app.post('/api/products/:id/completed', async (req, res) => {
     try{
         const _id = ObjectID(req.params.id);
-        const { title, description, price, stockAmount } = req.body;
+        const { title, description, price, stockAmount, category1, category2, image1, image2 } = req.body;
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        const updatedProduct = await db.collection('products').updateOne({ _id: _id }, { $set: { title, description, price, stockAmount } });
+        const updatedProduct = await db.collection('products').updateOne({ _id: _id }, { $set: { title, description, price, stockAmount, category1, category2, image1, image2 } });
 
         if(updatedProduct){
             res.status(200).json(updatedProduct);

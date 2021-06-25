@@ -4,7 +4,7 @@ import { loadProducts } from '../redux-store/thunks';
 import styled from 'styled-components';
 import CardMedium from './CardMedium';
 
-function AllProducts({ products=[], isLoading, startLoadingProducts }: any){
+function ProductsByCategory({ products=[], isLoading, startLoadingProducts, category1, category2 }: any){
     useEffect(() => {
         startLoadingProducts();
     }, [startLoadingProducts]);
@@ -15,10 +15,25 @@ function AllProducts({ products=[], isLoading, startLoadingProducts }: any){
         <AllProductsStyle>
             {
                 products.map((product : any) =>
-                    <CardMedium
-                        key={product._id}
-                        product={product}
-                    />
+                    product.category2 === null
+                    ?
+                    (product.category1 === category1
+                        ?
+                            <CardMedium
+                                key={product._id}
+                                product={product}
+                            />
+                        : null
+                    )
+                    :
+                    (product.category1 === category1 && product.category2 === category2
+                        ?
+                            <CardMedium
+                                key={product._id}
+                                product={product}
+                            />
+                        : null
+                    )
                 )
             }
         </AllProductsStyle>
@@ -44,5 +59,5 @@ const mapDispatchToProps = (dispatch : any) => ({
     startLoadingProducts: () => dispatch(loadProducts())
 });
 
-export { AllProducts };
-export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);
+export { ProductsByCategory };
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsByCategory);

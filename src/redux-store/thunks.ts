@@ -24,9 +24,9 @@ export const displayAlert = (text : string) => () => {
     alert(text);
 }
 
-export const addProductRequest = (title : string, description : string, price : string, stockAmount : number) => async (dispatch : any) => {
+export const addProductRequest = (title : string, description : string, price : string, stockAmount : number, category1 : string, category2: string, image1 : string, image2 : string ) => async (dispatch : any) => {
     try{
-        const body = JSON.stringify({ title, description, price, stockAmount });
+        const body = JSON.stringify({ title, description, price, stockAmount, category1, category2, image1, image2 });
         const response = await fetch('http://localhost:8080/api/products', {
             headers: {
                 'Content-type': 'application/json',

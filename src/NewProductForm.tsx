@@ -8,6 +8,10 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
     const [inputDescription, setInputDescription] = useState('');
     const [inputPrice, setInputPrice] = useState('');
     const [inputStockAmount, setInputStockAmount] = useState('');
+    const [inputCategory1, setInputCategory1] = useState('');
+    const [inputCategory2, setInputCategory2] = useState('');
+    const [inputImageUrl1, setInputImageUrl1] =  useState('');
+    const [inputImageUrl2, setInputImageUrl2] =  useState('');
 
     return(
         <NewProductFormStyle>
@@ -48,18 +52,62 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
                     onChange={(e => setInputStockAmount(e.target.value))}
                 />
             </label>
+            <label> Categoria 1
+                <input
+                    className="category-field-1"
+                    type="text"
+                    value={inputCategory1}
+                    placeholder=""
+                    onChange={(e => setInputCategory1(e.target.value))}
+                />
+            </label>
+            <label> Categoria 2
+                <input
+                    className="category-field-2"
+                    type="text"
+                    value={inputCategory2}
+                    placeholder=""
+                    onChange={(e => setInputCategory2(e.target.value))}
+                />
+            </label>
+            <label> Imagem 1
+                <input 
+                    className="image-field-url1"
+                    type="text"
+                    value={inputImageUrl1}
+                    placeholder="caminho da imagem 1"
+                    onChange={(e => setInputImageUrl1(e.target.value))}
+                />
+            </label>
+            <label> Imagem 2
+                <input 
+                    className="image-field-url2"
+                    type="text"
+                    value={inputImageUrl2}
+                    placeholder="caminho da imagem 2"
+                    onChange={(e => setInputImageUrl2(e.target.value))}
+                />
+            </label>
             <button
                 onClick={() => {
                     onCreatePressed(
                         inputTitle,
                         inputDescription,
                         inputPrice,
-                        inputStockAmount
+                        inputStockAmount,
+                        inputCategory1,
+                        inputCategory2,
+                        inputImageUrl1,
+                        inputImageUrl2,
                     );
                     setInputTitle('');
                     setInputDescription('');
                     setInputPrice('');
                     setInputStockAmount('');
+                    setInputCategory1('');
+                    setInputCategory2('');
+                    setInputImageUrl1('');
+                    setInputImageUrl2('');
                 }}
             >
                 Criar produto
@@ -73,7 +121,7 @@ const mapStateToProps = (state : any) => ({
 })
 
 const mapDispatchToProps = (dispatch : any) => ({
-    onCreatePressed: (title : string, description : string, price : string, stockAmount : number) => dispatch(addProductRequest(title, description, price, stockAmount))
+    onCreatePressed: (title : string, description : string, price : string, stockAmount : number, category1 : string, category2 : string, image1 : string, image2 : string) => dispatch(addProductRequest(title, description, price, stockAmount, category1, category2, image1, image2))
 })
 
 export { NewProductForm };

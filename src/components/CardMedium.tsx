@@ -2,31 +2,15 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 
-function CardMedium(props: { image1 : string, image2 : string, description1 ?: string, description2 ?: string, price ?: string, product ?: any }){
-    const contentIfNotUsingProductsAPI = (
-        <CardMediumStyle>
-            <div className="section__card">
-                <Link className="section__link" to="/">
-                    <img className="section__image" src={props.image1} alt="" />
-                    <img className="section__image2" src={props.image2} alt="" />
-                    <p className="section__description--card">{props.description2}
-                    </p>
-                </Link>
-                <Link className="section__description" to="/">
-                    <p className="section__description--item">{props.description1}</p>
-                    <p className="section__description--valor">{props.price}</p>
-                </Link>
-            </div>
-        </CardMediumStyle>
-    );
+function CardMedium(props: { product ?: any }){
 
-    const contentIfUsingProductsAPI = (
+    return (
         props.product !== undefined
         ? <CardMediumStyle>
             <div className="section__card">
                 <Link className="section__link" to="/">
-                    <img className="section__image" src={props.image1} alt="" />
-                    <img className="section__image2" src={props.image2} alt="" />
+                    <img className="section__image" src={props.product.image1} alt="1" />
+                    <img className="section__image2" src={props.product.image2} alt="2" />
                     <p className="section__description--card">{props.product.description}
                     </p>
                 </Link>
@@ -39,7 +23,6 @@ function CardMedium(props: { image1 : string, image2 : string, description1 ?: s
         : null
     );
 
-    return props.product ? contentIfUsingProductsAPI : contentIfNotUsingProductsAPI;
 }
 
 export default CardMedium;
