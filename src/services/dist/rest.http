@@ -1,1 +1,5 @@
-POST http://localhost:8080/api/products
+POST http://localhost:8080/api/users/:userId/products/:productId
+
+Content-Type: application/json
+
+{ "_id" : ObjectId("60d54bf5e6bdbc15585a739c"), "title" : "produto", "description" : "descrioção", "price" : "preço", "stockAmount" : "0", "category1" : "male", "category2" : "none", "image2" : "http://127.0.0.1:8887/carteira2.png", "image1" : "http://127.0.0.1:8887/carteira2.png" }

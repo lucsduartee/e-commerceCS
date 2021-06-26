@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import { MongoClient, ObjectID } from 'mongodb';
+import { MongoClient, ObjectID, ObjectId } from 'mongodb';
+import _ from 'lodash';
 
 const app = express();
 
@@ -221,10 +222,10 @@ app.get('/api/users/:id/products', async (req, res) => {
         const db = client.db('shop');
 
         const user = await db.collection('users').findOne({ _id });
-        const product = await user.products;
+        const products = await user.products;
 
         if(user)
-            res.status(200).json(product);
+            res.status(200).json(products);
         else
             res.status(400).json({ message: 'There is no user with that id' })
 
@@ -234,20 +235,24 @@ app.get('/api/users/:id/products', async (req, res) => {
     }
 });
 
-app.get('/api/users/:userId/products/productId', async (req, res) => {
+app.get('/api/users/:userId/products/:productId', async (req, res) => {
     try{
         const userId = ObjectID(req.params.userId);
+
         const productId = ObjectID(req.params.productId);
+        const productIdString = ObjectId.toString(productId);
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
         const db = client.db('shop');
 
-        const products = await db.collection('users').findOne({ _id: userId }, { products: 1, _id: 0 }).products.find((product) => product._id === productId);
+        const user = await db.collection('users').findOne({ _id: userId });
+        const products = await user.products;
+        const product = await products.find(product => ObjectId.toString(product._id) === productIdString);
 
-        if(products)
-            res.status(200).json(products);
-        else
+        if(!product)
             res.status(400).json({ message: 'There is no product with that id' })
+
+        res.status(200).json(product);
             
         client.close();
     } catch(e){
@@ -255,17 +260,17 @@ app.get('/api/users/:userId/products/productId', async (req, res) => {
     }
 });
 
-app.post('/api/users/:id/products', async (req, res) => {
+app.post('/api/users/:userId/products/:productId', async (req, res) => {
     try{
-        const _id = ObjectID(req.params.id);
-        const { product } = req.body;
+        const userId = ObjectID(req.params.userId);
+        const productId = ObjectID(req.params.productId);
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        await db.collection('users').updateOne({ _id }, { $push: { products: product } });
-        console.log(product);
-        res.status(200).json(product);
+        const productToAdd = await db.collection('products').findOne({ _id: productId });
+        const addingProduct = await db.collection('users').updateOne({ _id: userId }, { $push: { products: productToAdd } });
+        res.status(200).json(addingProduct);
         client.close();
     } catch(e){
         res.status(500).json({ message: 'Error connecting to db', e });
@@ -275,15 +280,18 @@ app.post('/api/users/:id/products', async (req, res) => {
 app.delete('/api/users/:userId/products/:productId', async (req, res) => {
     try{
         const userId = ObjectID(req.params.userId);
-        const productId = ObjectID(req.params.userId);
+        const productId = ObjectID(req.params.productId);
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        const removedProduct = await db.collection('users').updateOne({ _id: userId}, { $pull : { products: { _id: productId } }});
+        const productToRemove = await db.collection('products').findOne({ _id: productId })
+        const removingProduct = await db.collection('users').updateOne({ _id: userId}, { $pull : { products: productToRemove }});
     
-        if(removedProduct){
-            res.status(200).json(removedProduct);
+        console.log(productToRemove);
+
+        if(productToRemove){
+            res.status(200).json(removingProduct);
         } else{
             res.status(400).json({ message: 'There is no product with that id' })
         }
