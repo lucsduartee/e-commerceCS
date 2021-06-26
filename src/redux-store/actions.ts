@@ -36,7 +36,7 @@ export const loadProductsFailure = () => ({
 
 export const CREATE_USER = 'CREATE_USER';
 export const createUser= (user: any) => ({
-    type: CREATE_USERS,
+    type: CREATE_USER,
     payload: { user }
 });
 
@@ -48,7 +48,7 @@ export const removeUser = (user: any) => ({
 
 export const UPDATE_USER = 'UPDATE_USER';
 export const updateUser = (user: any) => ({
-    type: UPDATE_USERS,
+    type: UPDATE_USER,
     payload: { user }
 });
 

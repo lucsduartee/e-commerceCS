@@ -4,7 +4,13 @@ import {
     UPDATE_PRODUCT,
     LOAD_PRODUCTS_IN_PROGRESS,
     LOAD_PRODUCTS_SUCCESS,
-    LOAD_PRODUCTS_FAILURE
+    LOAD_PRODUCTS_FAILURE,
+    CREATE_USER,
+    REMOVE_USER,
+    UPDATE_USER,
+    LOAD_USERS_IN_PROGRESS,
+    LOAD_USERS_SUCCESS,
+    LOAD_USERS_FAILURE
 } from './actions';
 
 export const isLoading = (state = false, action : any) => {
@@ -18,6 +24,25 @@ export const isLoading = (state = false, action : any) => {
             return false;
         }
         case LOAD_PRODUCTS_FAILURE: {
+            return false;
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
+export const usersLoading = (state = false, action : any) => {
+    const { type } = action;
+
+    switch(type){
+        case LOAD_USERS_IN_PROGRESS: {
+            return true;
+        }
+        case LOAD_USERS_SUCCESS: {
+            return false;
+        }
+        case LOAD_USERS_FAILURE: {
             return false;
         }
         default: {
@@ -52,6 +77,39 @@ export const products = (state : any = [], action : any) => {
         case LOAD_PRODUCTS_SUCCESS: {
             const { products } = payload;
             return products;
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
+export const users = (state : any = [], action : any) => {
+    const { type, payload } = action;
+
+    switch(type){
+        case CREATE_USER: {
+            const { user } = payload;
+            return state.concat(user);
+        }
+        case REMOVE_USER: {
+            const { user: userToRemove } = payload;
+            return state.filter((user : any) => {
+                return user._id !== userToRemove._id;
+            })
+        }
+        case UPDATE_USER: {
+            const { user: updatedUser } = payload;
+            return state.map((user: any) => {
+                if(user._id === updatedUser._id) {
+                    return updatedUser;
+                }
+                return user;
+            })
+        }
+        case LOAD_USERS_SUCCESS: {
+            const { users } = payload;
+            return users;
         }
         default: {
             return state;
