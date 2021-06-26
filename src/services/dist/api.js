@@ -121,7 +121,7 @@ app.get('/api/users/:id', async (req, res) => {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        const productInfo = await db.collection('clients').findOne({_id: _id});
+        const productInfo = await db.collection('users').findOne({_id: _id});
         if(productInfo){
             res.status(200).json(productInfo);
         } else{
@@ -204,6 +204,90 @@ app.delete('/api/users/:id', async (req, res) => {
         } else{
             res.status(400).json({ message: 'There is no product with that id' })
         }
+    } catch(e){
+        res.status(500).json({ message: 'Error connecting to db', e });
+    }
+});
+
+
+// achar array: db.users.findOne({}, {products: 1, _id: 0}).products;
+//adcionar .toArray se der errado
+
+app.get('/api/users/:id/products', async (req, res) => {
+    try{
+        const _id = ObjectID(req.params.id);
+
+        const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
+        const db = client.db('shop');
+
+        const user = await db.collection('users').findOne({ _id });
+        const product = await user.products;
+
+        if(user)
+            res.status(200).json(product);
+        else
+            res.status(400).json({ message: 'There is no user with that id' })
+
+        client.close();
+    } catch(e){
+        res.status(500).json({ message: 'Error connecting to db', e});
+    }
+});
+
+app.get('/api/users/:userId/products/productId', async (req, res) => {
+    try{
+        const userId = ObjectID(req.params.userId);
+        const productId = ObjectID(req.params.productId);
+
+        const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
+        const db = client.db('shop');
+
+        const products = await db.collection('users').findOne({ _id: userId }, { products: 1, _id: 0 }).products.find((product) => product._id === productId);
+
+        if(products)
+            res.status(200).json(products);
+        else
+            res.status(400).json({ message: 'There is no product with that id' })
+            
+        client.close();
+    } catch(e){
+        res.status(500).json({ message: 'Error connecting to db', e});
+    }
+});
+
+app.post('/api/users/:id/products', async (req, res) => {
+    try{
+        const _id = ObjectID(req.params.id);
+        const { product } = req.body;
+
+        const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
+        const db = client.db('shop');
+
+        await db.collection('users').updateOne({ _id }, { $push: { products: product } });
+        console.log(product);
+        res.status(200).json(product);
+        client.close();
+    } catch(e){
+        res.status(500).json({ message: 'Error connecting to db', e });
+    }
+});
+
+app.delete('/api/users/:userId/products/:productId', async (req, res) => {
+    try{
+        const userId = ObjectID(req.params.userId);
+        const productId = ObjectID(req.params.userId);
+
+        const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
+        const db = client.db('shop');
+
+        const removedProduct = await db.collection('users').updateOne({ _id: userId}, { $pull : { products: { _id: productId } }});
+    
+        if(removedProduct){
+            res.status(200).json(removedProduct);
+        } else{
+            res.status(400).json({ message: 'There is no product with that id' })
+        }
+        client.close();
     } catch(e){
         res.status(500).json({ message: 'Error connecting to db', e });
     }

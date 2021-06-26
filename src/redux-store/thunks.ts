@@ -10,7 +10,10 @@ import {
     loadUsersFailure,
     createUser,
     removeUser,
-    updateUser
+    updateUser,
+    loadUserProductsInProgress,
+    loadUserProductsSuccess,
+    loadUserProductsFailure
 } from './actions';
 
 export const loadProducts = () => async (dispatch : any, getState : any) => {
@@ -125,6 +128,22 @@ export const updateUserRequest = (id : any) => async (dispatch : any) => {
         const updatedUser = await response.json();
         dispatch(updateUser(updatedUser));
     } catch(e : any){
+        dispatch(displayAlert(e));
+    }
+}
+
+export const loadUserProducts = (id : any) => async (dispatch : any, getState : any) => {
+    try{
+        dispatch(loadUserProductsInProgress());
+        const response = await fetch(`http://localhost:8080/api/users/${id}/products`);
+        const products = await response.json();
+
+        console.log(products);
+        console.log('from thunks');
+
+        dispatch(loadUserProductsSuccess(products));
+    } catch(e : any){
+        dispatch(loadUsersFailure());
         dispatch(displayAlert(e));
     }
 }

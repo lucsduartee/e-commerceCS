@@ -10,7 +10,10 @@ import {
     UPDATE_USER,
     LOAD_USERS_IN_PROGRESS,
     LOAD_USERS_SUCCESS,
-    LOAD_USERS_FAILURE
+    LOAD_USERS_FAILURE,
+    LOAD_USER_PRODUCTS_IN_PROGRESS,
+    LOAD_USER_PRODUCTS_SUCCESS,
+    LOAD_USER_PRODUCTS_FAILURE
 } from './actions';
 
 export const isLoading = (state = false, action : any) => {
@@ -43,6 +46,25 @@ export const usersLoading = (state = false, action : any) => {
             return false;
         }
         case LOAD_USERS_FAILURE: {
+            return false;
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
+export const userProductsLoading = (state = false, action : any) => {
+    const { type } = action;
+
+    switch(type){
+        case LOAD_USER_PRODUCTS_IN_PROGRESS: {
+            return true;
+        }
+        case LOAD_USER_PRODUCTS_SUCCESS: {
+            return false;
+        }
+        case LOAD_USER_PRODUCTS_FAILURE: {
             return false;
         }
         default: {
@@ -110,6 +132,20 @@ export const users = (state : any = [], action : any) => {
         case LOAD_USERS_SUCCESS: {
             const { users } = payload;
             return users;
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
+export const userProducts = (state : any = [], action : any) => {
+    const { type, payload } = action;
+
+    switch(type){
+        case LOAD_USER_PRODUCTS_SUCCESS: {
+            const { products } = payload;
+            return products;
         }
         default: {
             return state;

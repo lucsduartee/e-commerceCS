@@ -1,15 +1,25 @@
+import React, { useState } from 'react';
 import logo from '../img/logo.svg';
 import background from '../img/background.svg';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 function LoginPage() {
     return(
         <LoginPageWrapper>
             <div className="background-container"><img className="background" src={background} alt="background" /></div>
             <div className="logo-container"><img className="logo" src={logo} alt="logo" /></div>
-            <input className="input-email" placeholder="usuario@email.com"></input>
-            <input className="input-senha" placeholder="senha"></input>
+            <input
+                className="input-email"
+                placeholder="usuario@example.com">
+
+            </input>
+            <input
+                className="input-senha"
+                placeholder="senha">
+
+            </input>
             <Link to="novasenha"><h4 className="esqueci-senha">Esqueci minha senha</h4></Link>
             <div className="button-entrar-container"><Link to="home"><button className="button-entrar">Entrar</button></Link></div>
             <Link className="registre-se" to="/new-account"><h4>Registre-se</h4></Link>
@@ -17,6 +27,13 @@ function LoginPage() {
         </LoginPageWrapper>
     );
 }
+
+const mapStateToProps = (state : any) => ({
+    userProducts: state.userProducts
+})
+
+export { LoginPage };
+export default connect(mapStateToProps)(LoginPage);
 
 const LoginPageWrapper = styled.div`
     display: flex;
@@ -99,6 +116,3 @@ const LoginPageWrapper = styled.div`
         }
     }
 `;
-
-export {};
-export default LoginPage;

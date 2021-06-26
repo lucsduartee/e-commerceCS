@@ -7,6 +7,7 @@ import AccPage from './pages/AccPage';
 import CartPage from './pages/CartPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProductsList from './ProductsList';
+import UserProductsList from './UserProductsList';
 import UsersList from './users/UsersList';
 import NewUserForm from './users/NewUserForm';
 import './App.css';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/cart" component={CartPage} />
         <Route path="/home" component={HomePage} />
         <Route path="/products-list" component={ProductsList} />
+        <Route path="/user-products-list" component={UserProductsList} />
         <Route path="/users-list" component={UsersList} />
         <Route path="/new-account" component={NewUserForm} />
         <Route path="" component={NotFoundPage} />
