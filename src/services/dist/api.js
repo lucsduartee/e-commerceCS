@@ -151,13 +151,13 @@ app.get('/api/users', async (req, res) => {
 
 app.post('/api/users', async (req, res) => {
     try{
-        const { userName, email, password, products } = req.body;
+        const { username, email, password, products } = req.body;
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        if (userName && email && password && products) {
-            const insertedProduct = { userName, email, password, products }
+        if (username && email && password && products) {
+            const insertedProduct = { username, email, password, products }
 
             await db.collection('users').insertOne(insertedProduct);
             console.log(insertedProduct);

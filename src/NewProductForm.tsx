@@ -9,7 +9,7 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
     const [inputPrice, setInputPrice] = useState('');
     const [inputStockAmount, setInputStockAmount] = useState('');
     const [inputCategory1, setInputCategory1] = useState('');
-    const [inputCategory2, setInputCategory2] = useState('none');
+    const [inputCategory2, setInputCategory2] = useState('');
     const [inputImageUrl1, setInputImageUrl1] =  useState('');
     const [inputImageUrl2, setInputImageUrl2] =  useState('');
 
