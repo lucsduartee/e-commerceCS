@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Header from './components/Header';
 import UserProductsListItem from './UserProductsListItem';
-import { loadUserProducts } from './redux-store/thunks';
+import { loadUserProducts, addProductToUserRequest, removeProductFromUserRequest } from './redux-store/thunks';
 
-const UserProductsList = ({ userProducts=[], userProductsLoading, startLoadingUserProducts } : any) => {
+const UserProductsList = ({ userProducts=[], userProductsLoading, startLoadingUserProducts, onAddPressed, onRemovePressed, email, password } : any) => {
     useEffect(() => {
-        startLoadingUserProducts();
-    }, [startLoadingUserProducts]);
+        startLoadingUserProducts(email, password);
+    }, [startLoadingUserProducts(email, password)]);
 
     const loadingMessage = <div>carregando produtos</div>;
 
@@ -18,6 +18,8 @@ const UserProductsList = ({ userProducts=[], userProductsLoading, startLoadingUs
                     <UserProductsListItem
                         product={product}
                         key={product._id}
+                        onAddPressed={onAddPressed}
+                        onRemovePressed={onRemovePressed}
                     />
                 )
             }
@@ -35,10 +37,12 @@ const UserProductsList = ({ userProducts=[], userProductsLoading, startLoadingUs
 const mapStateToProps = (state : any) => ({
     userProductsLoading: state.userProductsLoading,
     userProducts: state.userProducts
-})
+});
 
 const mapDispatchToProps = (dispatch : any) => ({
-    startLoadingUserProducts: () => dispatch(loadUserProducts('60d6812910940c33ac435c5d')),
+    startLoadingUserProducts: ({ email, password } : any) => dispatch(loadUserProducts(email, password)),
+    onAddPressed: ({ userId, productId } : any) => dispatch(addProductToUserRequest(userId, productId)),
+    onRemovePressed: ({ userId, productId } : any) => dispatch(removeProductFromUserRequest(userId, productId))
 })
 
 export { UserProductsList };

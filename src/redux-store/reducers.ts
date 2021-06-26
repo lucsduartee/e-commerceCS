@@ -11,6 +11,8 @@ import {
     LOAD_USERS_IN_PROGRESS,
     LOAD_USERS_SUCCESS,
     LOAD_USERS_FAILURE,
+    ADD_PRODUCT_TO_USER,
+    REMOVE_PRODUCT_FROM_USER,
     LOAD_USER_PRODUCTS_IN_PROGRESS,
     LOAD_USER_PRODUCTS_SUCCESS,
     LOAD_USER_PRODUCTS_FAILURE
@@ -143,6 +145,16 @@ export const userProducts = (state : any = [], action : any) => {
     const { type, payload } = action;
 
     switch(type){
+        case ADD_PRODUCT_TO_USER: {
+            const { product } = payload;
+            return state.concat(product);
+        }
+        case REMOVE_PRODUCT_FROM_USER: {
+            const { product : productToRemove } = payload;
+            return state.filter((product : any) => {
+                return product._id !== productToRemove._id;
+            })
+        }
         case LOAD_USER_PRODUCTS_SUCCESS: {
             const { products } = payload;
             return products;
@@ -151,4 +163,4 @@ export const userProducts = (state : any = [], action : any) => {
             return state;
         }
     }
-}
+}   
