@@ -41,7 +41,7 @@ const mapStateToProps = (state : any) => ({
 })
 
 const mapDispatchToProps = (dispatch : any) => ({
-    startLoadingProducts: () => dispatch(loadUsers()),
+    startLoadingUsers: () => dispatch(loadUsers()),
     onRemovePressed: (id : string) => dispatch(removeUserRequest(id))
 })
 

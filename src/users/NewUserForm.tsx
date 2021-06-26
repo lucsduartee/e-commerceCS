@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addUserRequest } from '../redux-store/thunks';
 import styled from 'styled-components';
 
-const NewUserForm = ({ users, onCreatePressed } : any) => {
+const NewUserForm = ({ users, onCreatePressed } : any, { history } : any) => {
     const [inputUsername, setInputUsername] = useState('');
     const [inputEmail, setInputEmail] = useState('');
     const [inputPassword, setInputPassword] = useState('');
 
-    <NewuserFormStyle>
+    return <NewuserFormStyle>
         <label> Nome de usuário
             <input
                 id="user"
@@ -51,13 +52,13 @@ const NewUserForm = ({ users, onCreatePressed } : any) => {
                 setInputUsername('');
                 setInputEmail('');
                 setInputPassword('');
+                window.alert("conta criada com sucesso");
+                history.push('/home');
             }}
         >
             Criar produto
         </button>
-    </NewuserFormStyle>
-
-    return <div></div>
+    </NewuserFormStyle>;
 }
 
 const mapStateToProps = (state : any) => ({

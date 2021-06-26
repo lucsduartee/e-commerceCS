@@ -12,7 +12,7 @@ function LoginPage() {
             <input className="input-senha" placeholder="senha"></input>
             <Link to="novasenha"><h4 className="esqueci-senha">Esqueci minha senha</h4></Link>
             <div className="button-entrar-container"><Link to="home"><button className="button-entrar">Entrar</button></Link></div>
-            <Link className="registre-se" to="/registrese"><h4>Registre-se</h4></Link>
+            <Link className="registre-se" to="/new-account"><h4>Registre-se</h4></Link>
             <Link className="adm-page-link" to="/products-list">adm page</Link>
         </LoginPageWrapper>
     );
