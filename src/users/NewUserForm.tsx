@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addUserRequest } from '../redux-store/thunks';
 import styled from 'styled-components';
@@ -53,7 +52,6 @@ const NewUserForm = ({ users, onCreatePressed } : any, { history } : any) => {
                 setInputEmail('');
                 setInputPassword('');
                 window.alert("conta criada com sucesso");
-                history.push('/home');
             }}
         >
             Criar produto
