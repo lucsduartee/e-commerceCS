@@ -161,7 +161,11 @@ export const addProductToUserRequest = (userId : any, productId : any) => async 
             method: 'post'
         });
         const product = await response.json();
-        dispatch(addProductToUser(product))
+        const response2 = await fetch(`http://localhost:8080/api/users/${userId}`, {
+            method: 'get'
+        });
+        const user = await response2.json();
+        dispatch(addProductToUser(user, product))
     }catch(e : any){
         dispatch(displayAlert(e));
     }
@@ -173,7 +177,12 @@ export const removeProductFromUserRequest = (userId : any, productId : any) => a
             method: 'delete'
         });
         const product = await response.json();
-        dispatch(removeProductFromUser(product))
+
+        const response2 = await fetch(`http://localhost:8080/api/users/${userId}`, {
+            method: 'get'
+        });
+        const user = await response2.json();
+        dispatch(removeProductFromUser(user, product))
     }catch(e : any){
         dispatch(displayAlert(e));
     }

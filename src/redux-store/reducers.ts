@@ -146,11 +146,11 @@ export const userProducts = (state : any = [], action : any) => {
             return products;
         }
         case ADD_PRODUCT_TO_USER: {
-            const { product : productAdded } = payload;
+            const { user, product : productAdded } = payload;
             return state.products.concat(productAdded);
         }
         case REMOVE_PRODUCT_FROM_USER: {
-            const { product : productToRemove } = payload;
+            const { user, product : productToRemove } = payload;
             return state.products.filter((product : any) => {
                 return product._id !== productToRemove._id;
             })

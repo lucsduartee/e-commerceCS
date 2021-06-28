@@ -90,13 +90,13 @@ export const loadUserProductsFailure = () => ({
 });
 
 export const ADD_PRODUCT_TO_USER = 'ADD_PRODUCT_TO_USER';
-export const addProductToUser = (product : any) => ({
+export const addProductToUser = (user : any, product : any) => ({
     type: ADD_PRODUCT_TO_USER,
-    payload: { product }
+    payload: { user, product }
 })
 
 export const REMOVE_PRODUCT_FROM_USER = 'REMOVE_PRODUCT_FROM_USER';
-export const removeProductFromUser = (product : any) => ({
+export const removeProductFromUser = (user : any, product : any) => ({
     type: REMOVE_PRODUCT_FROM_USER,
-    payload: { product }
+    payload: { user, product }
 })

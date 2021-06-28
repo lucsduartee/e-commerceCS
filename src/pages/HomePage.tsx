@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Header from '../components/Header';
 import HomeButton from '../HomeButton';
 import maleImage from '../img/imagetype2.png';
@@ -5,8 +6,20 @@ import femaleImage from '../img/image2.png';
 import accImage from '../img/mochila-masculina.jpg';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
+import { connect } from 'react-redux';
+import { loadUserProducts, loadUsers, loadProducts } from '../redux-store/thunks';
 
-function HomePage() {
+function HomePage({ username, startLoadingProducts, startLoadingUsers, startLoadingUserProducts } : any) {
+    useEffect(() => {
+        startLoadingProducts();
+    }, [startLoadingProducts]);
+    useEffect(() => {
+        startLoadingUsers();
+    }, [startLoadingUsers]);
+    useEffect(() => {
+        startLoadingUserProducts(username);
+    }, [startLoadingUserProducts, username]);
+
     return(
         <WrapperHomePage>
             <Header /> 
@@ -37,4 +50,17 @@ const HomeButtonsWrapper = styled.div`
     }
 `;
 
-export default HomePage;
+const mapStateToProps = (state : any) => ({
+    userProducts: state.userProducts,
+    users: state.users,
+    products: state.products
+});
+
+const mapDispatchToProps = (dispatch : any) => ({
+    startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username)),
+    startLoadingUsers: () => dispatch(loadUsers()),
+    startLoadingProducts: () => dispatch(loadProducts())
+})
+
+export { HomePage };
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

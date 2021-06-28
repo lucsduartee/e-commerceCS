@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { removeProductFromUserRequest } from "../redux-store/thunks";
 
-function CartItem({ product, onRemovePressed, userId } : any) {
+function CartItem({ userProducts, product, onRemovePressed, userId } : any) {
   console.log(userId);
 
   return (
@@ -36,7 +36,7 @@ function CartItem({ product, onRemovePressed, userId } : any) {
             </form>
           </div>
           <hr />
-          <button onClick={() => onRemovePressed(userId, product._id)}>Apagar</button>
+          <button onClick={() => onRemovePressed(userProducts._id, product._id)}>Apagar</button>
           <p className="price">{product.price}</p>
         </div>
       </div>

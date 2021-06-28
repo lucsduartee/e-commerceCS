@@ -10,6 +10,22 @@ function LoginPage({ startLoadingProducts, startLoadingUsers, startLoadingUserPr
     const [username, setUsername] = useState('');
     const [inputPassword, setInputPassword] = useState('');
 
+    // constructor(props : any){
+    //     super(props);
+      
+    
+    //     this.state = {
+    //     username: ''
+    //   }
+    //     this.publish = this.publish.bind(this);
+    //     this.handleChange = this.handleChange.bind(this);
+    //   }
+    //   handleChange(e : any){
+    //     this.setState({
+    //       username: e.target.username
+    //     })
+    //   }
+
     return(
         <LoginPageWrapper>
             <div className="background-container"><img className="background" src={background} alt="background" /></div>
@@ -37,6 +53,7 @@ function LoginPage({ startLoadingProducts, startLoadingUsers, startLoadingUserPr
                             startLoadingUserProducts(username);
                             startLoadingUsers();
                             startLoadingProducts();
+                            
                         }}>
                         Entrar
                     </button>

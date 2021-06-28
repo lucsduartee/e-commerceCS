@@ -10,18 +10,16 @@ import { userProductsLoading } from '../redux-store/reducers';
 
 function CartPage({ userProducts, userProductsLoading, startLoadingUserProducts } : any){
 
-    const username = userProducts.username;
 
-      useEffect(() => {
-        startLoadingUserProducts(username);
-    }, [startLoadingUserProducts, username]);
 
+        console.log(userProducts);
+        console.log(userProducts._id);
     
             const content = (
               <CartPageContainer>
                   <>{
                       userProducts.products.map((product : any) =>
-                        <CartItem product={product} userId={userProducts._id} key={product._id}/>
+                        <CartItem userProducts={userProducts} product={product} userId={userProducts._id} key={product._id}/>
                       )
                   }</>
                   <div className="frete">
