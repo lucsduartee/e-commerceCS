@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-
-function CartDescription() {
+function CartItem({ product } : any) {
 
   return (
-    <CartDescriptionStyle>
+    <CartItemStyle>
       <div className="card">
-        <img className="img__product" src="http://127.0.0.1:8887/esportivo.png" alt="" />
+        <img className="img__product" src={product.image1} alt="" />
         <div className="product__description">
           <h2>Conjunto Esportivo Feminino</h2>
           <p className="description">Camisa e Shorts Dri-Fit</p>
@@ -34,14 +33,14 @@ function CartDescription() {
             </form>
           </div>
           <hr />
-          <p className="price">R$ 109,99</p>
+          <p className="price">{product.price}</p>
         </div>
       </div>
       <div className="resumo__compra">
         <div className="resumo__compra--aside">
           <div className="aside__items">
             <p>Subtotal</p>
-            <p>R$ 109,99</p>
+            <p>{product.price}</p>
           </div>
           <div className="aside__items">
             <p>Descontos</p>
@@ -49,7 +48,7 @@ function CartDescription() {
           </div>
           <div className="aside__items">
             <p>Valor total</p>
-            <p>109,99</p>
+            <p>{product.price}</p>
           </div>
         </div>
         <a className="btn" href="#">Finalizar compra</a>
@@ -62,12 +61,12 @@ function CartDescription() {
           </label>
         </form>
       </div>
-    </CartDescriptionStyle>
+    </CartItemStyle>
   );
 }
 
 
-const CartDescriptionStyle = styled.div`
+const CartItemStyle = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 30%) 40%;
   grid-template-areas:
@@ -200,4 +199,4 @@ const CartDescriptionStyle = styled.div`
 
 `;
 
-export default CartDescription;
+export default CartItem;
