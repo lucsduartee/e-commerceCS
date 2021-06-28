@@ -151,7 +151,7 @@ export const userProducts = (state : any = [], action : any) => {
         }
         case REMOVE_PRODUCT_FROM_USER: {
             const { product : productToRemove } = payload;
-            return state.filter((product : any) => {
+            return state.products.filter((product : any) => {
                 return product._id !== productToRemove._id;
             })
         }

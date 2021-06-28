@@ -167,7 +167,7 @@ export const addProductToUserRequest = (userId : any, productId : any) => async 
     }
 }
 
-export const removeProductFromUserRequest = (productId : any) => async (dispatch : any) => {
+export const removeProductFromUserRequest = (userId : any, productId : any) => async (dispatch : any) => {
     try{
         const response = await fetch(`http://localhost:8080/api/users/${userId}/products/${productId}`, {
             method: 'delete'

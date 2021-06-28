@@ -221,10 +221,8 @@ app.get('/api/users/:username/products', async (req, res) => {
 
         const user = await db.collection('users').findOne({ username: username});
 
-        const products = await user.products;
-
         if(user)
-            res.status(200).json(products);
+            res.status(200).json(user);
         else
             res.status(400).json({ message: 'There is no user with that username' })
 

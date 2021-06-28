@@ -7,14 +7,17 @@ import CartItem from '../components/CartItem';
 import { connect } from 'react-redux';
 
 function CartPage({ userProducts } : any){
+      useEffect(() => {
+        startLoadingProducts();
+    }, [startLoadingProducts]);
     return(
         <>
             <Header />
 
             <CartPageContainer>
                 {
-                    userProducts.map((product : any) =>
-                        <CartItem product={product} key={product._id}/>
+                    userProducts.products.map((product : any) =>
+                        <CartItem product={product} userId={userProducts._id} key={product._id}/>
                     )
                 }
                 <div className="frete">
@@ -30,7 +33,7 @@ function CartPage({ userProducts } : any){
                         <div className="aside__items">
                             <p>Subtotal</p>
                             <p>{
-                                userProducts.reduce((acc : number, product : any) => {
+                                userProducts.products.reduce((acc : number, product : any) => {
                                     return acc + product.price;
                                 }, 0)
                             }</p>
@@ -42,7 +45,7 @@ function CartPage({ userProducts } : any){
                         <div className="aside__items">
                             <p>Valor total</p>
                             <p>{
-                                userProducts.reduce((acc : number, product : any) => {
+                                userProducts.products.reduce((acc : number, product : any) => {
                                 return acc + product.price;
                                 }, 0)
                             }</p>
