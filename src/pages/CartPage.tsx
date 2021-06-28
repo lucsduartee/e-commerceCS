@@ -61,7 +61,8 @@ function CartPage({ userProducts, userProductsLoading, startLoadingUserProducts 
     return (
       <>
         <Header />
-        {userProductsLoading ? <div>carregando carrinho</div> : content}
+        {/* {userProductsLoading ? <div>carregando carrinho</div> : content} */}
+        {content}
         <Footer />
       </>
     )
