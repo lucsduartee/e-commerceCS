@@ -13,7 +13,7 @@ function Footer() {
         <img className="icons__facebook" src={facebook} />
         <img className="icons__instagram" src={instagram} />
       </div>
-      <Link className="shopping-cart__link" to="/"><img className="shopping-cart__icon" src={cart2} alt="" /></Link>
+      <Link className="shopping-cart__link" to="/cart"><img className="shopping-cart__icon" src={cart2} alt="" /></Link>
       <div className="footer__text">
         <p className="footer__text--item">IEEE Computer Society FEG UNESP</p>
         <p className="footer__text--item">Todos os direitos reservados</p>
@@ -28,7 +28,8 @@ export default Footer;
 
 const FooterStyle = styled.div`
   width: 100vw;
-
+  position: relative;
+  top: 100vh;
 
   & .shopping-cart__icon {
     position: fixed;

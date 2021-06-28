@@ -6,6 +6,7 @@ import NewProductForm from './NewProductForm';
 import { loadProducts, removeProductRequest } from './redux-store/thunks';
 
 const ProductsList = ({ products=[], onRemovePressed, isLoading, startLoadingProducts } : any) => {
+    products = Array.from(products)
 
     useEffect(() => {
         startLoadingProducts();
