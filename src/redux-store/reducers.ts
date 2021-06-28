@@ -146,8 +146,8 @@ export const userProducts = (state : any = [], action : any) => {
             return products;
         }
         case ADD_PRODUCT_TO_USER: {
-            const { user, product } = payload;
-            return state
+            const { product : productAdded } = payload;
+            return state.products.concat(productAdded);
         }
         case REMOVE_PRODUCT_FROM_USER: {
             const { product : productToRemove } = payload;

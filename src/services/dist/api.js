@@ -232,6 +232,26 @@ app.get('/api/users/:username/products', async (req, res) => {
     }
 });
 
+app.get('/api/users/:id/products', async (req, res) => {
+    try{
+        const _id = ObjectID(req.params.id);
+
+        const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
+        const db = client.db('shop');
+
+        const user = await db.collection('users').findOne({ _id: _id});
+
+        if(user)
+            res.status(200).json(user);
+        else
+            res.status(400).json({ message: 'There is no user with that username' })
+
+        client.close();
+    } catch(e){
+        res.status(500).json({ message: 'Error connecting to db', e});
+    }
+});
+
 app.get('/api/users/:userId/products/:productId', async (req, res) => {
     try{
         const userId = ObjectID(req.params.userId);

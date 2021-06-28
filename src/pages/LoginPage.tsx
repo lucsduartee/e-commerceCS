@@ -4,9 +4,9 @@ import background from '../img/background.svg';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { loadUserProducts } from '../redux-store/thunks';
+import { loadUserProducts, loadUsers, loadProducts } from '../redux-store/thunks';
 
-function LoginPage({ startLoadingUserProducts } : any) {
+function LoginPage({ startLoadingProducts, startLoadingUsers, startLoadingUserProducts } : any) {
     const [username, setUsername] = useState('');
     const [inputPassword, setInputPassword] = useState('');
 
@@ -33,7 +33,11 @@ function LoginPage({ startLoadingUserProducts } : any) {
             </Link>
             <div className="button-entrar-container">
                 <Link to="home">
-                    <button className="button-entrar" onClick={()=>startLoadingUserProducts(username)}>
+                    <button className="button-entrar" onClick={() => {
+                            startLoadingUserProducts(username);
+                            startLoadingUsers();
+                            startLoadingProducts();
+                        }}>
                         Entrar
                     </button>
                 </Link>
@@ -45,11 +49,15 @@ function LoginPage({ startLoadingUserProducts } : any) {
 }
 
 const mapStateToProps = (state : any) => ({
-    userProducts: state.userProducts
+    userProducts: state.userProducts,
+    users: state.users,
+    products: state.products
 });
 
 const mapDispatchToProps = (dispatch : any) => ({
     startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username)),
+    startLoadingUsers: () => dispatch(loadUsers()),
+    startLoadingProducts: () => dispatch(loadProducts())
 })
 
 export { LoginPage };

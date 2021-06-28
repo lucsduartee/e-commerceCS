@@ -3,22 +3,22 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
 
-function CardMedium(props: { product ?: any }){
+function CardMedium({ product, userProducts, onAddToCartPressed } : any) : JSX.Element {
 
     const [hoverDescription, setHoverDescription] = useState(false);
 
     const image = 
         (
             <Link className="section__link" to="/">
-                <img className="section__image" src={props.product.image1} alt="1" />
-                <img className="section__image2" src={props.product.image2} alt="2" />
+                <img className="section__image" src={product.image1} alt="1" />
+                <img className="section__image2" src={product.image2} alt="2" />
             </Link>
         );
     const smallInfoSection = 
         (
             <Link className="section__description" to="/" onMouseOver={() => setHoverDescription(true)}>
-                <p className="section__description--item">{props.product.title}</p>
-                <p className="section__description--valor">R${props.product.price}</p>
+                <p className="section__description--item">{product.title}</p>
+                <p className="section__description--valor">R${product.price}</p>
             </Link>
         );
 
@@ -32,20 +32,26 @@ function CardMedium(props: { product ?: any }){
 
     const contentWithHover = 
         <CardMediumStyleHover onMouseLeave={() => setHoverDescription(false)}>
-            <h2>{props.product.description}</h2>
-            <button className="add-to-cart-button">Adicionar ao carrinho</button>
+            <h2>{product.description}</h2>
+            <button
+                className="add-to-cart-button"
+                onClick={()=>onAddToCartPressed(userProducts._Id, product._id)}    
+            >
+                Adicionar ao carrinho
+            </button>
             {smallInfoSection}
         </CardMediumStyleHover>;
 
     return (
-        props.product !== undefined
-        ? (
-            hoverDescription
-                ? contentWithHover
-                : contentWithoutHover
-        )
-        :
-            null
+        <> {
+            product !== undefined
+            ? (
+                hoverDescription
+                    ? contentWithHover
+                    : contentWithoutHover
+            )
+            : null
+        }</>
     );
 
 }

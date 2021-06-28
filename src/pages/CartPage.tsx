@@ -1,61 +1,69 @@
 import styled from 'styled-components';
 import Header from '../components/Header';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import CardBig from '../components/CardBig';
 import CartItem from '../components/CartItem';
 import { connect } from 'react-redux';
+import { loadUserProducts } from '../redux-store/thunks';
+import { userProductsLoading } from '../redux-store/reducers';
 
-function CartPage({ userProducts } : any){
+function CartPage({ userProducts, userProductsLoading, startLoadingUserProducts } : any){
+
+    const username = userProducts.username;
+
       useEffect(() => {
-        startLoadingProducts();
-    }, [startLoadingProducts]);
-    return(
-        <>
-            <Header />
+        startLoadingUserProducts(username);
+    }, [startLoadingUserProducts, username]);
 
-            <CartPageContainer>
-                {
-                    userProducts.products.map((product : any) =>
+    
+            const content = (
+              <CartPageContainer>
+                  <>{
+                      userProducts.products.map((product : any) =>
                         <CartItem product={product} userId={userProducts._id} key={product._id}/>
-                    )
-                }
-                <div className="frete">
-                    <form action="#">
-                        <label> Simule Frete e Prazo de entrega
-                            <input type="number" />
-                            <button type="submit">Calcular</button>
-                        </label>
-                    </form>
-                </div>
-                <div className="resumo__compra">
-                    <div className="resumo__compra--aside">
-                        <div className="aside__items">
-                            <p>Subtotal</p>
-                            <p>{
-                                userProducts.products.reduce((acc : number, product : any) => {
-                                    return acc + product.price;
-                                }, 0)
-                            }</p>
-                        </div>
-                        <div className="aside__items">
-                            <p>Descontos</p>
-                            <p>R$ 0,00</p>
-                        </div>
-                        <div className="aside__items">
-                            <p>Valor total</p>
-                            <p>{
-                                userProducts.products.reduce((acc : number, product : any) => {
-                                return acc + product.price;
-                                }, 0)
-                            }</p>
-                        </div>
-                    </div>
-                    <a className="btn" href="#">Finalizar compra</a>
-                </div>
-            </CartPageContainer>
+                      )
+                  }</>
+                  <div className="frete">
+                      <form action="#">
+                          <label> Simule Frete e Prazo de entrega
+                              <input type="number" />
+                              <button type="submit">Calcular</button>
+                          </label>
+                      </form>
+                  </div>
+                  <div className="resumo__compra">
+                      <div className="resumo__compra--aside">
+                          <div className="aside__items">
+                              <p>Subtotal</p>
+                              <p>{
+                                  userProducts.products.reduce((acc : number, product : any) => {
+                                      return acc + product.price;
+                                  }, 0)
+                              }</p>
+                          </div>
+                          <div className="aside__items">
+                              <p>Descontos</p>
+                              <p>R$ 0,00</p>
+                          </div>
+                          <div className="aside__items">
+                              <p>Valor total</p>
+                              <p>{
+                                  userProducts.products.reduce((acc : number, product : any) => {
+                                  return acc + product.price;
+                                  }, 0)
+                              }</p>
+                          </div>
+                      </div>
+                      <Link className="btn" to="cart">Finalizar compra</Link>
+                  </div>
+              </CartPageContainer>)
+    return (
+      <>
+        <Header />
+        {userProductsLoading ? <div>carregando carrinho</div> : content}
         <Footer />
-    </>
+      </>
     )
 }
 
@@ -170,8 +178,13 @@ const CartPageContainer = styled.div`
 `;
 
 const mapStateToProps = (state : any) => ({
-    userProducts: state.userProducts
+    userProducts: state.userProducts,
+    userProductsLoading: userProductsLoading
 });
 
+const mapDispatchToProps = (dispatch : any) => ({
+  startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username))
+})
+
 export { CartPage };
-export default connect(mapStateToProps)(CartPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CartPage);
