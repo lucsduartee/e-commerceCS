@@ -6,11 +6,11 @@ import MalePage from './pages/MalePage';
 import AccPage from './pages/AccPage';
 import CartPage from './pages/CartPage';
 import NotFoundPage from './pages/NotFoundPage';
-import ProductsList from './ProductsList';
-import CurrentUserDetails from './CurrentUserDetails';
+import ProductsList from './all-products/ProductsList';
+import CurrentUserDetails from './current-user/CurrentUserDetails';
 import UsersList from './users/UsersList';
 import NewUserForm from './users/NewUserForm';
-import LoadCurrentUserForm from './LoadCurrentUserForm';
+import LoadCurrentUserForm from './current-user/LoadCurrentUserForm';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import Header from './components/Header';
-import { loadCurrentUser } from './redux-store/thunks';
+import Header from '../components/Header';
+import { loadCurrentUser } from '../redux-store/thunks';
 
 const LoadCurrentUserForm = ({ startLoadingCurrentUser } : any) => {
     const [username, setUsername] = useState('');

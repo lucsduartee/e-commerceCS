@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Header from '../components/Header';
-import HomeButton from '../HomeButton';
+import HomeButton from '../components/HomeButton';
 import maleImage from '../img/imagetype2.png';
 import femaleImage from '../img/image2.png';
 import accImage from '../img/mochila-masculina.jpg';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Header from './components/Header';
+import Header from '../components/Header';
 import CurrentUserDetailsItem from './CurrentUserDetailsItem';
-import { addProductToUserRequest, removeProductFromUserRequest } from './redux-store/thunks';
+import { addProductToUserRequest, removeProductFromUserRequest } from '../redux-store/thunks';
 
 const CurrentUserDetails = ({ currentUser=[], currentUserLoading, onAddPressed, onRemovePressed } : any) => {
     currentUser = Array.from(currentUser);

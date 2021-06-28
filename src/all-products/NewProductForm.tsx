@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addProductRequest } from './redux-store/thunks';
+import { addProductRequest } from '../redux-store/thunks';
 import styled from 'styled-components';
 
 const NewProductForm = ({ products, onCreatePressed } : any) => {
