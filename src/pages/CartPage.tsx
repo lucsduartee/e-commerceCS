@@ -10,7 +10,9 @@ import { userProductsLoading } from '../redux-store/reducers';
 
 function CartPage({ userProducts={}, userProductsLoading, startLoadingUserProducts } : any){
 
-
+  useEffect(() => {
+    startLoadingUserProducts(userProducts.username);
+}, [startLoadingUserProducts, userProducts.username]);
 
         console.log(userProducts);
         console.log(userProducts._id);
