@@ -1,0 +1,5 @@
+function AllCartProducts(){
+   return <div></div>;
+}
+
+export default AllCartProducts;
