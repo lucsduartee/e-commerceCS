@@ -6,63 +6,66 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { loadUserProducts, loadUsers, loadProducts } from '../redux-store/thunks';
 
-function LoginPage({ startLoadingProducts, startLoadingUsers, startLoadingUserProducts } : any) {
-    const [username, setUsername] = useState('');
-    const [inputPassword, setInputPassword] = useState('');
+class LoginPage extends React.Component<{ startLoadingProducts : any, startLoadingUsers : any, startLoadingUserProducts : any }, { username : string, password : string }> {
 
-    // constructor(props : any){
-    //     super(props);
+    constructor(props : any){
+        super(props);
       
     
-    //     this.state = {
-    //     username: ''
-    //   }
-    //     this.publish = this.publish.bind(this);
-    //     this.handleChange = this.handleChange.bind(this);
-    //   }
-    //   handleChange(e : any){
-    //     this.setState({
-    //       username: e.target.username
-    //     })
-    //   }
+        this.state = {
+        username: 'nome ',
+        password: 'password'
+      }
+        this.handleChange = this.handleChange.bind(this);
+      }
+      handleChange(e : any){
+        this.setState({
+          username: e.target.username,
+          password: e.target.password
 
-    return(
-        <LoginPageWrapper>
-            <div className="background-container"><img className="background" src={background} alt="background" /></div>
-            <div className="logo-container"><img className="logo" src={logo} alt="logo" /></div>
-            <input
-                className="input-username"
-                type="text"
-                placeholder="username"
-                value={username}
-                onChange={(e)=>setUsername(e.target.value)}
-            ></input>
-            <input
-                type="password"
-                className="input-senha"
-                placeholder="senha"
-                value={inputPassword}
-                onChange={(e => setInputPassword(e.target.value))}>
-            </input>
-            <Link to="novasenha">
-                <h4 className="esqueci-senha">Esqueci minha senha</h4>
-            </Link>
-            <div className="button-entrar-container">
-                <Link to="home">
-                    <button className="button-entrar" onClick={() => {
-                            startLoadingUserProducts(username);
-                            startLoadingUsers();
-                            startLoadingProducts();
-                            
-                        }}>
-                        Entrar
-                    </button>
+        })
+      }
+
+    render(){
+        return(
+            <LoginPageWrapper>
+                <div className="background-container"><img className="background" src={background} alt="background" /></div>
+                <div className="logo-container"><img className="logo" src={logo} alt="logo" /></div>
+                <input
+                    className="input-username"
+                    type="text"
+                    placeholder="username"
+                    value={this.state.username}
+                    onChange={this.handleChange}
+                ></input>
+                <input
+                    type="password"
+                    className="input-senha"
+                    placeholder="senha"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                >
+                </input>
+                <Link to="novasenha">
+                    <h4 className="esqueci-senha">Esqueci minha senha</h4>
                 </Link>
-            </div>
-            <Link className="registre-se" to="/new-account"><h4>Registre-se</h4></Link>
-            <Link className="adm-page-link" to="/products-list">adm page</Link>
-        </LoginPageWrapper>
-    );
+                <div className="button-entrar-container">
+                    <Link to="home">
+                        <button className="button-entrar" onClick={() => {
+                                this.props.startLoadingUserProducts(this.state.username);
+                                this.props.startLoadingUsers();
+                                this.props.startLoadingProducts();
+                                
+                            }}>
+                            Entrar
+                        </button>
+                    </Link>
+                </div>
+                <Link className="registre-se" to="/new-account"><h4>Registre-se</h4></Link>
+                <Link className="adm-page-link" to="/products-list">adm page</Link>
+            </LoginPageWrapper>
+        );
+    }
 }
 
 const mapStateToProps = (state : any) => ({

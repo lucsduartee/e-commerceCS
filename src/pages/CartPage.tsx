@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { loadUserProducts } from '../redux-store/thunks';
 import { userProductsLoading } from '../redux-store/reducers';
 
-function CartPage({ userProducts, userProductsLoading, startLoadingUserProducts } : any){
+function CartPage({ userProducts={}, userProductsLoading, startLoadingUserProducts } : any){
 
 
 

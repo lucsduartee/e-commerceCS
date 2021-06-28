@@ -140,6 +140,17 @@ export const userProductsLoading = (state = false, action : any) => {
 export const userProducts = (state : any = [], action : any) => {
     const { type, payload } = action;
 
+    (Object as any).filter = function(obj : any, predicate : any) {
+        let result : any = {}, key : any;
+
+        for(key in obj) {
+            if(obj.hasOwnProperty(key) && !predicate(obj[key])){
+                result[key] = obj[key];
+            }
+        }
+        return result;
+    }
+
     switch(type){
         case LOAD_USER_PRODUCTS_SUCCESS: {
             const { products } = payload;
@@ -147,13 +158,22 @@ export const userProducts = (state : any = [], action : any) => {
         }
         case ADD_PRODUCT_TO_USER: {
             const { user, product : productAdded } = payload;
-            return state.products.concat(productAdded);
+            const products = state.products;
+            const updatedProducts = products.concat(() => productAdded)
+            return {...state, products: updatedProducts}
         }
         case REMOVE_PRODUCT_FROM_USER: {
             const { user, product : productToRemove } = payload;
-            return state.products.filter((product : any) => {
+
+            const products = state.products;
+            const productsFiltered = products.filter((product : any) => {
                 return product._id !== productToRemove._id;
             })
+
+            // return state.products.filter((product : any) => {
+            //     return product._id !== productToRemove._id;
+            // })
+            return {...state, products: productsFiltered};
         }
         default: {
             return state;

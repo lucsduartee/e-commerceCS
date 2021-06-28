@@ -50,14 +50,16 @@ export const loadUsers = () => async (dispatch : any, getState : any) => {
 
 export const loadUserProducts = (username : string) => async (dispatch : any, getState : any) => {
     try{
-        dispatch(loadUserProductsInProgress());
-        const response = await fetch(`http://localhost:8080/api/users/${username}/products`);
-        const products = await response.json();
+        if(username){
+            dispatch(loadUserProductsInProgress());
+            const response = await fetch(`http://localhost:8080/api/users/${username}/products`);
+            const products = await response.json();
 
-        console.log(products);
-        console.log('from thunks');
+            console.log(products);
+            console.log('from thunks');
 
-        dispatch(loadUserProductsSuccess(products));
+            dispatch(loadUserProductsSuccess(products));
+        }
     } catch(e : any){
         dispatch(loadUserProductsFailure());
         dispatch(displayAlert(e));
