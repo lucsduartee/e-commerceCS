@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import styled from 'styled-components'
+import { connect } from "react-redux";
+import styled from "styled-components";
+import { addProductToUserRequest } from "../redux-store/thunks";
 import {Link} from 'react-router-dom'
 
 
-function CardMedium({ product, userProducts, onAddToCartPressed } : any) : JSX.Element {
+function CardMedium({ product, userProducts, onAddToCartPressed, userId } : any) : JSX.Element {
 
     const [hoverDescription, setHoverDescription] = useState(false);
 
@@ -35,7 +37,7 @@ function CardMedium({ product, userProducts, onAddToCartPressed } : any) : JSX.E
             <h2>{product.description}</h2>
             <button
                 className="add-to-cart-button"
-                onClick={()=>onAddToCartPressed(userProducts._Id, product._id)}    
+                onClick={() => onAddToCartPressed(userProducts._id, product._id)}    
             >
                 Adicionar ao carrinho
             </button>
@@ -56,7 +58,16 @@ function CardMedium({ product, userProducts, onAddToCartPressed } : any) : JSX.E
 
 }
 
-export default CardMedium;
+const mapStateToProps = (state : any) => ({
+  userProducts: state.userProducts,
+})
+
+const mapDispatchToProps = (dispatch : any) => ({
+  onAddToCartPressed: (userId : string, productId : string) => dispatch(addProductToUserRequest(userId, productId))
+})
+
+export { CardMedium };
+export default connect(mapStateToProps, mapDispatchToProps)(CardMedium);
 
 const CardMediumStyle = styled.div`
     .section__card{

@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { loadProducts } from '../redux-store/thunks';
+import { loadProducts, loadUserProducts } from '../redux-store/thunks';
 import styled from 'styled-components';
 import CardMedium from './CardMedium';
 import { addProductToUserRequest } from '../redux-store/thunks';
+import { userProducts, userProductsLoading } from '../redux-store/reducers';
 
-function AllProducts({ products=[], isLoading, startLoadingProducts, onAddToCartPressed, userProducts }: any){
+function AllProducts({ products=[], isLoading, startLoadingProducts, onAddToCartPressed, userProducts={}, userProductsLoading, startLoadingUserProducts }: any){
     products = Array.from(products)
 
     // useEffect(() => {
@@ -13,6 +14,7 @@ function AllProducts({ products=[], isLoading, startLoadingProducts, onAddToCart
     // }, [startLoadingProducts]);
 
     const loadingMessage = <div>carregando produtos</div>;
+
 
     const content = (
         <AllProductsStyle>
@@ -22,6 +24,7 @@ function AllProducts({ products=[], isLoading, startLoadingProducts, onAddToCart
                         <CardMedium
                             key={product._id}
                             product={product}
+                            userId={userProducts._id} 
                             onAddToCartPressed={onAddToCartPressed}
                             userProducts={userProducts}
                         />
@@ -45,13 +48,13 @@ const AllProductsStyle = styled.div`
 const mapStateToProps = (state : any) => ({
     isLoading: state.isLoading,
     products: state.products,
-    userProducts: state.userProducts
+    userProducts: state.userProducts,
+    userProductsLoading: userProductsLoading
 });
 
 const mapDispatchToProps = (dispatch : any) => ({
-    startLoadingProducts: () => dispatch(loadProducts()),
-    onAddToCartPressed: (userId : string, productId : string) => dispatch(addProductToUserRequest(userId, productId))
-});
+    startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username))
+  })
 
 export { AllProducts };
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts);
