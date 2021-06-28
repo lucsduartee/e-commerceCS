@@ -13,7 +13,9 @@ import {
     updateUser,
     loadUserProductsInProgress,
     loadUserProductsSuccess,
-    loadUserProductsFailure
+    loadUserProductsFailure,
+    addProductToUser,
+    removeProductFromUser
 } from './actions';
 
 export const loadProducts = () => async (dispatch : any, getState : any) => {
@@ -42,6 +44,22 @@ export const loadUsers = () => async (dispatch : any, getState : any) => {
         dispatch(loadUsersSuccess(users));
     } catch(e : any){
         dispatch(loadUsersFailure());
+        dispatch(displayAlert(e));
+    }
+}
+
+export const loadUserProducts = (username : string) => async (dispatch : any, getState : any) => {
+    try{
+        dispatch(loadUserProductsInProgress());
+        const response = await fetch(`http://localhost:8080/api/users/${username}/products`);
+        const products = await response.json();
+
+        console.log(products);
+        console.log('from thunks');
+
+        dispatch(loadUserProductsSuccess(products));
+    } catch(e : any){
+        dispatch(loadUserProductsFailure());
         dispatch(displayAlert(e));
     }
 }
@@ -132,18 +150,31 @@ export const updateUserRequest = (id : any) => async (dispatch : any) => {
     }
 }
 
-export const loadUserProducts = (username : any) => async (dispatch : any, getState : any) => {
+
+
+
+
+
+export const addProductToUserRequest = (userId : any, productId : any) => async (dispatch : any) => {
     try{
-        dispatch(loadUserProductsInProgress());
-        const response = await fetch(`http://localhost:8080/api/users/${username}/products`);
-        const products = await response.json();
+        const response = await fetch(`http://localhost:8080/api/users/${userId}/products/${productId}`, {
+            method: 'post'
+        });
+        const product = await response.json();
+        dispatch(addProductToUser(product))
+    }catch(e : any){
+        dispatch(displayAlert(e));
+    }
+}
 
-        console.log(products);
-        console.log('from thunks');
-
-        dispatch(loadUserProductsSuccess(products));
-    } catch(e : any){
-        dispatch(loadUsersFailure());
+export const removeProductFromUserRequest = (userId : any, productId : any) => async (dispatch : any) => {
+    try{
+        const response = await fetch(`http://localhost:8080/api/users/${userId}/products/${productId}`, {
+            method: 'delete'
+        });
+        const product = await response.json();
+        dispatch(removeProductFromUser(product))
+    }catch(e : any){
         dispatch(displayAlert(e));
     }
 }

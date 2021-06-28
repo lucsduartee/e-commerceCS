@@ -11,9 +11,8 @@ import {
     LOAD_USERS_IN_PROGRESS,
     LOAD_USERS_SUCCESS,
     LOAD_USERS_FAILURE,
-    LOAD_USER_PRODUCTS_IN_PROGRESS,
-    LOAD_USER_PRODUCTS_SUCCESS,
-    LOAD_USER_PRODUCTS_FAILURE
+    ADD_PRODUCT_TO_USER,
+    REMOVE_PRODUCT_FROM_USER
 } from './actions';
 
 export const isLoading = (state = false, action : any) => {
@@ -46,25 +45,6 @@ export const usersLoading = (state = false, action : any) => {
             return false;
         }
         case LOAD_USERS_FAILURE: {
-            return false;
-        }
-        default: {
-            return state;
-        }
-    }
-}
-
-export const userProductsLoading = (state = false, action : any) => {
-    const { type } = action;
-
-    switch(type){
-        case LOAD_USER_PRODUCTS_IN_PROGRESS: {
-            return true;
-        }
-        case LOAD_USER_PRODUCTS_SUCCESS: {
-            return false;
-        }
-        case LOAD_USER_PRODUCTS_FAILURE: {
             return false;
         }
         default: {
@@ -133,19 +113,15 @@ export const users = (state : any = [], action : any) => {
             const { users } = payload;
             return users;
         }
-        default: {
-            return state;
+        case ADD_PRODUCT_TO_USER: {
+            const { user, product } = payload;
+            return state
         }
-    }
-}
-
-export const userProducts = (state : any = [], action : any) => {
-    const { type, payload } = action;
-
-    switch(type){
-        case LOAD_USER_PRODUCTS_SUCCESS: {
-            const { products } = payload;
-            return products;
+        case REMOVE_PRODUCT_FROM_USER: {
+            const { product : productToRemove } = payload;
+            return state.filter((product : any) => {
+                return product._id !== productToRemove._id;
+            })
         }
         default: {
             return state;

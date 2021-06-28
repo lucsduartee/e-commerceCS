@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Header from './components/Header';
 import UserProductsListItem from './UserProductsListItem';
-import { loadUserProducts } from './redux-store/thunks';
+import { addProductToUserRequest, removeProductFromUserRequest } from './redux-store/thunks';
 
-const UserProductsList = ({ userProducts=[], userProductsLoading, startLoadingUserProducts } : any) => {
+const UserProductsList = ({ userProducts=[], userProductsLoading, onAddPressed, onRemovePressed } : any) => {
     userProducts = Array.from(userProducts);
-
-    // useEffect(() => {
-    //     startLoadingUserProducts(id);
-    // }, [startLoadingUserProducts, id]);
 
     const loadingMessage = <div>carregando produtos</div>;
 
@@ -20,6 +16,8 @@ const UserProductsList = ({ userProducts=[], userProductsLoading, startLoadingUs
                     <UserProductsListItem
                         product={product}
                         key={product._id}
+                        onAddPressed={onAddPressed}
+                        onRemovePressed={onRemovePressed}
                     />
                 )
             }
@@ -35,13 +33,14 @@ const UserProductsList = ({ userProducts=[], userProductsLoading, startLoadingUs
 }
 
 const mapStateToProps = (state : any) => ({
-    userProductsLoading: state.userProductsLoading,
     userProducts: state.userProducts
-})
+});
 
-// const mapDispatchToProps = (dispatch : any) => ({
-//     startLoadingUserProducts: (id : string) => dispatch(loadUserProducts(id)),
-// })
+
+const mapDispatchToProps = (dispatch : any) => ({
+    onAddPressed: ({ userId, productId } : any) => dispatch(addProductToUserRequest(userId, productId)),
+    onRemovePressed: ({ userId, productId } : any) => dispatch(removeProductFromUserRequest(userId, productId))
+})
 
 export { UserProductsList };
 export default connect(mapStateToProps)(UserProductsList);

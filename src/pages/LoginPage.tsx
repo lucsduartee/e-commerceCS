@@ -8,6 +8,7 @@ import { loadUserProducts } from '../redux-store/thunks';
 
 function LoginPage({ startLoadingUserProducts } : any) {
     const [username, setUsername] = useState('');
+    const [inputPassword, setInputPassword] = useState('');
 
     return(
         <LoginPageWrapper>
@@ -23,8 +24,9 @@ function LoginPage({ startLoadingUserProducts } : any) {
             <input
                 type="password"
                 className="input-senha"
-                placeholder="senha">
-
+                placeholder="senha"
+                value={inputPassword}
+                onChange={(e => setInputPassword(e.target.value))}>
             </input>
             <Link to="novasenha">
                 <h4 className="esqueci-senha">Esqueci minha senha</h4>
@@ -44,7 +46,7 @@ function LoginPage({ startLoadingUserProducts } : any) {
 
 const mapStateToProps = (state : any) => ({
     userProducts: state.userProducts
-})
+});
 
 const mapDispatchToProps = (dispatch : any) => ({
     startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username)),
@@ -82,7 +84,6 @@ const LoginPageWrapper = styled.div`
         height: 250px;
     }
     & .logo {
-        /*object-fit: contain;*/
         width: 100%;
         height: 100%;
     }

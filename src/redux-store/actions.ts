@@ -68,6 +68,19 @@ export const loadUsersFailure = () => ({
     type: LOAD_USERS_FAILURE
 });
 
+export const ADD_PRODUCT_TO_USER = 'ADD_PRODUCT_TO_USER';
+export const addProductToUser = (product : any) => ({
+    type: ADD_PRODUCT_TO_USER,
+    payload: { product }
+})
+
+export const REMOVE_PRODUCT_FROM_USER = 'REMOVE_PRODUCT_FROM_USER';
+export const removeProductFromUser = (product : any) => ({
+    type: REMOVE_PRODUCT_FROM_USER,
+    payload: { product }
+})
+
+
 
 
 export const LOAD_USER_PRODUCTS_IN_PROGRESS = 'LOAD_USER_PRODUCTS_IN_PROGRESS';
