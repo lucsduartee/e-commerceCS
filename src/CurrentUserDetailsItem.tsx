@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserProductsListItem = ({ product } : any) => {
+const CurrentUserDetailsItem = ({ product } : any) => {
     return(
         <div>
             <h2>{product.title}</h2>
@@ -14,4 +14,4 @@ const UserProductsListItem = ({ product } : any) => {
     );
 }
 
-export default UserProductsListItem;
+export default CurrentUserDetailsItem;

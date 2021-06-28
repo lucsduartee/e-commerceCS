@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { loadProducts, loadUserProducts } from '../redux-store/thunks';
+import { loadProducts, loadCurrentUser } from '../redux-store/thunks';
 import styled from 'styled-components';
 import CardMedium from './CardMedium';
 import { addProductToUserRequest } from '../redux-store/thunks';
-import { userProducts, userProductsLoading } from '../redux-store/reducers';
+import { currentUser, currentUserLoading } from '../redux-store/reducers';
 
-function AllProducts({ products=[], isLoading, startLoadingProducts, onAddToCartPressed, userProducts={}, userProductsLoading, startLoadingUserProducts }: any){
+function AllProducts({ products=[], isLoading, startLoadingProducts, onAddToCartPressed, currentUser={}, currentUserLoading, startLoadingCurrentUser }: any){
     products = Array.from(products)
-
-    // useEffect(() => {
-    //     startLoadingProducts();
-    // }, [startLoadingProducts]);
 
     const loadingMessage = <div>carregando produtos</div>;
 
@@ -24,9 +20,9 @@ function AllProducts({ products=[], isLoading, startLoadingProducts, onAddToCart
                         <CardMedium
                             key={product._id}
                             product={product}
-                            userId={userProducts._id} 
+                            userId={currentUser._id} 
                             onAddToCartPressed={onAddToCartPressed}
-                            userProducts={userProducts}
+                            currentUser={currentUser}
                         />
                     )
                 )
@@ -48,12 +44,12 @@ const AllProductsStyle = styled.div`
 const mapStateToProps = (state : any) => ({
     isLoading: state.isLoading,
     products: state.products,
-    userProducts: state.userProducts,
-    userProductsLoading: userProductsLoading
+    currentUser: state.currentUser,
+    currentUserLoading: currentUserLoading
 });
 
 const mapDispatchToProps = (dispatch : any) => ({
-    startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username))
+    startLoadingCurrentUser: (username : string) => dispatch(loadCurrentUser(username))
   })
 
 export { AllProducts };

@@ -11,9 +11,9 @@ import {
     createUser,
     removeUser,
     updateUser,
-    loadUserProductsInProgress,
-    loadUserProductsSuccess,
-    loadUserProductsFailure,
+    loadCurrentUserInProgress,
+    loadCurrentUserSuccess,
+    loadCurrentUserFailure,
     addProductToUser,
     removeProductFromUser
 } from './actions';
@@ -48,20 +48,20 @@ export const loadUsers = () => async (dispatch : any, getState : any) => {
     }
 }
 
-export const loadUserProducts = (username : string) => async (dispatch : any, getState : any) => {
+export const loadCurrentUser = (username : string) => async (dispatch : any, getState : any) => {
     try{
         if(username){
-            dispatch(loadUserProductsInProgress());
+            dispatch(loadCurrentUserInProgress());
             const response = await fetch(`http://localhost:8080/api/users/${username}/products`);
             const products = await response.json();
 
             console.log(products);
             console.log('from thunks');
 
-            dispatch(loadUserProductsSuccess(products));
+            dispatch(loadCurrentUserSuccess(products));
         }
     } catch(e : any){
-        dispatch(loadUserProductsFailure());
+        dispatch(loadCurrentUserFailure());
         dispatch(displayAlert(e));
     }
 }

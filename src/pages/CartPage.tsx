@@ -5,23 +5,23 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import CartItem from '../components/CartItem';
 import { connect } from 'react-redux';
-import { loadUserProducts } from '../redux-store/thunks';
-import { userProductsLoading } from '../redux-store/reducers';
+import { loadCurrentUser } from '../redux-store/thunks';
+import { currentUserLoading } from '../redux-store/reducers';
 
-function CartPage({ userProducts={}, userProductsLoading, startLoadingUserProducts } : any){
+function CartPage({ currentUser={}, currentUserLoading, startLoadingCurrentUser } : any){
 
   useEffect(() => {
-    startLoadingUserProducts(userProducts.username);
-}, [startLoadingUserProducts, userProducts.username]);
+    startLoadingCurrentUser(currentUser.username);
+}, [startLoadingCurrentUser, currentUser.username]);
 
-        console.log(userProducts);
-        console.log(userProducts._id);
+        console.log(currentUser);
+        console.log(currentUser._id);
     
             const content = (
               <CartPageContainer>
                   <>{
-                      userProducts.products.map((product : any) =>
-                        <CartItem userProducts={userProducts} product={product} userId={userProducts._id} key={product._id}/>
+                      currentUser.products.map((product : any) =>
+                        <CartItem currentUser={currentUser} product={product} userId={currentUser._id} key={product._id}/>
                       )
                   }</>
                   <div className="frete">
@@ -37,7 +37,7 @@ function CartPage({ userProducts={}, userProductsLoading, startLoadingUserProduc
                           <div className="aside__items">
                               <p>Subtotal</p>
                               <p>{
-                                  userProducts.products.reduce((acc : number, product : any) => {
+                                  currentUser.products.reduce((acc : number, product : any) => {
                                       return acc + product.price;
                                   }, 0)
                               }</p>
@@ -49,7 +49,7 @@ function CartPage({ userProducts={}, userProductsLoading, startLoadingUserProduc
                           <div className="aside__items">
                               <p>Valor total</p>
                               <p>{
-                                  userProducts.products.reduce((acc : number, product : any) => {
+                                  currentUser.products.reduce((acc : number, product : any) => {
                                   return acc + product.price;
                                   }, 0)
                               }</p>
@@ -61,7 +61,7 @@ function CartPage({ userProducts={}, userProductsLoading, startLoadingUserProduc
     return (
       <>
         <Header />
-        {/* {userProductsLoading ? <div>carregando carrinho</div> : content} */}
+        {/* {currentUserLoading ? <div>carregando carrinho</div> : content} */}
         {content}
         <Footer />
       </>
@@ -179,12 +179,12 @@ const CartPageContainer = styled.div`
 `;
 
 const mapStateToProps = (state : any) => ({
-    userProducts: state.userProducts,
-    userProductsLoading: userProductsLoading
+    currentUser: state.currentUser,
+    currentUserLoading: currentUserLoading
 });
 
 const mapDispatchToProps = (dispatch : any) => ({
-  startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username))
+  startLoadingCurrentUser: (username : string) => dispatch(loadCurrentUser(username))
 })
 
 export { CartPage };

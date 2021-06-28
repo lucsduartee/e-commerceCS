@@ -7,10 +7,10 @@ import AccPage from './pages/AccPage';
 import CartPage from './pages/CartPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProductsList from './ProductsList';
-import UserProductsList from './UserProductsList';
+import CurrentUserDetails from './CurrentUserDetails';
 import UsersList from './users/UsersList';
 import NewUserForm from './users/NewUserForm';
-import LoadUserProductsForm from './LoadUserProductsForm';
+import LoadCurrentUserForm from './LoadCurrentUserForm';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -27,10 +27,10 @@ function App() {
         <Route path="/home" component={HomePage} />
         <Route path="/login" component={LoginPage} />        
         <Route path="/products-list" component={ProductsList} />
-        <Route path="/user-products-list" component={UserProductsList} />
+        <Route path="/user-products-list" component={CurrentUserDetails} />
         <Route path="/users-list" component={UsersList} />
         <Route path="/new-account" component={NewUserForm} />
-        <Route path="/load-user-products" component={LoadUserProductsForm} />
+        <Route path="/load-user-products" component={LoadCurrentUserForm} />
         <Route path="" component={NotFoundPage} />
       </Switch>
     </Router>

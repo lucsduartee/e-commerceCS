@@ -5,7 +5,7 @@ import { addProductToUserRequest } from "../redux-store/thunks";
 import {Link} from 'react-router-dom'
 
 
-function CardMedium({ product, userProducts, onAddToCartPressed, userId } : any) : JSX.Element {
+function CardMedium({ product, currentUser, onAddToCartPressed, userId } : any) : JSX.Element {
 
     const [hoverDescription, setHoverDescription] = useState(false);
 
@@ -37,7 +37,7 @@ function CardMedium({ product, userProducts, onAddToCartPressed, userId } : any)
             <h2>{product.description}</h2>
             <button
                 className="add-to-cart-button"
-                onClick={() => onAddToCartPressed(userProducts._id, product._id)}    
+                onClick={() => onAddToCartPressed(currentUser._id, product._id)}    
             >
                 Adicionar ao carrinho
             </button>
@@ -59,7 +59,7 @@ function CardMedium({ product, userProducts, onAddToCartPressed, userId } : any)
 }
 
 const mapStateToProps = (state : any) => ({
-  userProducts: state.userProducts,
+    currentUser: state.currentUser,
 })
 
 const mapDispatchToProps = (dispatch : any) => ({

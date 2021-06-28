@@ -74,18 +74,18 @@ export const loadUsersFailure = () => ({
 
 
 export const LOAD_USER_PRODUCTS_IN_PROGRESS = 'LOAD_USER_PRODUCTS_IN_PROGRESS';
-export const loadUserProductsInProgress = () => ({
+export const loadCurrentUserInProgress = () => ({
     type: LOAD_USER_PRODUCTS_IN_PROGRESS
 });
 
 export const LOAD_USER_PRODUCTS_SUCCESS = 'LOAD_USER_PRODUCTS_SUCCESS';
-export const loadUserProductsSuccess = (products : any) => ({
+export const loadCurrentUserSuccess = (products : any) => ({
     type: LOAD_USER_PRODUCTS_SUCCESS,
     payload: { products }
 });
 
 export const LOAD_USER_PRODUCTS_FAILURE = 'LOAD_USER_PRODUCTS_FAILURE';
-export const loadUserProductsFailure = () => ({
+export const loadCurrentUserFailure = () => ({
     type: LOAD_USER_PRODUCTS_FAILURE
 });
 

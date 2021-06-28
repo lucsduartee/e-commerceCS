@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from './components/Header';
-import UserProductsListItem from './UserProductsListItem';
+import CurrentUserDetailsItem from './CurrentUserDetailsItem';
 import { addProductToUserRequest, removeProductFromUserRequest } from './redux-store/thunks';
 
-const UserProductsList = ({ userProducts=[], userProductsLoading, onAddPressed, onRemovePressed } : any) => {
-    userProducts = Array.from(userProducts);
+const CurrentUserDetails = ({ currentUser=[], currentUserLoading, onAddPressed, onRemovePressed } : any) => {
+    currentUser = Array.from(currentUser);
 
     const loadingMessage = <div>carregando produtos</div>;
 
     const content = (
         <div>
             {
-                userProducts.map((product : any) => 
-                    <UserProductsListItem
+                currentUser.map((product : any) => 
+                    <CurrentUserDetailsItem
                         product={product}
                         key={product._id}
                         onAddPressed={onAddPressed}
@@ -27,13 +27,13 @@ const UserProductsList = ({ userProducts=[], userProductsLoading, onAddPressed, 
     return (
         <>
             <Header />
-            {userProductsLoading ? loadingMessage : content}
+            {currentUserLoading ? loadingMessage : content}
         </>
     );
 }
 
 const mapStateToProps = (state : any) => ({
-    userProducts: state.userProducts
+    currentUser: state.currentUser
 });
 
 
@@ -42,5 +42,5 @@ const mapDispatchToProps = (dispatch : any) => ({
     onRemovePressed: ({ userId, productId } : any) => dispatch(removeProductFromUserRequest(userId, productId))
 })
 
-export { UserProductsList };
-export default connect(mapStateToProps)(UserProductsList);
+export { CurrentUserDetails };
+export default connect(mapStateToProps)(CurrentUserDetails);

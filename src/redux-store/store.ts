@@ -4,15 +4,15 @@ import storage from 'redux-persist/lib/storage';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { users, products, usersLoading, isLoading, userProducts, userProductsLoading } from './reducers';
+import { users, products, usersLoading, isLoading, currentUser, currentUserLoading } from './reducers';
 
 const reducers = {
     isLoading,
     usersLoading,
-    userProductsLoading,
+    currentUserLoading,
     products,
     users,
-    userProducts
+    currentUser
 };
 
 const persistConfig = {

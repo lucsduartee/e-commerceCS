@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Header from './components/Header';
-import { loadUserProducts } from './redux-store/thunks';
+import { loadCurrentUser } from './redux-store/thunks';
 
-const LoadUserProductsForm = ({ startLoadingUserProducts } : any) => {
+const LoadCurrentUserForm = ({ startLoadingCurrentUser } : any) => {
     const [username, setUsername] = useState('');
 
     return(
@@ -16,18 +16,18 @@ const LoadUserProductsForm = ({ startLoadingUserProducts } : any) => {
                 onChange={(e)=>setUsername(e.target.value)}
             >
             </input>
-            <button onClick={()=>startLoadingUserProducts(username)}>carregar</button>
+            <button onClick={()=>startLoadingCurrentUser(username)}>carregar</button>
         </>
     );
 }
 
 const mapStateToProps = (state : any) => ({
-    userProducts: state.userProducts
+    currentUser: state.currentUser
 })
 
 const mapDispatchToProps = (dispatch : any) => ({
-    startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username)),
+    startLoadingCurrentUser: (username : string) => dispatch(loadCurrentUser(username)),
 })
 
-export { LoadUserProductsForm };
-export default connect(mapStateToProps, mapDispatchToProps)(LoadUserProductsForm);
+export { LoadCurrentUserForm };
+export default connect(mapStateToProps, mapDispatchToProps)(LoadCurrentUserForm);

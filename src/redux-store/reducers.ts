@@ -118,7 +118,7 @@ export const users = (state : any = [], action : any) => {
     }
 }
 
-export const userProductsLoading = (state = false, action : any) => {
+export const currentUserLoading = (state = false, action : any) => {
     const { type } = action;
 
     switch(type){
@@ -137,7 +137,7 @@ export const userProductsLoading = (state = false, action : any) => {
     }
 }
 
-export const userProducts = (state : any = [], action : any) => {
+export const currentUser = (state : any = [], action : any) => {
     const { type, payload } = action;
 
     (Object as any).filter = function(obj : any, predicate : any) {

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logo from '../img/logo.svg';
 import background from '../img/background.svg';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { loadUserProducts, loadUsers, loadProducts } from '../redux-store/thunks';
+import { loadCurrentUser, loadUsers, loadProducts } from '../redux-store/thunks';
 
-class LoginPage extends React.Component<{ startLoadingProducts : any, startLoadingUsers : any, startLoadingUserProducts : any }, { username : string, password : string }> {
+class LoginPage extends React.Component<{ startLoadingProducts : any, startLoadingUsers : any, startLoadingCurrentUser : any }, { username : string, password : string }> {
 
     constructor(props : any){
         super(props);
@@ -52,7 +52,7 @@ class LoginPage extends React.Component<{ startLoadingProducts : any, startLoadi
                 <div className="button-entrar-container">
                     <Link to="home">
                         <button className="button-entrar" onClick={() => {
-                                this.props.startLoadingUserProducts(this.state.username);
+                                this.props.startLoadingCurrentUser(this.state.username);
                                 this.props.startLoadingUsers();
                                 this.props.startLoadingProducts();
                                 
@@ -69,13 +69,13 @@ class LoginPage extends React.Component<{ startLoadingProducts : any, startLoadi
 }
 
 const mapStateToProps = (state : any) => ({
-    userProducts: state.userProducts,
+    currentUser: state.currentUser,
     users: state.users,
     products: state.products
 });
 
 const mapDispatchToProps = (dispatch : any) => ({
-    startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username)),
+    startLoadingCurrentUser: (username : string) => dispatch(loadCurrentUser(username)),
     startLoadingUsers: () => dispatch(loadUsers()),
     startLoadingProducts: () => dispatch(loadProducts())
 })
