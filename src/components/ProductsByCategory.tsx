@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import CardMedium from './CardMedium';
 
 function ProductsByCategory({ products=[], isLoading, startLoadingProducts, category1, category2 }: any){
+    products = Array.from(products)
+
     useEffect(() => {
         startLoadingProducts();
     }, [startLoadingProducts]);
