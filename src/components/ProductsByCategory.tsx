@@ -18,7 +18,7 @@ function ProductsByCategory({ products=[], isLoading, startLoadingProducts, cate
 
     const content = (
         <>
-            <Header />
+            
                 <AllProductsStyle>
                     {
                         products.map((product : any) =>
@@ -31,15 +31,16 @@ function ProductsByCategory({ products=[], isLoading, startLoadingProducts, cate
                                 />
                                 : null
                             )
-                            :
-                            (product.category1 === category1 && product.category2 === category2
-                                ?
-                                    <CardMedium
-                                        key={product._id}
-                                        product={product}
-                                    />
+                            : <>
+                                <Header />
+                                (product.category1 === category1 && product.category2 === category2
+                                    ?
+                                        <CardMedium
+                                            key={product._id}
+                                            product={product}
+                                        />
                                 : null
-                            )
+                            </>
                         )
                     }
                 </AllProductsStyle>

@@ -5,8 +5,6 @@ import Footer from '../components/Footer';
 import carouselmasc1 from '../img/carouselmasc1.jpg';
 import carouselmasc2 from '../img/carouselmasc2.jpg';
 import carouselmasc3 from '../img/carouselmasc3.jpg';
-import carouselgeral from '../img/carouselgeral.jpg';
-
 
 function MalePage() {
     return(

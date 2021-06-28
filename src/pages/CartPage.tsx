@@ -7,8 +7,9 @@ import CartItem from '../components/CartItem';
 import { connect } from 'react-redux';
 import { loadCurrentUser } from '../redux-store/thunks';
 import { currentUserLoading } from '../redux-store/reducers';
+import { Slot } from 'react-slot-fill';
 
-function CartPage({ currentUser={}, currentUserLoading, startLoadingCurrentUser } : any){
+function CartPage({ value=0, currentUser={}, currentUserLoading, startLoadingCurrentUser } : any){
 
   useEffect(() => {
     startLoadingCurrentUser(currentUser.username);
@@ -21,7 +22,7 @@ function CartPage({ currentUser={}, currentUserLoading, startLoadingCurrentUser 
               <CartPageContainer>
                   <>{
                       currentUser.products.map((product : any) =>
-                        <CartItem currentUser={currentUser} product={product} userId={currentUser._id} key={product._id}/>
+                        <CartItem value={value} currentUser={currentUser} product={product} userId={currentUser._id} key={product._id}/>
                       )
                   }</>
                   <div className="frete">
@@ -50,7 +51,7 @@ function CartPage({ currentUser={}, currentUserLoading, startLoadingCurrentUser 
                               <p>Valor total</p>
                               <p>{
                                   currentUser.products.reduce((acc : number, product : {price : string}) => {
-                                    return acc + parseFloat(product.price);
+                                    return acc + value;
                                   }, 0)
                               }</p>
                           </div>
@@ -66,6 +67,13 @@ function CartPage({ currentUser={}, currentUserLoading, startLoadingCurrentUser 
       </>
     )
 }
+
+const value = () =>
+<div>
+  <Slot name="TotalPrice" />
+</div>
+
+export { value };
 
 const CartPageContainer = styled.div`
   .card {

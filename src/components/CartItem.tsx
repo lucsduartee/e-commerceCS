@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { removeProductFromUserRequest } from "../redux-store/thunks";
+import { Fill } from 'react-slot-fill';
 
-function CartItem({ currentUser, product, onRemovePressed, userId } : any) {
+function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, userId } : any) {
   console.log(userId);
+  const [amount, setAmount] = useState(0);
+  const value : number = product.price * amount;
 
   return (
     <CartItemStyle>
@@ -28,16 +31,13 @@ function CartItem({ currentUser, product, onRemovePressed, userId } : any) {
           <div className="drops">
             <p className="size">Quantidade</p>
             <form action="#">
-              <select id="qtd"> 
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
+                <input value={amount} onChange={(e : any) => setAmount(e.target.value)} />
             </form>
           </div>
           <hr />
           <button onClick={() => onRemovePressed(currentUser._id, product._id)}>Apagar</button>
           <p className="price">{product.price}</p>
+          <Fill name="TotalPrice">{value}</Fill>
         </div>
       </div>
     </CartItemStyle>
