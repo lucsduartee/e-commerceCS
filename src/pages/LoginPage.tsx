@@ -4,24 +4,38 @@ import background from '../img/background.svg';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { loadUserProducts } from '../redux-store/thunks';
 
-function LoginPage() {
+function LoginPage({ startLoadingUserProducts } : any) {
+    const [username, setUsername] = useState('');
+
     return(
         <LoginPageWrapper>
             <div className="background-container"><img className="background" src={background} alt="background" /></div>
             <div className="logo-container"><img className="logo" src={logo} alt="logo" /></div>
             <input
-                className="input-email"
-                placeholder="usuario@example.com">
-
-            </input>
+                className="input-username"
+                type="text"
+                placeholder="username"
+                value={username}
+                onChange={(e)=>setUsername(e.target.value)}
+            ></input>
             <input
+                type="password"
                 className="input-senha"
                 placeholder="senha">
 
             </input>
-            <Link to="novasenha"><h4 className="esqueci-senha">Esqueci minha senha</h4></Link>
-            <div className="button-entrar-container"><Link to="home"><button className="button-entrar">Entrar</button></Link></div>
+            <Link to="novasenha">
+                <h4 className="esqueci-senha">Esqueci minha senha</h4>
+            </Link>
+            <div className="button-entrar-container">
+                <Link to="home">
+                    <button className="button-entrar" onClick={()=>startLoadingUserProducts(username)}>
+                        Entrar
+                    </button>
+                </Link>
+            </div>
             <Link className="registre-se" to="/new-account"><h4>Registre-se</h4></Link>
             <Link className="adm-page-link" to="/products-list">adm page</Link>
         </LoginPageWrapper>
@@ -32,8 +46,12 @@ const mapStateToProps = (state : any) => ({
     userProducts: state.userProducts
 })
 
+const mapDispatchToProps = (dispatch : any) => ({
+    startLoadingUserProducts: (username : string) => dispatch(loadUserProducts(username)),
+})
+
 export { LoginPage };
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
 
 const LoginPageWrapper = styled.div`
     display: flex;

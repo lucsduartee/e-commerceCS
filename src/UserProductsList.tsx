@@ -5,9 +5,11 @@ import UserProductsListItem from './UserProductsListItem';
 import { loadUserProducts } from './redux-store/thunks';
 
 const UserProductsList = ({ userProducts=[], userProductsLoading, startLoadingUserProducts } : any) => {
-    useEffect(() => {
-        startLoadingUserProducts();
-    }, [startLoadingUserProducts]);
+    userProducts = Array.from(userProducts);
+
+    // useEffect(() => {
+    //     startLoadingUserProducts(id);
+    // }, [startLoadingUserProducts, id]);
 
     const loadingMessage = <div>carregando produtos</div>;
 
@@ -37,9 +39,9 @@ const mapStateToProps = (state : any) => ({
     userProducts: state.userProducts
 })
 
-const mapDispatchToProps = (dispatch : any) => ({
-    startLoadingUserProducts: () => dispatch(loadUserProducts('60d6812910940c33ac435c5d')),
-})
+// const mapDispatchToProps = (dispatch : any) => ({
+//     startLoadingUserProducts: (id : string) => dispatch(loadUserProducts(id)),
+// })
 
 export { UserProductsList };
-export default connect(mapStateToProps, mapDispatchToProps)(UserProductsList);
+export default connect(mapStateToProps)(UserProductsList);

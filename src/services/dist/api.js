@@ -101,7 +101,7 @@ app.delete('/api/products/:id', async (req, res) => {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
     
-        const removedProduct = await db.collection('products').deleteOne({ _id });
+        const removedProduct = await db.collection('products').deleteOne({ _id: _id });
 
         if(removedProduct){
             res.status(200).json(removedProduct);
@@ -198,7 +198,7 @@ app.delete('/api/users/:id', async (req, res) => {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
     
-        const removedUser = await db.collection('users').deleteOne({ _id });
+        const removedUser = await db.collection('users').deleteOne({ _id: _id });
 
         if(removedUser){
             res.status(200).json(removedUser);
@@ -211,23 +211,21 @@ app.delete('/api/users/:id', async (req, res) => {
 });
 
 
-// achar array: db.users.findOne({}, {products: 1, _id: 0}).products;
-//adcionar .toArray se der errado
 
-app.get('/api/users/:id/products', async (req, res) => {
+app.get('/api/users/:username/products', async (req, res) => {
     try{
-        const _id = ObjectID(req.params.id);
+        const username = req.params.username;
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
         const db = client.db('shop');
 
-        const user = await db.collection('users').findOne({ _id });
+        const user = await db.collection('users').findOne({ username: username});
         const products = await user.products;
 
         if(user)
             res.status(200).json(products);
         else
-            res.status(400).json({ message: 'There is no user with that id' })
+            res.status(400).json({ message: 'There is no user with that username' })
 
         client.close();
     } catch(e){

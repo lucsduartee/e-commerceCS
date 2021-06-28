@@ -132,10 +132,10 @@ export const updateUserRequest = (id : any) => async (dispatch : any) => {
     }
 }
 
-export const loadUserProducts = (id : any) => async (dispatch : any, getState : any) => {
+export const loadUserProducts = (username : any) => async (dispatch : any, getState : any) => {
     try{
         dispatch(loadUserProductsInProgress());
-        const response = await fetch(`http://localhost:8080/api/users/${id}/products`);
+        const response = await fetch(`http://localhost:8080/api/users/${username}/products`);
         const products = await response.json();
 
         console.log(products);

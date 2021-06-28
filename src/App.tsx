@@ -10,6 +10,7 @@ import ProductsList from './ProductsList';
 import UserProductsList from './UserProductsList';
 import UsersList from './users/UsersList';
 import NewUserForm from './users/NewUserForm';
+import LoadUserProductsForm from './LoadUserProductsForm';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/user-products-list" component={UserProductsList} />
         <Route path="/users-list" component={UsersList} />
         <Route path="/new-account" component={NewUserForm} />
+        <Route path="/load-user-products" component={LoadUserProductsForm} />
         <Route path="" component={NotFoundPage} />
       </Switch>
     </Router>
