@@ -1,15 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
+import { removeProductFromUserRequest } from "../redux-store/thunks";
 
-function CartItem({ product } : any) {
+function CartItem({ product, onRemovePressed } : any) {
 
   return (
     <CartItemStyle>
       <div className="card">
         <img className="img__product" src={product.image1} alt="" />
         <div className="product__description">
-          <h2>Conjunto Esportivo Feminino</h2>
-          <p className="description">Camisa e Shorts Dri-Fit</p>
+          <h2>{product.title}</h2>
+          <p className="description">{product.description}</p>
           <div className="drops">
             <p className="size">Tamanho</p>
             <form action="#">
@@ -33,38 +35,24 @@ function CartItem({ product } : any) {
             </form>
           </div>
           <hr />
+          <button onClick={() => onRemovePressed(product._id)}>Apagar</button>
           <p className="price">{product.price}</p>
         </div>
-      </div>
-      <div className="resumo__compra">
-        <div className="resumo__compra--aside">
-          <div className="aside__items">
-            <p>Subtotal</p>
-            <p>{product.price}</p>
-          </div>
-          <div className="aside__items">
-            <p>Descontos</p>
-            <p>R$ 0,00</p>
-          </div>
-          <div className="aside__items">
-            <p>Valor total</p>
-            <p>{product.price}</p>
-          </div>
-        </div>
-        <a className="btn" href="#">Finalizar compra</a>
-      </div>
-      <div className="frete">
-        <form action="#">
-          <label> Simule Frete e Prazo de entrega
-            <input type="number" />
-            <button type="submit">Calcular</button>
-          </label>
-        </form>
       </div>
     </CartItemStyle>
   );
 }
 
+const mapStateToProps = (state : any) => ({
+  userProducts: state.userProducts,
+})
+
+const mapDispatchToProps = (dispatch : any) => ({
+  onRemovePressed: (id : string) => dispatch(removeProductFromUserRequest(id))
+})
+
+export { CartItem }
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem);
 
 const CartItemStyle = styled.div`
   display: grid;
@@ -159,16 +147,6 @@ const CartItemStyle = styled.div`
     border-radius: 15px;
 
   }
-  
-  .frete {
-    grid-area: frete;
-    display: flex;
-    flex-direction: column;
-    background-color: #EEE;
-    border-radius: 15px;
-    padding: 10px;
-    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.3);
-  }
 
   input {
     display:block;
@@ -198,5 +176,3 @@ const CartItemStyle = styled.div`
 
 
 `;
-
-export default CartItem;
