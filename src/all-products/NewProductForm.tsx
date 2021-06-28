@@ -6,8 +6,8 @@ import styled from 'styled-components';
 const NewProductForm = ({ products, onCreatePressed } : any) => {
     const [inputTitle, setInputTitle] = useState('');
     const [inputDescription, setInputDescription] = useState('');
-    const [inputPrice, setInputPrice] = useState('');
-    const [inputStockAmount, setInputStockAmount] = useState('');
+    const [inputPrice, setInputPrice] : [number, any] = useState(0);
+    const [inputStockAmount, setInputStockAmount] : [number, any] = useState(0);
     const [inputCategory1, setInputCategory1] = useState('');
     const [inputCategory2, setInputCategory2] = useState('');
     const [inputImageUrl1, setInputImageUrl1] =  useState('');
@@ -37,7 +37,7 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
             <label> Preço
                 <input
                     className="price-field"
-                    type="text"
+                    type="number"
                     value={inputPrice}
                     placeholder="ex: R$XX,XX"
                     onChange={(e => setInputPrice(e.target.value))}
@@ -46,29 +46,48 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
             <label> Estoque
                 <input
                     className="stock-field"
-                    type="text"
+                    type="number"
                     value={inputStockAmount}
                     placeholder=""
                     onChange={(e => setInputStockAmount(e.target.value))}
                 />
             </label>
+
+
+
+
             <label> Categoria 1
-                <input
-                    className="category-field-1"
-                    type="text"
+                <select
                     value={inputCategory1}
-                    placeholder=""
                     onChange={(e => setInputCategory1(e.target.value))}
-                />
+                > 
+                    <option value="female">female</option>
+                    <option value="male">male</option>                
+                </select>
             </label>
             <label> Categoria 2
-                <input
-                    className="category-field-2"
-                    type="text"
+                <select
                     value={inputCategory2}
-                    placeholder=""
                     onChange={(e => setInputCategory2(e.target.value))}
-                />
+                > 
+                    <option value="bermudas-e-shorts">f-bermudas-e-shorts</option>
+                    <option value="blusas-e-sueters">f-blusas-e-sueters</option>
+                    <option value="calcas">f-calcas</option>
+                    <option value="calcados">f-calcados</option>
+                    <option value="camisas-e-camisetas">f-camisas-e-camisetas</option>
+                    <option value="casacos-e-jaquetas">f-casacos-e-jaquetas</option>
+                    <option value="bermudas-e-shorts">m-bermudas-e-shorts</option>
+                    <option value="blusas-e-sueters">m-blusas-e-sueters</option>
+                    <option value="calcas">m-calcas</option>
+                    <option value="calcados">m-calcados</option>
+                    <option value="camisas-e-camisetas">m-camisas-e-camisetas</option>
+                    <option value="casacos-e-jaquetas">m-casacos-e-jaqueta</option>
+                    <option value="cuecas">m-cuecas</option>
+                    <option value="moda-praia">m-moda-praia</option>
+                    <option value="polos">m-polos</option>
+                    <option value="geek">m-geek</option>
+                    <option value="plus-size">m-plus-size</option>
+                </select>
             </label>
             <label> Imagem 1
                 <input 

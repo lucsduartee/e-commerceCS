@@ -10,43 +10,43 @@ function Header() {
         <HeaderStyle>   
             <div className="cabecalho">
                 <div className="icon-logo-container">
-                    <Link to="/"><img className="menu__logo" src={logomenu} alt="Logomarca da loja"/></Link>
+                    <Link to="/home"><img className="menu__logo" src={logomenu} alt="Logomarca da loja"/></Link>
                 </div>
                 <ul className="menu__navigation">
                     <li className="menu__item">
-                        <Link to="/" className="menu__link">Home</Link>
+                        <Link to="/home" className="menu__link">Home</Link>
                     </li>
                     <li className="menu__item menu__item--drop">
                     <Link to="#" className="droplink">Seu Estilo</Link>
                         <ul className="dropdown__sections">
-                            <li><Link to="/pages/female" className="dropdown__sections--link">Feminino</Link>
+                            <li><Link to="/pages/female/index" className="dropdown__sections--link">Feminino</Link>
                                 <ul className="dropdown__list">
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Bermudas e Shorts</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Blusas e Camisetas</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Suéters</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Calçados</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Camisas</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Conjuntos</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Moda Íntima</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Moda Praia</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Esportivo</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Saias</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Curve {'&'} Plus Size</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/bermudas-e-shorts" className="dropdown__products--link">Bermudas e Shorts</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/blusas-e-camisetas" className="dropdown__products--link">Blusas e Camisetas</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/sueters" className="dropdown__products--link">Suéters</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/calcados" className="dropdown__products--link">Calçados</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/camisas" className="dropdown__products--link">Camisas</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/conjuntos" className="dropdown__products--link">Conjuntos</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/moda-intima" className="dropdown__products--link">Moda Íntima</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/moda-praia" className="dropdown__products--link">Moda Praia</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/esportivo" className="dropdown__products--link">Esportivo</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/saias" className="dropdown__products--link">Saias</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/female/curve-plus-size" className="dropdown__products--link">Curve {'&'} Plus Size</Link></li>
                                 </ul>
                             </li>
-                            <li><Link to="/pages/male" className="dropdown__sections--link">Masculino</Link> 
+                            <li><Link to="/pages/male/index" className="dropdown__sections--link">Masculino</Link> 
                                 <ul className="dropdown__list">
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Bermudas e Shorts</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Blusas e Suéters</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Calças</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Calçados</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Camisas e Camisetas</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Casacos e Jaquetas</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Cuécas</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Moda Praia</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Polos</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Geek</Link></li>
-                                    <li className="dropdown__products--item"><Link to="/" className="dropdown__products--link">Plus Size</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/bermudas-e-shorts" className="dropdown__products--link">Bermudas e Shorts</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/blusas-e-sueters" className="dropdown__products--link">Blusas e Suéters</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/calcas" className="dropdown__products--link">Calças</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/calcados" className="dropdown__products--link">Calçados</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/camisas-e-camisetas" className="dropdown__products--link">Camisas e Camisetas</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/casacos-e-jaquetas" className="dropdown__products--link">Casacos e Jaquetas</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/cuecas" className="dropdown__products--link">Cuécas</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/moda-praia" className="dropdown__products--link">Moda Praia</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/polos" className="dropdown__products--link">Polos</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/geek" className="dropdown__products--link">Geek</Link></li>
+                                    <li className="dropdown__products--item"><Link to="/pages/male/pluz-size" className="dropdown__products--link">Plus Size</Link></li>
                                 </ul>
                             </li>    
                             <li><Link to="/" className="dropdown__sections--link">Acessórios</Link>

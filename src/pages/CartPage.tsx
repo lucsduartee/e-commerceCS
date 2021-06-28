@@ -37,8 +37,8 @@ function CartPage({ currentUser={}, currentUserLoading, startLoadingCurrentUser 
                           <div className="aside__items">
                               <p>Subtotal</p>
                               <p>{
-                                  currentUser.products.reduce((acc : number, product : any) => {
-                                      return acc + product.price;
+                                  currentUser.products.reduce((acc : number, product : {price : string}) => {
+                                    return acc + parseFloat(product.price);
                                   }, 0)
                               }</p>
                           </div>
@@ -49,8 +49,8 @@ function CartPage({ currentUser={}, currentUserLoading, startLoadingCurrentUser 
                           <div className="aside__items">
                               <p>Valor total</p>
                               <p>{
-                                  currentUser.products.reduce((acc : number, product : any) => {
-                                  return acc + product.price;
+                                  currentUser.products.reduce((acc : number, product : {price : string}) => {
+                                    return acc + parseFloat(product.price);
                                   }, 0)
                               }</p>
                           </div>
@@ -61,8 +61,7 @@ function CartPage({ currentUser={}, currentUserLoading, startLoadingCurrentUser 
     return (
       <>
         <Header />
-        {/* {currentUserLoading ? <div>carregando carrinho</div> : content} */}
-        {content}
+          {content}
         <Footer />
       </>
     )

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { loadProducts } from '../redux-store/thunks';
 import styled from 'styled-components';
 import CardMedium from './CardMedium';
+import Header from './Header';
+import Footer from './Footer';
 
 function ProductsByCategory({ products=[], isLoading, startLoadingProducts, category1, category2 }: any){
     products = Array.from(products)
@@ -15,31 +17,34 @@ function ProductsByCategory({ products=[], isLoading, startLoadingProducts, cate
     console.log(category2);
 
     const content = (
-        <AllProductsStyle>
-            {
-                products.map((product : any) =>
-                    category2 === undefined
-                    ?
-                    (product.category1 === category1
-                        ?
-                            <CardMedium
-                                key={product._id}
-                                product={product}
-                            />
-                        : null
-                    )
-                    :
-                    (product.category1 === category1 && product.category2 === category2
-                        ?
-                            <CardMedium
-                                key={product._id}
-                                product={product}
-                            />
-                        : null
-                    )
-                )
-            }
-        </AllProductsStyle>
+        <>
+            <Header />
+                <AllProductsStyle>
+                    {
+                        products.map((product : any) =>
+                            category2 === undefined
+                            ?
+                            (product.category1 === category1
+                                ? <CardMedium
+                                    key={product._id}
+                                    product={product}
+                                />
+                                : null
+                            )
+                            :
+                            (product.category1 === category1 && product.category2 === category2
+                                ?
+                                    <CardMedium
+                                        key={product._id}
+                                        product={product}
+                                    />
+                                : null
+                            )
+                        )
+                    }
+                </AllProductsStyle>
+            <Footer />
+        </>
     );
 
     return isLoading ? loadingMessage : content;
