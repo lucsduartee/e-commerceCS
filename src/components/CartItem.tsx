@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { removeProductFromUserRequest } from "../redux-store/thunks";
-import { Fill } from 'react-slot-fill';
 
 function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, userId } : any) {
   console.log(userId);
@@ -37,7 +36,7 @@ function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, u
           <hr />
           <button onClick={() => onRemovePressed(currentUser._id, product._id)}>Apagar</button>
           <p className="price">{product.price}</p>
-          <Fill name="TotalPrice">{value}</Fill>
+          {value}
         </div>
       </div>
     </CartItemStyle>

@@ -7,7 +7,6 @@ import CartItem from '../components/CartItem';
 import { connect } from 'react-redux';
 import { loadCurrentUser } from '../redux-store/thunks';
 import { currentUserLoading } from '../redux-store/reducers';
-import { Slot } from 'react-slot-fill';
 
 function CartPage({ value=0, currentUser={}, currentUserLoading, startLoadingCurrentUser } : any){
 
@@ -37,7 +36,7 @@ function CartPage({ value=0, currentUser={}, currentUserLoading, startLoadingCur
                       <div className="resumo__compra--aside">
                           <div className="aside__items">
                               <p>Subtotal</p>
-                              <p>{
+                              <p>R${
                                   currentUser.products.reduce((acc : number, product : {price : string}) => {
                                     return acc + parseFloat(product.price);
                                   }, 0)
@@ -45,13 +44,13 @@ function CartPage({ value=0, currentUser={}, currentUserLoading, startLoadingCur
                           </div>
                           <div className="aside__items">
                               <p>Descontos</p>
-                              <p>R$ 0,00</p>
+                              <p>R$0</p>
                           </div>
                           <div className="aside__items">
                               <p>Valor total</p>
-                              <p>{
+                              <p>R${
                                   currentUser.products.reduce((acc : number, product : {price : string}) => {
-                                    return acc + value;
+                                    return acc + parseFloat(product.price);
                                   }, 0)
                               }</p>
                           </div>
@@ -67,13 +66,6 @@ function CartPage({ value=0, currentUser={}, currentUserLoading, startLoadingCur
       </>
     )
 }
-
-const value = () =>
-<div>
-  <Slot name="TotalPrice" />
-</div>
-
-export { value };
 
 const CartPageContainer = styled.div`
   .card {
