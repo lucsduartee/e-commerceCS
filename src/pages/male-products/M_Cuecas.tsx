@@ -1,4 +1,4 @@
-import ProductsByCategory from '../ProductsByCategory';
+import ProductsByCategory from '../../components/ProductsByCategory'
 
 function M_Cuecas() {
     return(

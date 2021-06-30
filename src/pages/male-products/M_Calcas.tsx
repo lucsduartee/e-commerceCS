@@ -1,5 +1,4 @@
-import ProductsByCategory from '../ProductsByCategory';
-
+import ProductsByCategory from '../../components/ProductsByCategory'
 function M_Calcas() {
     return(
         <div className="section__products">
