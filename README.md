@@ -41,6 +41,9 @@
 ## About The Project
 
 ### Built With
+front-end in React.js with Typescript.
+
+back-end in Node.js with Express.
 
 
 <!-- GETTING STARTED -->
