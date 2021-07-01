@@ -29,13 +29,13 @@ export default Footer;
 const FooterStyle = styled.div`
   width: 100vw;
   position: relative;
-  top: 100vh;
+  top: 100%;
 
   & .shopping-cart__icon {
     position: fixed;
     right: 10%;
     bottom: 10vh;
-    width: 9vw;
+    width: 8vw;
     box-shadow: 5px 5px 20px rgba(230, 240, 240, 0.2);
     border-radius: 50%;
     z-index: 10;
@@ -64,9 +64,15 @@ const FooterStyle = styled.div`
     margin: 5px auto;
   }
 
-  & .icons__facebook, 
-    .icons__instagram {
+
+
+  & .icons__facebook {
       width: 7vw;
+      margin: 0 5px;
+    }
+
+  & .icons__instagram {
+      width: 6vw;
       margin: 0 5px;
     }
 
