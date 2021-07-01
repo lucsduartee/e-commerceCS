@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { loadProducts } from "../redux-store/thunks";
 import styled from "styled-components";
 import CardMedium from "./CardMedium";
-import Header from "./Header";
-import Footer from "./Footer";
 
 function ProductsByCategory({
   products = [],
@@ -34,7 +32,6 @@ function ProductsByCategory({
                   ) : null 
                 ) : ( 
                   <>
-                    
                     {
                       product.category1 === category1 && product.category2 ===
                       category2 ? 
@@ -53,11 +50,11 @@ function ProductsByCategory({
 }
 
 const AllProductsStyle = styled.div`
-  // display: grid;
-  // width: 80vw;
-  // margin: 5vh 5vw;
-  // grid-template-columns: 1fr 1fr 1fr;
-  // grid-gap: 0.5rem;
+  display: grid;
+  width: 90vw;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
 `;
 
 const mapStateToProps = (state: any) => ({

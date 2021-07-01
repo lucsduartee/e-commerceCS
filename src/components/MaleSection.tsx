@@ -43,7 +43,7 @@ export default MaleSection;
 
 
 const PopularesStyle = styled.div`
-
+    
     margin: 40px 20px 20px 20px;
 
     & .section__name {
@@ -62,9 +62,10 @@ const PopularesStyle = styled.div`
     }
 
     & .section__products {
-        display: grid;
-        grid-gap: .5rem;
-        grid-template-columns: repeat(3, 1fr); 
+        display: flex;
+        // display: grid;
+        // grid-gap: .5rem;
+        // grid-template-columns: repeat(3, 1fr); 
     }
 
 `;

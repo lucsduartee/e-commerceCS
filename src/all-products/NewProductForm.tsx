@@ -55,64 +55,71 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
 
 
 
-
-            <label> Categoria 1
-                <select
-                    value={inputCategory1}
-                    onChange={(e => setInputCategory1(e.target.value))}
-                > 
-                    <option value="female">female</option>
-                    <option value="male">male</option>                
-                </select>
-            </label>
-            <label> Categoria 2
-                <select
-                    value={inputCategory2}
-                    onChange={(e => setInputCategory2(e.target.value))}
-                > 
-                    <option value="bermudas-e-shorts">f-bermudas-e-shorts</option>
-                    <option value="blusas-e-camisetas">f-blusas-e-camisetas</option>
-                    <option value="calcas">f-sueters</option>
-                    <option value="calcados">f-calcados</option>
-                    <option value="camisas">f-camisas</option>
-                    <option value="conjuntos">f-conjuntos</option>
-                    <option value="moda-intima">f-moda-intima</option>
-                    <option value="moda-praia">f-moda-praia</option>
-                    <option value="esportivo">f-esportivo</option>
-                    <option value="saias">f-saias</option>
-                    <option value="conjuntos">f-conjuntos</option>
-                    <option value="curve-plus-size">f-curve-plus-size</option>
-                    <option value="bermudas-e-shorts">m-bermudas-e-shorts</option>
-                    <option value="blusas-e-sueters">m-blusas-e-sueters</option>
-                    <option value="calcas">m-calcas</option>
-                    <option value="calcados">m-calcados</option>
-                    <option value="camisas-e-camisetas">m-camisas-e-camisetas</option>
-                    <option value="casacos-e-jaquetas">m-casacos-e-jaqueta</option>
-                    <option value="cuecas">m-cuecas</option>
-                    <option value="moda-praia">m-moda-praia</option>
-                    <option value="polos">m-polos</option>
-                    <option value="geek">m-geek</option>
-                    <option value="plus-size">m-plus-size</option>
-                </select>
-            </label>
-            <label> Imagem 1
-                <input 
-                    className="image-field-url1"
-                    type="text"
-                    value={inputImageUrl1}
-                    placeholder="caminho da imagem 1"
-                    onChange={(e => setInputImageUrl1(e.target.value))}
-                />
-            </label>
-            <label> Imagem 2
-                <input 
-                    className="image-field-url2"
-                    type="text"
-                    value={inputImageUrl2}
-                    placeholder="caminho da imagem 2"
-                    onChange={(e => setInputImageUrl2(e.target.value))}
-                />
-            </label>
+            <div className="categoriesImages">
+                <div className="categories">
+                    <label> Categoria 1
+                        <select
+                            className="inputCategory1"
+                            value={inputCategory1}
+                            onChange={(e => setInputCategory1(e.target.value))}
+                        > 
+                            <option value="female">female</option>
+                            <option value="male">male</option>                
+                        </select>
+                    </label>
+                    <label> Categoria 2
+                        <select
+                            className="inputCategory2"
+                            value={inputCategory2}
+                            onChange={(e => setInputCategory2(e.target.value))}
+                        > 
+                            <option value="bermudas-e-shorts">f-bermudas-e-shorts</option>
+                            <option value="blusas-e-camisetas">f-blusas-e-camisetas</option>
+                            <option value="calcas">f-sueters</option>
+                            <option value="calcados">f-calcados</option>
+                            <option value="camisas">f-camisas</option>
+                            <option value="conjuntos">f-conjuntos</option>
+                            <option value="moda-intima">f-moda-intima</option>
+                            <option value="moda-praia">f-moda-praia</option>
+                            <option value="esportivo">f-esportivo</option>
+                            <option value="saias">f-saias</option>
+                            <option value="conjuntos">f-conjuntos</option>
+                            <option value="curve-plus-size">f-curve-plus-size</option>
+                            <option value="bermudas-e-shorts">m-bermudas-e-shorts</option>
+                            <option value="blusas-e-sueters">m-blusas-e-sueters</option>
+                            <option value="calcas">m-calcas</option>
+                            <option value="calcados">m-calcados</option>
+                            <option value="camisas-e-camisetas">m-camisas-e-camisetas</option>
+                            <option value="casacos-e-jaquetas">m-casacos-e-jaqueta</option>
+                            <option value="cuecas">m-cuecas</option>
+                            <option value="moda-praia">m-moda-praia</option>
+                            <option value="polos">m-polos</option>
+                            <option value="geek">m-geek</option>
+                            <option value="plus-size">m-plus-size</option>
+                        </select>
+                    </label>
+                </div>
+                <div className="images">
+                    <label> Imagem 1
+                        <input 
+                            className="image-field-url1"
+                            type="text"
+                            value={inputImageUrl1}
+                            placeholder="caminho da imagem 1"
+                            onChange={(e => setInputImageUrl1(e.target.value))}
+                        />
+                    </label>
+                    <label> Imagem 2
+                        <input 
+                            className="image-field-url2"
+                            type="text"
+                            value={inputImageUrl2}
+                            placeholder="caminho da imagem 2"
+                            onChange={(e => setInputImageUrl2(e.target.value))}
+                        />
+                    </label>
+                </div>
+            </div>
             <button
                 onClick={() => {
                     onCreatePressed(
@@ -159,7 +166,7 @@ const NewProductFormStyle = styled.div`
     width: 60vw;
     min-width: 220px;
     max-width: 600px;
-    height: 300px;
+    height: 400px;
     margin: 10% auto 10% auto;
     padding: 15px;
     border: 2px solid #000;
@@ -178,8 +185,31 @@ const NewProductFormStyle = styled.div`
         border-radius: 2px;
     }  
 
+    .inputCategory1,
+    .inputCategory2,
+    image-field-url1,
+    image-field-url2 {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .images {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .categoriesImages {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
     label {
         font-weight: bold;
+        margin-bottom: 5px;
+
+        
     }
 
     button {
