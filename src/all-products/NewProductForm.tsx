@@ -15,6 +15,7 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
 
     return(
         <NewProductFormStyle>
+            <h1>Cadastro de Produtos</h1>
             <label> Título
                 <input
                     id="title"
@@ -166,12 +167,19 @@ const NewProductFormStyle = styled.div`
     width: 60vw;
     min-width: 220px;
     max-width: 600px;
-    height: 400px;
+    height: 450px;
     margin: 10% auto 10% auto;
     padding: 15px;
     border: 2px solid #000;
     border-radius: 5px;
     box-shadow: 15px 15px 5px 5px rgba(0, 0, 0, 0.5);
+
+    h1 {
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
 
     .title-field,
     .description-field,
