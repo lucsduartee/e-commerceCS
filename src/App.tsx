@@ -57,7 +57,7 @@ function App() {
         <Route path="/pages/male/geek" component={M_Geek} />
         <Route path="/pages/male/pluz-size" component={M_PlusSize} />
         <Route path="/pages/female/bermudas-e-shorts" component={F_BermudasEShorts} />
-        <Route path="/pages/female/blusas-e-sueters" component={F_BlusasECamisetas} />
+        <Route path="/pages/female/blusas-e-camisetas" component={F_BlusasECamisetas} />
         <Route path="/pages/female/calcados" component={F_Calcados} />
         <Route path="/pages/female/camisas" component={F_Camisas} />
         <Route path="/pages/female/conjuntos" component={F_Conjuntos} />

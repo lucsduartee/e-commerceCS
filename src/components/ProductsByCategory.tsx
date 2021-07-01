@@ -25,24 +25,27 @@ function ProductsByCategory({
   const content = (
     <>
       <AllProductsStyle>
-        {products.map((product: any) =>
-          category2 === undefined ? (
-            product.category1 === category1 ? (
-              <CardMedium key={product._id} product={product} />
-            ) : null 
-          ) : ( 
-            <>
-              <Header />
-              {
-                product.category1 === category1 && product.category2 ===
-                category2 ? 
-                <CardMedium key={product._id} product={product} />  : null
-              }     
-            </> 
-          )
+        {products.map((product: any, index: number) =>
+          index <= 2 ?
+            (
+                category2 === undefined ? (
+                  product.category1 === category1 ? (
+                    <CardMedium key={product._id} product={product} />
+                  ) : null 
+                ) : ( 
+                  <>
+                    
+                    {
+                      product.category1 === category1 && product.category2 ===
+                      category2 ? 
+                      <CardMedium key={product._id} product={product} />  : null
+                    }     
+                  </> 
+                )
+            ) : null
         )}
       </AllProductsStyle>
-      <Footer />
+      
     </>
   );
 

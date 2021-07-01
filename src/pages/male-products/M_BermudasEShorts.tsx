@@ -1,9 +1,14 @@
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 import ProductsByCategory from '../../components/ProductsByCategory'
 
 function M_BermudasEShorts() {
     return(
         <div className="section__products">
-            <ProductsByCategory category1="male" category2="bermudas-e-shorts"/>
+            <Header />
+            <h1>askmdoadsmaodmasdomadas</h1>
+            <ProductsByCategory category1="male" category2="bermudas-e-shorts" />
+            <Footer />
         </div>
     );
 }
