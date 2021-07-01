@@ -71,11 +71,17 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
                     onChange={(e => setInputCategory2(e.target.value))}
                 > 
                     <option value="bermudas-e-shorts">f-bermudas-e-shorts</option>
-                    <option value="blusas-e-sueters">f-blusas-e-sueters</option>
-                    <option value="calcas">f-calcas</option>
+                    <option value="blusas-e-camisetas">f-blusas-e-camisetas</option>
+                    <option value="calcas">f-sueters</option>
                     <option value="calcados">f-calcados</option>
-                    <option value="camisas-e-camisetas">f-camisas-e-camisetas</option>
-                    <option value="casacos-e-jaquetas">f-casacos-e-jaquetas</option>
+                    <option value="camisas-e-camisetas">f-camisas</option>
+                    <option value="casacos-e-jaquetas">f-conjuntos</option>
+                    <option value="casacos-e-jaquetas">f-moda-intima</option>
+                    <option value="casacos-e-jaquetas">f-moda-praia</option>
+                    <option value="casacos-e-jaquetas">f-esportivo</option>
+                    <option value="casacos-e-jaquetas">f-saias</option>
+                    <option value="casacos-e-jaquetas">f-conjuntos</option>
+                    <option value="casacos-e-jaquetas">f-curve-plus-size</option>
                     <option value="bermudas-e-shorts">m-bermudas-e-shorts</option>
                     <option value="blusas-e-sueters">m-blusas-e-sueters</option>
                     <option value="calcas">m-calcas</option>
