@@ -146,7 +146,7 @@ const CardMediumStyleHover = styled.div`
 
     & h2 {
         margin: 0;
-        font-size: calc(5px + 2vw);
+        font-size: calc(3px + 2vw);
         vertical-align: bottom;
         text-align: center;
     }
@@ -158,11 +158,12 @@ const CardMediumStyleHover = styled.div`
     }
     & button {
         background-color: green;
-        width: 50%;
+        width: 70%;
         min-width: 80px;
         color: white;
-        padding: 7px;
-        font-size: 10px;
+        padding: 1.5px;
+        font-size: calc(2.5px + 1.5vw);
+        font-weight: 500;
         border: none;
     }
     & a {
@@ -170,7 +171,7 @@ const CardMediumStyleHover = styled.div`
         color: white;
         width: 100%;
         text-decoration: none;
-        font-size: calc(5px + 1.5vw);
+        font-size: calc(3.5px + 1.5vw);
     }
     & p {
         margin: 0;
