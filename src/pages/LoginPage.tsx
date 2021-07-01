@@ -62,7 +62,7 @@ class LoginPage extends React.Component<{ startLoadingProducts : any, startLoadi
                     </Link>
                 </div>
                 <Link className="registre-se" to="/new-account"><h4>Registre-se</h4></Link>
-                <Link className="adm-page-link" to="/products-list">adm page</Link>
+                <Link className="adm-page-link" to="/products-list">Adm Page</Link>
             </LoginPageWrapper>
         );
     }
@@ -153,9 +153,13 @@ const LoginPageWrapper = styled.div`
         margin-top: 1vh;
     }
     & .adm-page-link {
-        position: fixed;
-        top: 40vwx;
-        left: 5vw;
+        position: absolute;
+        top: 2vw;
+        left: 3vh;
+        background-color: #000;
+        color: #FFF;
+        padding: 7px;
+        border-radius: 3px;
     }
     @media screen and (min-width: 600px){
         & .background-container {
