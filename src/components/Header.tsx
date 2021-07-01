@@ -135,7 +135,7 @@ const HeaderStyle = styled.div`
         text-align: left;
         font-size: min(calc(10px + 3vw), 40px);
         position: absolute;
-        z-index: 3;
+        z-index: 10;
         top: calc(40px + 2.65vw);
         left: 0;
         padding: 10px 0;

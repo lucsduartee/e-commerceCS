@@ -136,16 +136,19 @@ const CardMediumStyle = styled.div`
 `
 const CardMediumStyleHover = styled.div`
     display: flex;
+    width: 28.5vw;
+    height: 38vw;
     flex-direction: column;
     align-items: center;
-    height: 38vw;
+    justify-content: space-between;
     background-color: #111;
     color: white;
 
     & h2 {
         margin: 0;
-        font-size: calc(8px + 2vw);
-        height: 56%;
+        font-size: calc(5px + 2vw);
+        vertical-align: bottom;
+        text-align: center;
     }
     & .section__description {
         display: flex;
@@ -155,10 +158,11 @@ const CardMediumStyleHover = styled.div`
     }
     & button {
         background-color: green;
+        width: 50%;
+        min-width: 80px;
         color: white;
-        padding: 4px;
+        padding: 7px;
         font-size: 10px;
-        height: 29px;
         border: none;
     }
     & a {
@@ -166,8 +170,7 @@ const CardMediumStyleHover = styled.div`
         color: white;
         width: 100%;
         text-decoration: none;
-        font-size: calc(8px + 1.5vw);
-        height: calc(44% - 29px);
+        font-size: calc(5px + 1.5vw);
     }
     & p {
         margin: 0;

@@ -29,14 +29,16 @@ function ProductsByCategory({
           category2 === undefined ? (
             product.category1 === category1 ? (
               <CardMedium key={product._id} product={product} />
-            ) : null
-          ) : (
+            ) : null 
+          ) : ( 
             <>
               <Header />
-              (product.category1 === category1 && product.category2 ===
-              category2 ?
-              <CardMedium key={product._id} product={product} />
-            </>
+              {
+                product.category1 === category1 && product.category2 ===
+                category2 ? 
+                <CardMedium key={product._id} product={product} />  : null
+              }     
+            </> 
           )
         )}
       </AllProductsStyle>
@@ -48,11 +50,11 @@ function ProductsByCategory({
 }
 
 const AllProductsStyle = styled.div`
-  display: grid;
-  width: 80vw;
-  margin: 5vh 5vw;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 0.5rem;
+  // display: grid;
+  // width: 80vw;
+  // margin: 5vh 5vw;
+  // grid-template-columns: 1fr 1fr 1fr;
+  // grid-gap: 0.5rem;
 `;
 
 const mapStateToProps = (state: any) => ({
