@@ -94,14 +94,11 @@ function CartPage({
 const CartPageContainer = styled.div`
 
   .resumo__compra {
-    width: 70%;
-    margin: 0 auto;
+    width: 65%;
+    margin: 20px auto;
     background-color: #eee;
     border-radius: 15px;
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.3);
-  }
-
-  .resumo__compra--aside {
     padding: 10px;
   }
 
@@ -125,6 +122,15 @@ const CartPageContainer = styled.div`
     font-weight: bold;
     font-size: 20px;
     border-radius: 15px;
+  }
+
+  .frete {
+    width: 65%;
+    margin: 0 auto;
+    background-color: #eee;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.3);
+    padding: 10px;
   }
 
   input {

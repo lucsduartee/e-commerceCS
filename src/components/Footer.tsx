@@ -36,24 +36,22 @@ const FooterStyle = styled.div`
     right: 10%;
     bottom: 10vh;
     width: 8vw;
+    max-width: 70px;
     box-shadow: 5px 5px 20px rgba(230, 240, 240, 0.2);
     border-radius: 50%;
     z-index: 10;
-   
   }
 
   & .horizontal__line {
     width: 100vw;
     border-bottom: 5px solid #000; 
-    margin: 10px auto;
-    
+    margin: 10px auto;  
   }  
 
   @media screen and (max-width: 999px) {
     .horizontal__line {
       width: 90vw;
-    }
-    
+    } 
   }
 
   & .icons {
@@ -64,16 +62,16 @@ const FooterStyle = styled.div`
     margin: 5px auto;
   }
 
-
-
   & .icons__facebook {
       width: 7vw;
+      max-width: 70px;
       margin: 0 5px;
     }
 
   & .icons__instagram {
       width: 6vw;
       margin: 0 5px;
+      max-width: 60px;
     }
 
   & .footer__text {

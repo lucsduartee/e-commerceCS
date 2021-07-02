@@ -29,14 +29,16 @@ function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, o
           </div>
           <div className="drops">
             <p className="size">Quantidade</p>
-            <button onClick={()=>onUpdateAmountPressed(currentUser._id, product._id, amount)}>Atualizar</button>
             <form action="#">
                 <input className="input-qtd" value={amount} onChange={(e : any) => setAmount(e.target.value)} />
             </form>
           </div>
           <hr />
           <div className="delete-price">
-            <button className="delete" onClick={() => onRemovePressed(currentUser._id, product._id)}>Apagar</button>
+            <div>
+              <button className="delete" onClick={() => onRemovePressed(currentUser._id, product._id)}>Apagar</button>
+              <button className="update" onClick={()=>onUpdateAmountPressed(currentUser._id, product._id, amount)}>Atualizar</button>
+            </div>
             <p className="price">{value}</p>
           </div>
           
@@ -59,8 +61,8 @@ export { CartItem }
 export default connect(mapStateToProps, mapDispatchToProps)(CartItem);
 
 const CartItemStyle = styled.div`
-  width: 60%;
-  margin: 0 auto;
+  width: 65%;
+  margin: 20px auto;
 
   form {
     width: 65px;
@@ -169,11 +171,17 @@ const CartItemStyle = styled.div`
     padding: 7px;
   }
 
-  .delete {
+  .delete-price div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .delete,
+  .update {
     display: inline;
     width: 70px;
     font-size: 16px;
-    margin-top: 0;
+    margin-top: 5px;
   }
 
   button {
