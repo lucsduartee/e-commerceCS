@@ -6,6 +6,7 @@ function F_Calcados() {
     return(
         <div className="section__products">
             <Header />
+            <h1> Calçados Femininos </h1>
             <ProductsByCategory category1="female" category2="calcados" />
             <Footer />
         </div>

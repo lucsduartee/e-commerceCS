@@ -6,7 +6,8 @@ function F_CurveEPlusSize() {
     return(
         <div className="section__products">
             <Header />
-            <ProductsByCategory category1="female" category2="curve-e-plussize" />
+            <h1> Curve e Plus Size Feminino </h1>
+            <ProductsByCategory category1="female" category2="curve-e-plus-size" />
             <Footer />
         </div>
     );

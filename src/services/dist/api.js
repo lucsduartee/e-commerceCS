@@ -299,19 +299,16 @@ app.put('/api/users/:userId/products/:productId/:amount', async (req, res) => {
     try{
         const userId = ObjectID(req.params.userId);
         const productId = ObjectID(req.params.productId);
-        const amount = req.params.amount;
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
         const productToUpdate = await db.collection('products').findOne({ _id: productId });
+        const amount = Math.max(req.params.amount, productToUpdate.stockAmount);
         const updatedProduct = {...productToUpdate, amount: amount}
-        // await db.collection('products').updateOne({ _id: productId }, { $pull : { products: productToUpdate }})
-        // await db.collection('products').updateOne({ _id: productId }, { $push : { products: updatedProduct }})
 
         await db.collection('users').updateOne({ _id: userId }, { $pull: { products: { _id: productId } } });
         await db.collection('users').updateOne({ _id: userId }, { $push: { products: updatedProduct } });
-
         res.status(200).json(updatedProduct);
         client.close();
     } catch(e){

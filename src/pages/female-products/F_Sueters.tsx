@@ -6,6 +6,7 @@ function F_Sueters() {
     return(
         <div className="section__products">
             <Header />
+            <h1> Suéteres Femininos </h1>
             <ProductsByCategory category1="female" category2="sueters" />
             <Footer />
         </div>

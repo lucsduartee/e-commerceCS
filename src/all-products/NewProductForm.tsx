@@ -7,9 +7,9 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
     const [inputTitle, setInputTitle] = useState('');
     const [inputDescription, setInputDescription] = useState('');
     const [inputPrice, setInputPrice] : [number, any] = useState(0);
-    const [inputStockAmount, setInputStockAmount] : [number, any] = useState(0);
-    const [inputCategory1, setInputCategory1] = useState('');
-    const [inputCategory2, setInputCategory2] = useState('');
+    const [inputStockAmount, setInputStockAmount] : [number, any] = useState(1);
+    const [inputCategory1, setInputCategory1] = useState('female');
+    const [inputCategory2, setInputCategory2] = useState('bermudas-e-shorts');
     const [inputImageUrl1, setInputImageUrl1] =  useState('');
     const [inputImageUrl2, setInputImageUrl2] =  useState('');
 
@@ -40,7 +40,7 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
                     className="price-field"
                     type="number"
                     value={inputPrice}
-                    placeholder="ex: R$XX,XX"
+                    placeholder="ex: XX"
                     onChange={(e => setInputPrice(e.target.value))}
                 />
             </label>
@@ -76,8 +76,8 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
                         > 
                             <option value="bermudas-e-shorts">f-bermudas-e-shorts</option>
                             <option value="blusas-e-camisetas">f-blusas-e-camisetas</option>
-                            <option value="calcas">f-sueters</option>
-                            <option value="calcados">f-calcados</option>
+                            <option value="calcas">f-calças</option>
+                            <option value="calcados">f-calçaados</option>
                             <option value="camisas">f-camisas</option>
                             <option value="conjuntos">f-conjuntos</option>
                             <option value="moda-intima">f-moda-intima</option>
@@ -135,10 +135,10 @@ const NewProductForm = ({ products, onCreatePressed } : any) => {
                     );
                     setInputTitle('');
                     setInputDescription('');
-                    setInputPrice('');
-                    setInputStockAmount('');
-                    setInputCategory1('');
-                    setInputCategory2('none');
+                    setInputPrice(0);
+                    setInputStockAmount(1);
+                    setInputCategory1('female');
+                    setInputCategory2('bermudas-e-shorts');
                     setInputImageUrl1('');
                     setInputImageUrl2('');
                 }}

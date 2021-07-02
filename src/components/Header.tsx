@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import logomenu from '../img/logomenu.svg';
 import lupa from '../img/lupa.svg';
 import perfil from '../img/perfil.svg';
 import { Link } from 'react-router-dom';
 
-
 function Header() {
+
+    const [showUserInfos, setShowUserInfos] = useState(false);
+
     return (
         <HeaderStyle>   
             <div className="cabecalho">
@@ -73,8 +76,21 @@ function Header() {
 
                     <li className="search-avatar-icon-container">
                         <Link to="/"><img className="icon icon__search" src={lupa} alt="pesquisa"/></Link>
-                        <Link to="/"><img className="icon icon__perfil" src={perfil} alt="avatar"/></Link>
+                        <Link onMouseOver={() => setShowUserInfos(true)} to="/"><img className="icon icon__perfil" src={perfil} alt="avatar"/></Link>
                     </li>
+
+                    {
+                        showUserInfos
+                            ?
+                                <div className="user-infos-menu">
+                                    <p>Usuário</p>
+                                    <p>R$300</p>
+                                    <p>Configurações</p>
+                                    <p>Sair</p>
+                                </div>
+                            :
+                            null
+                    }
                 </ul>
             </div>
         </HeaderStyle>
@@ -176,6 +192,14 @@ const HeaderStyle = styled.div`
     }
     .icon {
         width: calc(10px + ((6vw * 360) / 1000));
+    }
+
+    .user-infos-menu {
+        display: flex;
+        background-color: #222;
+        width: 50px;
+        height: 70px;
+        border-radius: 4px;
     }
 `;
 

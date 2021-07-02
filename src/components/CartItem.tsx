@@ -5,7 +5,7 @@ import { removeProductFromUserRequest, updateProductAmountRequest } from "../red
 
 function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, onUpdateAmountPressed, userId } : any) {
   console.log(userId);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
   const value : number = product.price * amount;
 
   return (

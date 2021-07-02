@@ -6,7 +6,7 @@ function F_BermudasEShorts() {
     return(
         <div className="section__products">
             <Header />
-            <h1> Bermudas e Shorts </h1>
+            <h1> Bermudas e Shorts Femininos </h1>
             <ProductsByCategory category1="female" category2="bermudas-e-shorts" />
             <Footer />
         </div>

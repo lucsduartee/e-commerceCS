@@ -1,12 +1,6 @@
 import CardBig from './CardBig';
 import CardMedium from './CardMedium'
 import styled from 'styled-components'
-import cbranca from '../img/cbranca.png'
-import cbranca2 from '../img/cbranca2.png'
-import magneto from '../img/magneto.png'
-import magneto2 from '../img/magneto2.png'
-import moletom from '../img/moletom.png'
-import moletom2 from '../img/moletom2.png'
 import blusaflorida from '../img/blusaflorida.png'
 import blusaflorida2 from '../img/blusaflorida2.png'
 import oculos from '../img/oculos.png'
@@ -22,7 +16,7 @@ function MaleSection() {
                     <p className="section__name"><span>Populares</span></p>
                 </div>
                 <div className="section__products">
-                    <ProductsByCategory category1="male"/>
+                    <ProductsByCategory category1="male" category2={undefined}/>
                 </div>
             </PopularesStyle>
             <NovidadesStyle>

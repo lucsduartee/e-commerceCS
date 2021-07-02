@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { loadProducts } from "../redux-store/thunks";
 import styled from "styled-components";
@@ -20,31 +20,41 @@ function ProductsByCategory({
   const loadingMessage = <div>carregando produtos</div>;
   console.log(category2);
 
-  const content = (
+  const contentForMainSections =
     <>
-      <AllProductsStyle>
-        {products.map((product: any, index: number) =>
-          index <= 2 ?
-            (
-                category2 === undefined ? (
-                  product.category1 === category1 ? (
-                    <CardMedium key={product._id} product={product} />
-                  ) : null 
-                ) : ( 
-                  <>
-                    {
-                      product.category1 === category1 && product.category2 ===
-                      category2 ? 
-                      <CardMedium key={product._id} product={product} />  : null
-                    }     
-                  </> 
-                )
-            ) : null
-        )}
-      </AllProductsStyle>
-      
-    </>
-  );
+       {products
+        .filter((product : any) => category2 === undefined && category1 === product.category1)
+        .map((product: any, index : number) =>
+          index < 3
+            ? (
+                <>
+                  <CardMedium key={product._id} product={product} />
+                </>
+              )
+            :
+              null
+          )
+        }
+    </>;
+
+  const contentForSpecificSections = 
+    <>
+      {products.map((product: any) =>
+        product.category1 === category1 && product.category2 === category2
+          ? 
+            <>
+              <CardMedium key={product._id} product={product} /> 
+            </> 
+          :
+            null
+      )}
+    </>;
+
+  const content =
+    <AllProductsStyle>
+      {contentForMainSections}
+      {contentForSpecificSections}
+    </AllProductsStyle>;
 
   return isLoading ? loadingMessage : content;
 }

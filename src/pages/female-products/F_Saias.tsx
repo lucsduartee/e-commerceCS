@@ -6,6 +6,7 @@ function F_Saias() {
     return(
         <div className="section__products">
             <Header />
+            <h1> Saias </h1>
             <ProductsByCategory category1="female" category2="saias" />
             <Footer />
         </div>
