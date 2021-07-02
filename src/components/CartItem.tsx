@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { removeProductFromUserRequest, updateAmountRequest } from "../redux-store/thunks";
+import { removeProductFromUserRequest, updateProductAmountRequest } from "../redux-store/thunks";
 
 function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, onUpdateAmountPressed, userId } : any) {
   console.log(userId);
@@ -50,7 +50,7 @@ const mapStateToProps = (state : any) => ({
 
 const mapDispatchToProps = (dispatch : any) => ({
   onRemovePressed: (userId : string, productId : string) => dispatch(removeProductFromUserRequest(userId, productId)),
-  onUpdateAmountPressed: (userId : string, productId : string, amount: number) => dispatch(updateAmountRequest(userId, productId, parseFloat(amount)))
+  onUpdateAmountPressed: (userId : string, productId : string, amount: string) => dispatch(updateProductAmountRequest(userId, productId, amount))
 })
 
 export { CartItem }

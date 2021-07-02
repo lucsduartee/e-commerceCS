@@ -95,6 +95,12 @@ export const addProductToUser = (user : any, product : any) => ({
     payload: { user, product }
 })
 
+export const UPDATE_PRODUCT_AMOUNT = 'UPDATE_PRODUCT_AMOUNT';
+export const updateProductAmount = (user : any, product : any, amount : any) => ({
+    type: UPDATE_PRODUCT_AMOUNT,
+    payload: { user, product, amount }
+})
+
 export const REMOVE_PRODUCT_FROM_USER = 'REMOVE_PRODUCT_FROM_USER';
 export const removeProductFromUser = (user : any, product : any) => ({
     type: REMOVE_PRODUCT_FROM_USER,

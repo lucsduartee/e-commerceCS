@@ -15,7 +15,8 @@ import {
     REMOVE_PRODUCT_FROM_USER,
     LOAD_CURRENT_USER_IN_PROGRESS,
     LOAD_CURRENT_USER_SUCCESS,
-    LOAD_CURRENT_USER_FAILURE
+    LOAD_CURRENT_USER_FAILURE,
+    UPDATE_PRODUCT_AMOUNT
 } from './actions';
 
 export const isLoading = (state = false, action : any) => {
@@ -137,7 +138,7 @@ export const currentUserLoading = (state = false, action : any) => {
     }
 }
 
-export const currentUser = (state : any = [], action : any) => {
+export const currentUser = (state : any = {}, action : any) => {
     const { type, payload } = action;
 
     (Object as any).filter = function(obj : any, predicate : any) {
@@ -162,18 +163,25 @@ export const currentUser = (state : any = [], action : any) => {
             const updatedProducts = products.concat(() => productAdded)
             return {...state, products: updatedProducts}
         }
+        case UPDATE_PRODUCT_AMOUNT: {
+            const { user, product : updatedProduct, amount} = payload;
+            const products = state.products;
+            const filteredProducts = products.filter((product : any) => product._id !== updatedProduct._id);
+            const updatedProducts = filteredProducts.concat(updatedProduct)
+            return {...state, products: updatedProducts}
+        }
         case REMOVE_PRODUCT_FROM_USER: {
             const { user, product : productToRemove } = payload;
 
             const products = state.products;
-            const productsFiltered = products.filter((product : any) => {
+            const filteredProducts = products.filter((product : any) => {
                 return product._id !== productToRemove._id;
             })
 
             // return state.products.filter((product : any) => {
             //     return product._id !== productToRemove._id;
             // })
-            return {...state, products: productsFiltered};
+            return {...state, products: filteredProducts};
         }
         default: {
             return state;
