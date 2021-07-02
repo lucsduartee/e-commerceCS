@@ -29,15 +29,19 @@ function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, o
           </div>
           <div className="drops">
             <p className="size">Quantidade</p>
-            <button onClick={()=>onUpdateAmountPressed(currentUser._id, product._id, amount)}>Atualizar</button>
             <form action="#">
-                <input value={amount} onChange={(e : any) => setAmount(e.target.value)} />
+                <input className="input-qtd" value={amount} onChange={(e : any) => setAmount(e.target.value)} />
             </form>
           </div>
           <hr />
-          <button onClick={() => onRemovePressed(currentUser._id, product._id)}>Apagar</button>
-          <p className="price">{product.price}</p>
-          {value}
+          <div className="delete-price">
+            <div>
+              <button className="delete" onClick={() => onRemovePressed(currentUser._id, product._id)}>Apagar</button>
+              <button className="update" onClick={()=>onUpdateAmountPressed(currentUser._id, product._id, amount)}>Atualizar</button>
+            </div>
+            <p className="price">{value}</p>
+          </div>
+          
         </div>
       </div>
     </CartItemStyle>
@@ -57,26 +61,24 @@ export { CartItem }
 export default connect(mapStateToProps, mapDispatchToProps)(CartItem);
 
 const CartItemStyle = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 30%) 40%;
-  grid-template-areas:
-    "produto produto resumo"
-    "produto produto resumo"
-    "frete frete .";
-  width: 60%;
-  margin: 75px auto 0 auto;
-  grid-gap: 20px;
-  
+  width: 65%;
+  margin: 20px auto;
+
+  form {
+    width: 65px;
+  }
+
   .card {
-    grid-area: produto;
     background-color: #EEE;
-    min-width: 400px;
+    min-width: 275px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     border-radius: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
   }
 
   .description {
@@ -108,6 +110,13 @@ const CartItemStyle = styled.div`
     font-size: 20px;
     font-weight: bold;
     text-align: end;
+    margin-bottom: 0;
+  }
+
+  .delete-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .drops {
@@ -116,10 +125,8 @@ const CartItemStyle = styled.div`
   }
 
   .resumo__compra {
-    grid-area: resumo;
     background-color: #EEE;
     border-radius: 15px;
- 
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.3);
   }
 
@@ -156,6 +163,27 @@ const CartItemStyle = styled.div`
     padding: 10px;
   }
 
+  .input-qtd {
+    width: 40%;
+    height: 5px;
+    display: inline-block;
+    margin-top: 0px;
+    padding: 7px;
+  }
+
+  .delete-price div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .delete,
+  .update {
+    display: inline;
+    width: 70px;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
   button {
     width: 200px;
     color: #FFF;
@@ -174,7 +202,4 @@ const CartItemStyle = styled.div`
     font-size: 18px;
     padding-bottom: 20px;
   }
-
-
-
 `;
