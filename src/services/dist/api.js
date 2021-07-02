@@ -56,6 +56,7 @@ app.post('/api/products', async (req, res) => {
                 description: description,
                 price: price,
                 stockAmount: stockAmount,
+                amount: 1,
                 category1: category1,
                 category2: category2,
                 image2: image2,
@@ -77,12 +78,12 @@ app.post('/api/products', async (req, res) => {
 app.post('/api/products/:id/update', async (req, res) => {
     try{
         const _id = ObjectID(req.params.id);
-        const { title, description, price, stockAmount, category1, category2, image1, image2 } = req.body;
+        const { title, description, price, stockAmount, amount, category1, category2, image1, image2 } = req.body;
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        const updatedProduct = await db.collection('products').updateOne({ _id: _id }, { $set: { title, description, price, stockAmount, category1, category2, image1, image2 } });
+        const updatedProduct = await db.collection('products').updateOne({ _id: _id }, { $set: { title, description, price, stockAmount, amount, category1, category2, image1, image2 } });
 
         if(updatedProduct){
             res.status(200).json(updatedProduct);
@@ -294,6 +295,30 @@ app.post('/api/users/:userId/products/:productId', async (req, res) => {
     }
 });
 
+app.put('/api/users/:userId/products/:productId/:amount', async (req, res) => {
+    try{
+        const userId = ObjectID(req.params.userId);
+        const productId = ObjectID(req.params.productId);
+        const amount = req.params.amount;
+
+        const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
+        const db = client.db('shop');
+
+        const productToUpdate = await db.collection('products').findOne({ _id: productId });
+        const updatedProduct = {...productToUpdate, amount: amount}
+        // await db.collection('products').updateOne({ _id: productId }, { $pull : { products: productToUpdate }})
+        // await db.collection('products').updateOne({ _id: productId }, { $push : { products: updatedProduct }})
+
+        await db.collection('users').updateOne({ _id: userId }, { $pull: { products: { _id: productId } } });
+        await db.collection('users').updateOne({ _id: userId }, { $push: { products: updatedProduct } });
+
+        res.status(200).json(updatedProduct);
+        client.close();
+    } catch(e){
+        res.status(500).json({ message: 'Error connecting to db', e });
+    }
+});
+
 app.delete('/api/users/:userId/products/:productId', async (req, res) => {
     try{
         const userId = ObjectID(req.params.userId);
@@ -303,7 +328,7 @@ app.delete('/api/users/:userId/products/:productId', async (req, res) => {
         const db = client.db('shop');
 
         const productToRemove = await db.collection('products').findOne({ _id: productId })
-        await db.collection('users').updateOne({ _id: userId}, { $pull : { products: productToRemove }});
+        await db.collection('users').updateOne({ _id: userId}, { $pull : { products: { _id: productId }}});
     
         console.log(productToRemove);
 
