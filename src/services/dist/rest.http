@@ -1,1 +1,1 @@
-POST http://localhost:8080/api/users/60d6812910940c33ac435c5d/products/60d75f7cfeb60f18f4cc9504
+GET http://localhost:8080/api/users/60d6812910940c33ac435c5d/products/60de91c42f8aa62b9cfb1e8b

@@ -11,18 +11,24 @@ class LoginPage extends React.Component<{ startLoadingProducts : any, startLoadi
     constructor(props : any){
         super(props);
       
-    
         this.state = {
         username: 'nome ',
         password: 'password'
       }
-        this.handleChange = this.handleChange.bind(this);
-      }
-      handleChange(e : any){
-        this.setState({
-          username: e.target.username,
-          password: e.target.password
+        this.handleUsernameChange = this.handleUsernameChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
 
+      }
+
+      handleUsernameChange(e : any){
+        this.setState({
+          username: e.target.value,
+        })
+      }
+
+      handlePasswordChange(e : any){
+        this.setState({
+          password: e.target.value,
         })
       }
 
@@ -36,14 +42,14 @@ class LoginPage extends React.Component<{ startLoadingProducts : any, startLoadi
                     type="text"
                     placeholder="username"
                     value={this.state.username}
-                    onChange={this.handleChange}
+                    onChange={this.handleUsernameChange}
                 ></input>
                 <input
                     type="password"
                     className="input-senha"
                     placeholder="senha"
                     value={this.state.password}
-                    onChange={this.handleChange}
+                    onChange={this.handlePasswordChange}
                 >
                 </input>
                 <Link to="novasenha">

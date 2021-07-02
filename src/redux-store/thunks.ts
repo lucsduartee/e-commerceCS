@@ -15,6 +15,7 @@ import {
     loadCurrentUserSuccess,
     loadCurrentUserFailure,
     addProductToUser,
+    updateProductAmount,
     removeProductFromUser
 } from './actions';
 
@@ -168,6 +169,25 @@ export const addProductToUserRequest = (userId : any, productId : any) => async 
         });
         const user = await response2.json();
         dispatch(addProductToUser(user, product))
+    }catch(e : any){
+        dispatch(displayAlert(e));
+    }
+}
+
+export const updateProductAmountRequest = (userId : any, productId : any, amount : any) => async (dispatch : any) => {
+    try{
+        const response = await fetch(`http://localhost:8080/api/users/${userId}/products/${productId}/${amount}`, {
+            method: 'put'
+        });
+        const product = await response.json();
+        const response2 = await fetch(`http://localhost:8080/api/users/${userId}`, {
+            method: 'get'
+        });
+        const user = await response2.json();
+
+        console.log(user, product, amount, 'from thunks');
+
+        dispatch(updateProductAmount(user, product, amount));
     }catch(e : any){
         dispatch(displayAlert(e));
     }

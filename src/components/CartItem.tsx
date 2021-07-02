@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { removeProductFromUserRequest } from "../redux-store/thunks";
+import { removeProductFromUserRequest, updateProductAmountRequest } from "../redux-store/thunks";
 
-function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, userId } : any) {
+function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, onUpdateAmountPressed, userId } : any) {
   console.log(userId);
   const [amount, setAmount] = useState(1);
   const value : number = product.price * amount;
@@ -29,6 +29,7 @@ function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, u
           </div>
           <div className="drops">
             <p className="size">Quantidade</p>
+            <button onClick={()=>onUpdateAmountPressed(currentUser._id, product._id, amount)}>Atualizar</button>
             <form action="#">
                 <input className="input-qtd" value={amount} onChange={(e : any) => setAmount(e.target.value)} />
             </form>
@@ -50,7 +51,8 @@ const mapStateToProps = (state : any) => ({
 })
 
 const mapDispatchToProps = (dispatch : any) => ({
-  onRemovePressed: (userId : string, productId : string) => dispatch(removeProductFromUserRequest(userId, productId))
+  onRemovePressed: (userId : string, productId : string) => dispatch(removeProductFromUserRequest(userId, productId)),
+  onUpdateAmountPressed: (userId : string, productId : string, amount: string) => dispatch(updateProductAmountRequest(userId, productId, amount))
 })
 
 export { CartItem }

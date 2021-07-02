@@ -73,26 +73,32 @@ export const loadUsersFailure = () => ({
 
 
 
-export const LOAD_USER_PRODUCTS_IN_PROGRESS = 'LOAD_USER_PRODUCTS_IN_PROGRESS';
+export const LOAD_CURRENT_USER_IN_PROGRESS = 'LOAD_CURRENT_USER_IN_PROGRESS';
 export const loadCurrentUserInProgress = () => ({
-    type: LOAD_USER_PRODUCTS_IN_PROGRESS
+    type: LOAD_CURRENT_USER_IN_PROGRESS
 });
 
-export const LOAD_USER_PRODUCTS_SUCCESS = 'LOAD_USER_PRODUCTS_SUCCESS';
+export const LOAD_CURRENT_USER_SUCCESS = 'LOAD_CURRENT_USER_SUCCESS';
 export const loadCurrentUserSuccess = (products : any) => ({
-    type: LOAD_USER_PRODUCTS_SUCCESS,
+    type: LOAD_CURRENT_USER_SUCCESS,
     payload: { products }
 });
 
-export const LOAD_USER_PRODUCTS_FAILURE = 'LOAD_USER_PRODUCTS_FAILURE';
+export const LOAD_CURRENT_USER_FAILURE = 'LOAD_CURRENT_USER_FAILURE';
 export const loadCurrentUserFailure = () => ({
-    type: LOAD_USER_PRODUCTS_FAILURE
+    type: LOAD_CURRENT_USER_FAILURE
 });
 
 export const ADD_PRODUCT_TO_USER = 'ADD_PRODUCT_TO_USER';
 export const addProductToUser = (user : any, product : any) => ({
     type: ADD_PRODUCT_TO_USER,
     payload: { user, product }
+})
+
+export const UPDATE_PRODUCT_AMOUNT = 'UPDATE_PRODUCT_AMOUNT';
+export const updateProductAmount = (user : any, product : any, amount : any) => ({
+    type: UPDATE_PRODUCT_AMOUNT,
+    payload: { user, product, amount }
 })
 
 export const REMOVE_PRODUCT_FROM_USER = 'REMOVE_PRODUCT_FROM_USER';

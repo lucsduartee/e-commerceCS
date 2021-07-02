@@ -52,8 +52,8 @@ function CartPage({
             <p>
               R$
               {currentUser.products.reduce(
-                (acc: number, product: { price: string }) => {
-                  return acc + parseFloat(product.price);
+                (acc: number, product: { price: string, amount : string }) => {
+                  return acc + (parseFloat(product.price) * parseFloat(product.amount));
                 },
                 0
               )}
@@ -68,8 +68,8 @@ function CartPage({
             <p>
               R$
               {currentUser.products.reduce(
-                (acc: number, product: { price: string }) => {
-                  return acc + parseFloat(product.price);
+                (acc: number, product: { price: string, amount : string }) => {
+                  return acc + (parseFloat(product.price) * parseFloat(product.amount));
                 },
                 0
               )}
