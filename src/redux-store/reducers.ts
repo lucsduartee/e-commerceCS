@@ -13,9 +13,9 @@ import {
     LOAD_USERS_FAILURE,
     ADD_PRODUCT_TO_USER,
     REMOVE_PRODUCT_FROM_USER,
-    LOAD_USER_PRODUCTS_IN_PROGRESS,
-    LOAD_USER_PRODUCTS_SUCCESS,
-    LOAD_USER_PRODUCTS_FAILURE
+    LOAD_CURRENT_USER_IN_PROGRESS,
+    LOAD_CURRENT_USER_SUCCESS,
+    LOAD_CURRENT_USER_FAILURE
 } from './actions';
 
 export const isLoading = (state = false, action : any) => {
@@ -122,13 +122,13 @@ export const currentUserLoading = (state = false, action : any) => {
     const { type } = action;
 
     switch(type){
-        case LOAD_USER_PRODUCTS_IN_PROGRESS: {
+        case LOAD_CURRENT_USER_IN_PROGRESS: {
             return true;
         }
-        case LOAD_USER_PRODUCTS_SUCCESS: {
+        case LOAD_CURRENT_USER_SUCCESS: {
             return false;
         }
-        case LOAD_USER_PRODUCTS_FAILURE: {
+        case LOAD_CURRENT_USER_FAILURE: {
             return false;
         }
         default: {
@@ -152,7 +152,7 @@ export const currentUser = (state : any = [], action : any) => {
     }
 
     switch(type){
-        case LOAD_USER_PRODUCTS_SUCCESS: {
+        case LOAD_CURRENT_USER_SUCCESS: {
             const { products } = payload;
             return products;
         }

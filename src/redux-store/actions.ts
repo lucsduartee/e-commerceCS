@@ -73,20 +73,20 @@ export const loadUsersFailure = () => ({
 
 
 
-export const LOAD_USER_PRODUCTS_IN_PROGRESS = 'LOAD_USER_PRODUCTS_IN_PROGRESS';
+export const LOAD_CURRENT_USER_IN_PROGRESS = 'LOAD_CURRENT_USER_IN_PROGRESS';
 export const loadCurrentUserInProgress = () => ({
-    type: LOAD_USER_PRODUCTS_IN_PROGRESS
+    type: LOAD_CURRENT_USER_IN_PROGRESS
 });
 
-export const LOAD_USER_PRODUCTS_SUCCESS = 'LOAD_USER_PRODUCTS_SUCCESS';
+export const LOAD_CURRENT_USER_SUCCESS = 'LOAD_CURRENT_USER_SUCCESS';
 export const loadCurrentUserSuccess = (products : any) => ({
-    type: LOAD_USER_PRODUCTS_SUCCESS,
+    type: LOAD_CURRENT_USER_SUCCESS,
     payload: { products }
 });
 
-export const LOAD_USER_PRODUCTS_FAILURE = 'LOAD_USER_PRODUCTS_FAILURE';
+export const LOAD_CURRENT_USER_FAILURE = 'LOAD_CURRENT_USER_FAILURE';
 export const loadCurrentUserFailure = () => ({
-    type: LOAD_USER_PRODUCTS_FAILURE
+    type: LOAD_CURRENT_USER_FAILURE
 });
 
 export const ADD_PRODUCT_TO_USER = 'ADD_PRODUCT_TO_USER';

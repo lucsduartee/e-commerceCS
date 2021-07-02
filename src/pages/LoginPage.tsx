@@ -20,9 +20,8 @@ class LoginPage extends React.Component<{ startLoadingProducts : any, startLoadi
       }
       handleChange(e : any){
         this.setState({
-          username: e.target.username,
-          password: e.target.password
-
+          username: e.target.value,
+          password: e.target.value
         })
       }
 
