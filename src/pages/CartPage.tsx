@@ -92,59 +92,12 @@ function CartPage({
 }
 
 const CartPageContainer = styled.div`
-  .card {
-    grid-area: produto;
-    background-color: #eee;
-    min-width: 400px;
-    display: flex;
-    justify-content: space-around;
-    border-radius: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.3);
-  }
-
-  .description {
-    font-style: italic;
-  }
-
-  .product__description {
-    display: inline-block;
-    vertical-align: top;
-    width: 60%;
-  }
-
-  h2 {
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 18px;
-  }
-
-  img {
-    width: 20%;
-    min-width: 150px;
-  }
-
-  .product__description p {
-    margin-bottom: 8px;
-  }
-
-  .price {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: end;
-  }
-
-  .drops {
-    display: flex;
-    justify-content: space-between;
-  }
 
   .resumo__compra {
-    grid-area: resumo;
+    width: 70%;
+    margin: 0 auto;
     background-color: #eee;
     border-radius: 15px;
-
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.3);
   }
 

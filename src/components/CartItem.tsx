@@ -5,7 +5,7 @@ import { removeProductFromUserRequest } from "../redux-store/thunks";
 
 function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, userId } : any) {
   console.log(userId);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
   const value : number = product.price * amount;
 
   return (
@@ -30,13 +30,15 @@ function CartItem({ totalValueCallback, currentUser, product, onRemovePressed, u
           <div className="drops">
             <p className="size">Quantidade</p>
             <form action="#">
-                <input value={amount} onChange={(e : any) => setAmount(e.target.value)} />
+                <input className="input-qtd" value={amount} onChange={(e : any) => setAmount(e.target.value)} />
             </form>
           </div>
           <hr />
-          <button onClick={() => onRemovePressed(currentUser._id, product._id)}>Apagar</button>
-          <p className="price">{product.price}</p>
-          {value}
+          <div className="delete-price">
+            <button className="delete" onClick={() => onRemovePressed(currentUser._id, product._id)}>Apagar</button>
+            <p className="price">{value}</p>
+          </div>
+          
         </div>
       </div>
     </CartItemStyle>
@@ -55,26 +57,24 @@ export { CartItem }
 export default connect(mapStateToProps, mapDispatchToProps)(CartItem);
 
 const CartItemStyle = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 30%) 40%;
-  grid-template-areas:
-    "produto produto resumo"
-    "produto produto resumo"
-    "frete frete .";
   width: 60%;
-  margin: 75px auto 0 auto;
-  grid-gap: 20px;
-  
+  margin: 0 auto;
+
+  form {
+    width: 65px;
+  }
+
   .card {
-    grid-area: produto;
     background-color: #EEE;
-    min-width: 400px;
+    min-width: 275px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     border-radius: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
   }
 
   .description {
@@ -106,6 +106,13 @@ const CartItemStyle = styled.div`
     font-size: 20px;
     font-weight: bold;
     text-align: end;
+    margin-bottom: 0;
+  }
+
+  .delete-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .drops {
@@ -114,10 +121,8 @@ const CartItemStyle = styled.div`
   }
 
   .resumo__compra {
-    grid-area: resumo;
     background-color: #EEE;
     border-radius: 15px;
- 
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.3);
   }
 
@@ -154,6 +159,21 @@ const CartItemStyle = styled.div`
     padding: 10px;
   }
 
+  .input-qtd {
+    width: 40%;
+    height: 5px;
+    display: inline-block;
+    margin-top: 0px;
+    padding: 7px;
+  }
+
+  .delete {
+    display: inline;
+    width: 70px;
+    font-size: 16px;
+    margin-top: 0;
+  }
+
   button {
     width: 200px;
     color: #FFF;
@@ -172,7 +192,4 @@ const CartItemStyle = styled.div`
     font-size: 18px;
     padding-bottom: 20px;
   }
-
-
-
 `;
