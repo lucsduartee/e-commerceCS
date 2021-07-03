@@ -1,1 +1,8 @@
-GET http://localhost:8080/api/users/60d6812910940c33ac435c5d/products/60de91c42f8aa62b9cfb1e8b
+POST http://localhost:8080/api/users
+Content-Type: : application/json
+{
+    "username": "abcde",
+    "email": "abcde@email.com",
+    "password": "123",
+    "products": [],
+}

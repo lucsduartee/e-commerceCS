@@ -61,6 +61,7 @@ app.post('/api/products', async (req, res) => {
                 category2: category2,
                 image2: image2,
                 image1: image1,
+                popularity: 0
             }
         
         await db.collection('products').insertOne(insertedProduct);
@@ -78,12 +79,12 @@ app.post('/api/products', async (req, res) => {
 app.post('/api/products/:id/update', async (req, res) => {
     try{
         const _id = ObjectID(req.params.id);
-        const { title, description, price, stockAmount, amount, category1, category2, image1, image2 } = req.body;
+        const { title, description, price, stockAmount, amount, category1, category2, image1, image2, popularity } = req.body;
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        const updatedProduct = await db.collection('products').updateOne({ _id: _id }, { $set: { title, description, price, stockAmount, amount, category1, category2, image1, image2 } });
+        const updatedProduct = await db.collection('products').updateOne({ _id: _id }, { $set: { title, description, price, stockAmount, amount, category1, category2, image1, image2, popularity } });
 
         if(updatedProduct){
             res.status(200).json(updatedProduct);
@@ -123,9 +124,9 @@ app.get('/api/users/:id', async (req, res) => {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
-        const productInfo = await db.collection('users').findOne({_id: _id});
-        if(productInfo){
-            res.status(200).json(productInfo);
+        const userInfo = await db.collection('users').findOne({_id: _id});
+        if(userInfo){
+            res.status(200).json(userInfo);
         } else{
             res.status(400).json({ message: 'There is no user with that id' });
         }
@@ -159,11 +160,11 @@ app.post('/api/users', async (req, res) => {
         const db = client.db('shop');
 
         if (username && email && password && products) {
-            const insertedProduct = { username, email, password, products }
+            const insertedUser = { username, email, password, products, credit: 0 }
 
-            await db.collection('users').insertOne(insertedProduct);
-            console.log(insertedProduct);
-            res.status(200).json(insertedProduct);
+            await db.collection('users').insertOne(insertedUser);
+            console.log(insertedUser);
+            res.status(200).json(insertedUser);
         } else {
             res.status(400).json({ message: 'Request body should have a text property' });
         }
@@ -176,11 +177,11 @@ app.post('/api/users', async (req, res) => {
 app.post('/api/users/:id/change', async (req, res) => {
     try{
         const _id = ObjectID(req.params.id);
-        const { userName, email, password, products } = req.body;
+        const { userName, email, password, products, credit } = req.body;
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
-        const updatedUser = await db.collection('users').updateOne({_id: _id}, { $set: { userName, email, password, products }});
+        const updatedUser = await db.collection('users').updateOne({_id: _id}, { $set: { userName, email, password, products, credit }});
 
         if(updatedUser){
             res.status(200).json(updatedUser);
@@ -304,8 +305,28 @@ app.put('/api/users/:userId/products/:productId/:amount', async (req, res) => {
         const db = client.db('shop');
 
         const productToUpdate = await db.collection('products').findOne({ _id: productId });
-        const amount = Math.max(req.params.amount, productToUpdate.stockAmount);
+        const amount = Math.min(req.params.amount, productToUpdate.stockAmount);
         const updatedProduct = {...productToUpdate, amount: amount}
+
+        await db.collection('users').updateOne({ _id: userId }, { $pull: { products: { _id: productId } } });
+        await db.collection('users').updateOne({ _id: userId }, { $push: { products: updatedProduct } });
+        res.status(200).json(updatedProduct);
+        client.close();
+    } catch(e){
+        res.status(500).json({ message: 'Error connecting to db', e });
+    }
+});
+
+app.put('/api/users/:userId/products/:productId/popularity', async (req, res) => {
+    try{
+        const userId = ObjectID(req.params.userId);
+        const productId = ObjectID(req.params.productId);
+
+        const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
+        const db = client.db('shop');
+
+        const productToUpdate = await db.collection('products').findOne({ _id: productId });
+        const updatedProduct = { ...productToUpdate, popularity: productToUpdate.popularity+1 }
 
         await db.collection('users').updateOne({ _id: userId }, { $pull: { products: { _id: productId } } });
         await db.collection('users').updateOne({ _id: userId }, { $push: { products: updatedProduct } });
