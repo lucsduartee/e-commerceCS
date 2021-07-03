@@ -17,12 +17,29 @@ function ProductsByCategory({
     startLoadingProducts();
   }, [startLoadingProducts]);
 
+  const [searchInput, setSearchInput] = useState('');
   const loadingMessage = <div>carregando produtos</div>;
   console.log(category2);
+
+  const Input =
+    <InputStyle
+        className="search-input"
+        value={searchInput}
+        onChange={(e : any) => setSearchInput(e.target.value)}
+    />;
 
   const contentForMainSections =
     <>
        {products
+       .filter((product : any) =>
+          product['title']
+          .toLowerCase()
+          .includes(searchInput.toLowerCase())
+          ||
+          product['description']
+          .toLowerCase()
+          .includes(searchInput.toLowerCase())
+        )
         .filter((product : any) => category2 === undefined && category1 === product.category1)
         .map((product: any, index : number) =>
           index < 3
@@ -51,13 +68,22 @@ function ProductsByCategory({
     </>;
 
   const content =
+  <>
+     {Input}
+
     <AllProductsStyle>
       {contentForMainSections}
       {contentForSpecificSections}
-    </AllProductsStyle>;
+    </AllProductsStyle>
+  </>;
+     
 
   return isLoading ? loadingMessage : content;
 }
+
+const InputStyle = styled.input`
+    width: 100vw;
+`;
 
 const AllProductsStyle = styled.div`
   display: grid;

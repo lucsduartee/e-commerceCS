@@ -9,6 +9,8 @@ import { connect } from 'react-redux';
 function Header({currentUser} : any) {
 
     const [showUserInfos, setShowUserInfos] = useState(false);
+    const [showSearchBar, setShowSearchBar] = useState(false);
+    const [searchInput, setSearchInput] = useState('');
 
     return (
         <HeaderStyle>   
@@ -76,10 +78,13 @@ function Header({currentUser} : any) {
                     </li>
 
                     <li className="search-avatar-icon-container">
-                        <img className="icon icon__search" src={lupa} alt="pesquisa"/>
-                        <Link onMouseOver={() => setShowUserInfos(true)} to="/"><img className="icon icon__perfil" src={perfil} alt="avatar"/></Link>
+                        <Link to="/filtered-products-list">
+                            <img className="icon icon__search" src={lupa} alt="pesquisa"/>
+                        </Link>
+                        <div onMouseOver={() => setShowUserInfos(true)}>
+                            <img className="icon icon__perfil" src={perfil} alt="avatar"/>
+                        </div>
                     </li>
-
                     {
                         showUserInfos
                             ?
@@ -90,7 +95,7 @@ function Header({currentUser} : any) {
                                     <Link to="/"><p>Sair</p></Link>
                                 </div>
                             :
-                            null
+                                null
                     }
                 </ul>
             </div>

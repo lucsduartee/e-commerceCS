@@ -35,6 +35,7 @@ import F_ModaIntima from './pages/female-products/F_ModaIntima';
 import F_ModaPraia from './pages/female-products/F_ModaPraia';
 import F_Saias from './pages/female-products/F_Saias';
 import F_Sueters from './pages/female-products/F_Sueters';
+import FilteredProductsList from './components/FilteredProductsList';
 
 function App() {
   return (
@@ -71,11 +72,12 @@ function App() {
         <Route path="/home" component={HomePage} />
         <Route path="/login" component={LoginPage} />        
         <Route path="/products-list" component={ProductsList} />
+        <Route path="/filtered-products-list" component={FilteredProductsList} />
         <Route path="/user-products-list" component={CurrentUserDetails} />
         <Route path="/users-list" component={UsersList} />
         <Route path="/new-account" component={NewUserForm} />
         <Route path="/load-user-products" component={LoadCurrentUserForm} />
-        <Route path="/ntf" component={NotFoundPage} />
+        <Route path="" component={NotFoundPage} />
       </Switch>
     </Router>
   );

@@ -7,9 +7,9 @@ import { currentUserLoading } from '../redux-store/reducers';
 function AllProducts({ products=[], isLoading, currentUser={} }: any){
     products = Array.from(products)
 
-    const loadingMessage = <div>carregando produtos</div>;
     const [searchInput, setSearchInput] = useState('');
 
+    const loadingMessage = <div>carregando produtos</div>;
 
     const content = (
         <>
@@ -18,6 +18,7 @@ function AllProducts({ products=[], isLoading, currentUser={} }: any){
                 value={searchInput}
                 onChange={(e : any) => setSearchInput(e.target.value)}
             />
+
             <AllProductsStyle>
                 <>{
                     products
@@ -29,9 +30,6 @@ function AllProducts({ products=[], isLoading, currentUser={} }: any){
                         product['description']
                         .toLowerCase()
                         .includes(searchInput.toLowerCase())
-                    )
-                    .filter((product : any) =>
-                        product['price'] <= 65
                     )
                     .map((product : any) =>
                         (
