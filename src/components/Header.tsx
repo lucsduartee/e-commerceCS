@@ -74,7 +74,7 @@ function Header({currentUser} : any) {
                     </li>
                 
                     <li className="menu__item">
-                        <Link to="/filtered-products-list" className="menu__link">Ofertas</Link>
+                        <Link to="/ofertas" className="menu__link">Ofertas</Link>
                     </li>
 
                     <li className="search-avatar-icon-container">

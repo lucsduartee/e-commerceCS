@@ -1,7 +1,7 @@
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import FemalePage from './pages/FemalePage';
-import AllProductsPage from './pages/AllProductsPage';
+import OfertasPage from './pages/OfertasPage';
 import MalePage from './pages/MalePage';
 import AccPage from './pages/AccPage';
 import M_BermudasEShorts from './pages/male-products/M_BermudasEShorts';
@@ -42,7 +42,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" component={LoginPage} exact />
-        <Route path="/products" component={AllProductsPage} />
+        <Route path="/ofertas" component={OfertasPage} />
         <Route path="/pages/female/index" component={FemalePage} />
         <Route path="/pages/male/index" component={MalePage} />
         <Route path="/pages/acc" component={AccPage} />

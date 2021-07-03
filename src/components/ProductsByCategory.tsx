@@ -71,10 +71,10 @@ function ProductsByCategory({
   <>
      {Input}
 
-    <AllProductsStyle>
+    <ProductsByCategoryStyle>
       {contentForMainSections}
       {contentForSpecificSections}
-    </AllProductsStyle>
+    </ProductsByCategoryStyle>
   </>;
      
 
@@ -85,7 +85,7 @@ const InputStyle = styled.input`
     width: 100vw;
 `;
 
-const AllProductsStyle = styled.div`
+const ProductsByCategoryStyle = styled.div`
   display: grid;
   width: 90vw;
   margin: 0 auto;

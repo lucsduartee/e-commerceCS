@@ -1,15 +1,15 @@
 import Header from '../components/Header';
-import AllProducts from '../components/AllProducts';
+import Ofertas from '../components/Ofertas';
 import Footer from '../components/Footer';
 
-function AllProductsPage() {
+function OfertasPage() {
     return(
         <>
             <Header /> 
-            <AllProducts />
+            <Ofertas />
             <Footer />
         </>
     )
 }
 
-export default AllProductsPage;
+export default OfertasPage;
