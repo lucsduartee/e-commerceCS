@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import CardMedium from './CardMedium';
 import { currentUserLoading } from '../redux-store/reducers';
 
-function AllProducts({ products=[], isLoading, currentUser={} }: any){
+function FilteredProductsList({ products=[], isLoading, currentUser={} }: any){
     products = Array.from(products)
 
     const [searchInput, setSearchInput] = useState('');
@@ -19,7 +19,7 @@ function AllProducts({ products=[], isLoading, currentUser={} }: any){
                 onChange={(e : any) => setSearchInput(e.target.value)}
             />
 
-            <AllProductsStyle>
+            <FiltredProductsStyle>
                 <>{
                     products
                     .filter((product : any) =>
@@ -42,7 +42,7 @@ function AllProducts({ products=[], isLoading, currentUser={} }: any){
                         )
                     )
                 }</>
-            </AllProductsStyle>
+            </FiltredProductsStyle>
         </>
     );
 
@@ -53,7 +53,7 @@ const Input = styled.input`
     width: 100vw;
 `;
 
-const AllProductsStyle = styled.div`
+const FiltredProductsStyle = styled.div`
     display: grid;
     width: 80vw;
     margin: 5vh 5vw;
@@ -68,5 +68,5 @@ const mapStateToProps = (state : any) => ({
     currentUserLoading: currentUserLoading
 });
 
-export { AllProducts };
-export default connect(mapStateToProps)(AllProducts);
+export { FilteredProductsList };
+export default connect(mapStateToProps)( FilteredProductsList );
