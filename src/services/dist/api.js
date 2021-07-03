@@ -288,7 +288,12 @@ app.post('/api/users/:userId/products/:productId', async (req, res) => {
         const db = client.db('shop');
 
         const productToAdd = await db.collection('products').findOne({ _id: productId });
-        await db.collection('users').updateOne({ _id: userId }, { $push: { products: productToAdd } });
+
+        const updatedPopularity = productToAdd.popularity+1;
+        const updatedProduct = { ...productToAdd, popularity: updatedPopularity }
+        await db.collection('users').updateOne({ _id: userId }, { $push: { products: updatedProduct } });
+        await db.collection('products').updateOne({ _id: productId }, { $set: { popularity: updatedPopularity}})
+
         res.status(200).json(productToAdd);
         client.close();
     } catch(e){
@@ -300,33 +305,14 @@ app.put('/api/users/:userId/products/:productId/:amount', async (req, res) => {
     try{
         const userId = ObjectID(req.params.userId);
         const productId = ObjectID(req.params.productId);
+        const amount = Number(req.params.amount)
 
         const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
         const db = client.db('shop');
 
         const productToUpdate = await db.collection('products').findOne({ _id: productId });
-        const amount = Math.min(req.params.amount, productToUpdate.stockAmount);
-        const updatedProduct = {...productToUpdate, amount: amount}
 
-        await db.collection('users').updateOne({ _id: userId }, { $pull: { products: { _id: productId } } });
-        await db.collection('users').updateOne({ _id: userId }, { $push: { products: updatedProduct } });
-        res.status(200).json(updatedProduct);
-        client.close();
-    } catch(e){
-        res.status(500).json({ message: 'Error connecting to db', e });
-    }
-});
-
-app.put('/api/users/:userId/products/:productId/popularity', async (req, res) => {
-    try{
-        const userId = ObjectID(req.params.userId);
-        const productId = ObjectID(req.params.productId);
-
-        const client = await MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true });
-        const db = client.db('shop');
-
-        const productToUpdate = await db.collection('products').findOne({ _id: productId });
-        const updatedProduct = { ...productToUpdate, popularity: productToUpdate.popularity+1 }
+        const updatedProduct = { ...productToUpdate, amount: amount }
 
         await db.collection('users').updateOne({ _id: userId }, { $pull: { products: { _id: productId } } });
         await db.collection('users').updateOne({ _id: userId }, { $push: { products: updatedProduct } });

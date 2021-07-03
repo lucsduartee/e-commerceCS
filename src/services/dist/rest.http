@@ -1,8 +1,1 @@
-POST http://localhost:8080/api/users
-Content-Type: : application/json
-{
-    "username": "abcde",
-    "email": "abcde@email.com",
-    "password": "123",
-    "products": [],
-}
+PUT http://localhost:8080/api/users/60dffeac1275852550d75925/products/60dfff031275852550d75926/3
