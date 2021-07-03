@@ -4,8 +4,9 @@ import logomenu from '../img/logomenu.svg';
 import lupa from '../img/lupa.svg';
 import perfil from '../img/perfil.svg';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-function Header() {
+function Header({currentUser} : any) {
 
     const [showUserInfos, setShowUserInfos] = useState(false);
 
@@ -75,18 +76,18 @@ function Header() {
                     </li>
 
                     <li className="search-avatar-icon-container">
-                        <Link to="/"><img className="icon icon__search" src={lupa} alt="pesquisa"/></Link>
+                        <img className="icon icon__search" src={lupa} alt="pesquisa"/>
                         <Link onMouseOver={() => setShowUserInfos(true)} to="/"><img className="icon icon__perfil" src={perfil} alt="avatar"/></Link>
                     </li>
 
                     {
                         showUserInfos
                             ?
-                                <div className="user-infos-menu">
-                                    <p>Usuário</p>
+                                <div onMouseOut={() => setShowUserInfos(false)} className="user-infos-menu">
+                                    <p>{currentUser.username}</p>
                                     <p>R$300</p>
                                     <p>Configurações</p>
-                                    <p>Sair</p>
+                                    <Link to="/"><p>Sair</p></Link>
                                 </div>
                             :
                             null
@@ -96,6 +97,13 @@ function Header() {
         </HeaderStyle>
     );
 }
+
+const mapStateToProps = (state : any)  => ({
+    currentUser: state.currentUser
+});
+
+export { Header };
+export default connect(mapStateToProps)(Header);
 
 const HeaderStyle = styled.div`
     width: 100vw;
@@ -196,11 +204,17 @@ const HeaderStyle = styled.div`
 
     .user-infos-menu {
         display: flex;
+        flex-direction: column;
+        color: white;
+        position: fixed;
+        top: 45px;
         background-color: #222;
-        width: 50px;
+        width: 15%;
+        right: 0;
         height: 70px;
         border-radius: 4px;
     }
+    .user-infos-menu > * {
+        margin: 0;
+    }
 `;
-
-export default Header;
