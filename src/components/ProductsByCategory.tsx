@@ -18,6 +18,8 @@ function ProductsByCategory({
   }, [startLoadingProducts]);
 
   const [searchInput, setSearchInput] = useState('');
+  const [sortAttribute, setSortAttribute] = useState('title');
+  const [sortOption, setSortOption] = useState(1);
   const loadingMessage = <div>carregando produtos</div>;
   console.log(category2);
 
@@ -27,6 +29,15 @@ function ProductsByCategory({
         value={searchInput}
         onChange={(e : any) => setSearchInput(e.target.value)}
     />;
+  <label>Ordenar por:
+    <select value={sortAttribute} onChange={(e)=>setSortAttribute(e.target.value)}>
+        <option value="title">Título</option>
+    </select>
+    <select value={sortOption} onChange={(e : any)=>setSortOption(e.target.value)}>
+        <option value={1}>/\</option>
+        <option value={-1}>\/</option>
+    </select>
+  </label>
 
   const contentForMainSections =
     <>
@@ -39,6 +50,13 @@ function ProductsByCategory({
           product['description']
           .toLowerCase()
           .includes(searchInput.toLowerCase())
+        )
+        .sort((a : any, b : any) =>
+            (a.sortAttribute < b.sortAttribute)
+            ?
+              -1 * sortOption
+            :
+              1 * sortOption
         )
         .filter((product : any) => category2 === undefined && category1 === product.category1)
         .map((product: any, index : number) =>

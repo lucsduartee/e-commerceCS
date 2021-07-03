@@ -7,10 +7,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 function Header({currentUser} : any) {
-
     const [showUserInfos, setShowUserInfos] = useState(false);
-    const [showSearchBar, setShowSearchBar] = useState(false);
-    const [searchInput, setSearchInput] = useState('');
 
     return (
         <HeaderStyle>   
