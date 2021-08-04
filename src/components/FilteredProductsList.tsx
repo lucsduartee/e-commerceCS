@@ -23,6 +23,7 @@ function FilteredProductsList({ products=[], isLoading, currentUser={} }: any){
             <label>Ordenar por:
                 <select value={sortAttribute} onChange={(e)=>setSortAttribute(e.target.value)}>
                     <option value="title">Título</option>
+                    <option value="value">Valor</option>
                 </select>
                 <select value={sortOption} onChange={(e : any)=>setSortOption(e.target.value)}>
                     <option value={1}>/\</option>
